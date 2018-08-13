@@ -1,0 +1,10 @@
+.column1{
+    max-width: 20vw;
+    color: white;
+    background-color: black;
+    height: 100vw;
+}
+
+.profilePic{
+    max-width: 10vw;
+}
