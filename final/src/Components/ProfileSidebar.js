@@ -8,7 +8,7 @@ class ProfileSidebar extends Component {
   render() {
     return (
       <div className="column1">
-       <ProfilePic src = "Images/chris.jpeg"/>
+       <ProfilePic src = "Images/chris.jpeg" />
       </div>
     );
   }

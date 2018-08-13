@@ -1,12 +1,15 @@
 .profile{
     position: relative;
-    top: 5vw;
+    top: 5vw
 }
 .profilePic{
     
     max-width: 10vw;
     border-radius: 200px;
     align-content: center;
+}
 
+.space{
+    margin-top: 3vh;
 }
 

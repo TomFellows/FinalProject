@@ -7,21 +7,15 @@ class ProfilePic extends Component {
     render() {
         return <div className = "profile">
             <img src={this.props.src} className="profilePic"/>
-            <br/>
-            <br/>
-            <div>Instruments: ...</div>
-            <br/>
-            <div>Age: ...</div>
-            <br/>
-            <div>Username: ...</div>
-            <br/>
-            <div>Info: ...</div>
-            <br/>
-            <div>Info: ...</div>
-            <br/>
-            <div>Info: ...</div>
-            <br/>
-            <div>Info: ...</div>
+            
+            <div className = "space">Instruments: ...</div>
+            
+            <div className = "space">Age: ...</div>
+         
+            <div className = "space">Username: ...</div>
+          
+            <div className = "space">Info: ...</div>
+        
             
             </div>
 

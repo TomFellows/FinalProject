@@ -1,0 +1,20 @@
+.column2{
+    
+    background: #200122; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #200122, #6f0000); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #200122, #6f0000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: white;
+    max-width: 25vw;
+    width: 25vw;
+    position: relative;
+
+    left: 60vw;
+    height: 100vh;
+}
+
+.header{
+    position: relative;
+    font-size: 20pt;
+    font-weight: bold;
+    top: 10vh;
+}
