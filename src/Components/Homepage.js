@@ -8,15 +8,15 @@ import ConnectionCardSmallContainer from './ConnectionCardSmallContainer';
 class Homepage extends Component {
     render() {
         return (
-            <div className="area">
+            <div>
             <div className = "title">Suggested Connections</div>
-            <ConnectionCardLarge/>
-            <ConnectionCardLarge/>
-            <ConnectionCardLarge/>
-            <div className="bothSmallContainers">
-                <ConnectionCardSmallContainer/>
-                <ConnectionCardSmallContainer/>
-            </div>
+            <ConnectionCardLarge src="Images/guy1.jpg"/>
+            <br/>
+            <ConnectionCardLarge src="Images/guy1.jpg"/>
+            <br/>
+            <ConnectionCardLarge src="Images/guy1.jpg"/>
+           
+            <div className = "spaceOut"><ConnectionCardSmallContainer/></div>
             </div>
         );
     }

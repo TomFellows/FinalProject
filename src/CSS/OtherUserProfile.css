@@ -1,5 +1,8 @@
 .area {
-    background-color: #dddddd;
+    /* background-image: url("Images/bg.jpg"); */
+   
+
+    background-color: #e9ebee;
     position: absolute;
     left: 15vw;
     width: 60vw;
@@ -62,13 +65,9 @@
     color: #0066cc
 }
 
-#rating{
-   
-    
-    
+.rating{ 
     height: 3vh;
-    max-width: 10vw;
-  
+    max-width: 10vw;  
 }
 
 .progress{
@@ -76,7 +75,7 @@
     position: absolute;
     top: 57vh;
     height: 3vh;
-width: 15vw;
+    width: 15vw;
 }
 
 .reminder{

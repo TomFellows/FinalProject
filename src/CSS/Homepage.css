@@ -1,19 +1,11 @@
-.area {
-    
-        background-color: white;
-        position: absolute;
-        left: 15vw;
-        width: 60vw;
-        max-width:60vw;
-        height: 100vh;
-    }
+
 
 .title {
     margin-top: 10vh;
+    font-size: 30pt;
+    font-weight: bold;
 }
 
-
-.bothSmallContainers{
-    display:flex;
-    box-align: center;
+.spaceOut{
+    margin-top: 20vh;
 }
