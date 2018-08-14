@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import '../CSS/Homepage.css'
 import ConnectionCardLarge from './ConnectionCardLarge.js'
 
+import ConnectionCardSmallContainer from './ConnectionCardSmallContainer';
+
 class Homepage extends Component {
     render() {
         return (
@@ -10,6 +12,7 @@ class Homepage extends Component {
             <ConnectionCardLarge/>
             <ConnectionCardLarge/>
             <ConnectionCardLarge/>
+            <div><ConnectionCardSmallContainer/></div>
             </div>
         );
     }
