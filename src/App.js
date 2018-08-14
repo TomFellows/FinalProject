@@ -6,10 +6,15 @@ import ConnectionsSidebar from './Components/ConnectionsSidebar'
 import Homepage from './Components/Homepage'
 
 
+import {Provider} from 'react-redux'
+import store from './REDUCER.js'
+
+
 
 class App extends Component {
   render() {
     return (
+      <Provider store={store}>
       <div className="App">
         <Navbar />
 <div className = "flex">
@@ -18,6 +23,7 @@ class App extends Component {
         <ConnectionsSidebar />
 </div>
       </div>
+      </Provider>
     );
   }
 }
