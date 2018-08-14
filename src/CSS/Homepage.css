@@ -1,4 +1,5 @@
 .area {
+    
         background-color: white;
         position: absolute;
         left: 15vw;
@@ -8,6 +9,6 @@
     }
 
 .title {
-    position: relative;
-    top: 10vh;
+    margin-top: 10vh;
 }
+

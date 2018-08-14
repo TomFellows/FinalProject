@@ -4,7 +4,7 @@ import Navbar from './Components/Navbar.js'
 import ProfileSidebar from './Components/ProfileSidebar'
 import ConnectionsSidebar from './Components/ConnectionsSidebar'
 import Homepage from './Components/Homepage'
-
+import OtherUserProfile from './Components/OtherUserProfile'
 
 
 import {Provider} from 'react-redux'
@@ -16,14 +16,14 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <div className="App">
-          <Navbar />
-          <div className="flex">
-            <ProfileSidebar />
-            <Homepage />
-            <ConnectionsSidebar />
-          </div>
-        </div>
+      <div className="App">
+        <Navbar />
+<div className = "flex">
+        <ProfileSidebar />
+        <Homepage/>
+        <ConnectionsSidebar />
+</div>
+      </div>
       </Provider>
     );
   }

@@ -1,0 +1,10 @@
+.smallContainer{
+    padding-left: 20px;
+    margin-top: 25px;
+    max-width: 300px;
+}
+
+
+.col-sm-6{
+    display: flex;
+}
