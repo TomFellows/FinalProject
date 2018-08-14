@@ -1,4 +1,25 @@
 .individualMiniProfile{
-    
+    background-color: white;
+    padding: 2vw;
     font-size:10px;
+    border-radius: 3vw;
 }
+.individualMiniProfile:hover{
+    background-color: #666666;
+    color: white;
+   
+}
+.connSmallProfilePic{
+    position: relative;
+    align-content: center;
+    max-width: 13vw;
+    border-radius: 1000px;
+   
+}
+
+.info2{
+    padding:1vw;
+    font-weight: bold;
+    font-size: 12pt;
+}
+

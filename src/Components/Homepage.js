@@ -9,10 +9,13 @@ class Homepage extends Component {
         return (
             <div className="area">
             <div className = "title">Suggested Connections</div>
-            <ConnectionCardLarge/>
-            <ConnectionCardLarge/>
-            <ConnectionCardLarge/>
-            <div><ConnectionCardSmallContainer/></div>
+            <ConnectionCardLarge src="Images/guy1.jpg"/>
+            <br/>
+            <ConnectionCardLarge src="Images/guy1.jpg"/>
+            <br/>
+            <ConnectionCardLarge src="Images/guy1.jpg"/>
+           
+            <div className = "spaceOut"><ConnectionCardSmallContainer/></div>
             </div>
         );
     }

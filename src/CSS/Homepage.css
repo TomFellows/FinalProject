@@ -1,6 +1,6 @@
 .area {
     
-        background-color: white;
+        /* background-color: white; */
         position: absolute;
         left: 15vw;
         width: 60vw;
@@ -10,5 +10,10 @@
 
 .title {
     margin-top: 10vh;
+    font-size: 30pt;
+    font-weight: bold;
 }
 
+.spaceOut{
+    margin-top: 20vh;
+}

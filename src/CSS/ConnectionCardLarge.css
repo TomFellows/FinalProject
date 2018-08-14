@@ -1,19 +1,38 @@
+.individualProfile:hover{
+ 
+background-color: black;
+}
+
 .individualProfile {
-    top: 15vh;
-    background-color: white;
+    position: relative;
+    top: 3vh;
+    background-color: #009999;
+    color: white;
     left: 5vw;
     width: 50vw;
     max-width:50vw;
     height: 18vh;
+    border-radius: 100vw;
+    font-weight: bold;
 }
 
 .container {
     width: 40vw;
-    padding-left: 5vw;
-    padding-top: 1vh;
+    padding-left: 7vw;
+    padding-top: 3vh;
+
 }
 
 .row{
     text-align: left;
     padding-left: 0px;
+}
+
+.connProfilePic{
+    max-width: 7vw;
+    border-radius: 100px;
+    width: 7vw;
+    position: relative;
+    left: 2vw;
+    top: 1vw
 }
