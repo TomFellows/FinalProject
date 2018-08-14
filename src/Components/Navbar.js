@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import '../CSS/Navbar.css'
+import Login from './Login.js'
+
+
 
 
 class Navbar extends Component {
+
+
   render() {
     return (
       <div >
@@ -41,7 +46,9 @@ class Navbar extends Component {
               <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
           </div>
+          <Login/>
         </nav>
+        
       </div>
     );
   }

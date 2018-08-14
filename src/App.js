@@ -4,6 +4,8 @@ import Navbar from './Components/Navbar.js'
 import ProfileSidebar from './Components/ProfileSidebar'
 import ConnectionsSidebar from './Components/ConnectionsSidebar'
 
+
+
 class App extends Component {
   render() {
     return (
