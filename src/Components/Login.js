@@ -4,7 +4,7 @@ import '../CSS/Navbar.css'
 var firebase = require('firebase');
 
 var config = {
-  apiKey: "AIzaSyCM7zzGdVg3kVwHMLP8pu-z9dEU8hTCarc",
+  apiKey: "InsertKey again later",
   authDomain: "final-app-63dc4.firebaseapp.com",
   databaseURL: "https://final-app-63dc4.firebaseio.com",
   projectId: "final-app-63dc4",
