@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import '../CSS/OtherUserProfile.css'
 import Image from './Image'
+// import PopUpWindow from './PopUpWindow.js'
+// import PostReview from './PostReview.js'
+// import '../CSS/PopUpWindow.css'
 
 class OtherUserProfile extends Component {
     render() {
@@ -40,7 +43,13 @@ class OtherUserProfile extends Component {
                 <div id="rating" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" ariaValuenow= '30' ariaValuemin='0' ariaValuemax='100' style={{width: '70%'}} ></div>     
             </div>
             
+        
+            <button className ="postReview"> Review!!!!!!!!!!!! </button>
+            {/* <Reviews/> */}
+        
         </div>
+       
+
 
 
         );
