@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import '../CSS/Homepage.css'
 import ConnectionCardLarge from './ConnectionCardLarge.js'
+import COMPONENTTEMPLATE from '../COMPONENTTEMPLATE.js'
 
 class Homepage extends Component {
     render() {
@@ -10,6 +11,7 @@ class Homepage extends Component {
             <ConnectionCardLarge/>
             <ConnectionCardLarge/>
             <ConnectionCardLarge/>
+            <COMPONENTTEMPLATE/>
             </div>
         );
     }
