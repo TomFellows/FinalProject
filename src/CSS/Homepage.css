@@ -12,3 +12,8 @@
     margin-top: 10vh;
 }
 
+
+.bothSmallContainers{
+    display:flex;
+    box-align: center;
+}

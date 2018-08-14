@@ -12,7 +12,10 @@ class Homepage extends Component {
             <ConnectionCardLarge/>
             <ConnectionCardLarge/>
             <ConnectionCardLarge/>
-            <div><ConnectionCardSmallContainer/></div>
+            <div className="bothSmallContainers">
+                <ConnectionCardSmallContainer/>
+                <ConnectionCardSmallContainer/>
+            </div>
             </div>
         );
     }
