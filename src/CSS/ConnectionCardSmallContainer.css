@@ -1,10 +1,22 @@
 .smallContainer{
-    padding-left: 20px;
-    margin-top: 25px;
-    max-width: 300px;
+  position: relative;
+  align-content: center;
+  
 }
 
 
 .col-sm-6{
     display: flex;
+}
+
+
+.row{
+   position: relative;
+   left: 10vw;
+}
+
+.profile2{
+    padding-top:3vw;
+    padding-right: 9vw;
+    align-content: center;
 }
