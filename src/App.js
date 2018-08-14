@@ -24,7 +24,7 @@ class App extends Component {
         <Navbar />
       <div className = "flex">
         <ProfileSidebar />
-        <PageContent/>
+        <OtherUserProfile/>
         <ConnectionsSidebar />
       </div>
       </div>

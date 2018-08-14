@@ -4,7 +4,7 @@ import ConnectionCardLarge from './ConnectionCardLarge.js'
 import COMPONENTTEMPLATE from '../COMPONENTTEMPLATE.js'
 
 import ConnectionCardSmallContainer from './ConnectionCardSmallContainer';
-
+    
 class Homepage extends Component {
     render() {
         return (
