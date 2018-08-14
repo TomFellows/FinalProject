@@ -8,7 +8,8 @@ class Homepage extends Component {
             <div className="area">
             <div className = "title">Suggested Connections</div>
             <ConnectionCardLarge/>
-           
+            <ConnectionCardLarge/>
+            <ConnectionCardLarge/>
             </div>
         );
     }
