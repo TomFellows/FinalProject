@@ -1,0 +1,20 @@
+.individualProfile {
+    top: 15vh;
+    background-color: white;
+    position: relative;
+    left: 5vw;
+    width: 50vw;
+    max-width:50vw;
+    height: 18vh;
+}
+
+.container {
+    width: 40vw;
+    padding-left: 5vw;
+    padding-top: 1vh;
+}
+
+.row{
+    text-align: left;
+    padding-left: 0px;
+}

@@ -1,0 +1,51 @@
+.profile{
+    position: relative;
+    top: 5vw
+}
+.profilePic{
+    
+    max-width: 10vw;
+    border-radius: 200px;
+    align-content: center;
+}
+
+.space{
+    margin-top: 3vh;
+}
+
+.innerText{
+    font-size: 12pt;
+}
+
+
+
+.btn{
+    background-color: transparent;
+    font-size: 17pt;
+}
+
+.card-body{
+   color: white;
+}
+
+.btn{
+    color: white;
+    
+    font-size: 15pt;
+    outline: none;
+    border: none;
+    border-color: transparent;
+    padding: 2vh;
+}  
+.btn:hover{
+    font-weight: bold;
+}  
+
+button{
+    outline: none;
+    border: none;
+}
+
+.info:hover{
+background-color: #009999;
+}

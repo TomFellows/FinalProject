@@ -3,6 +3,7 @@ import './App.css';
 import Navbar from './Components/Navbar.js'
 import ProfileSidebar from './Components/ProfileSidebar'
 import ConnectionsSidebar from './Components/ConnectionsSidebar'
+import Homepage from './Components/Homepage'
 
 
 
@@ -13,6 +14,7 @@ class App extends Component {
         <Navbar />
 <div className = "flex">
         <ProfileSidebar />
+        <Homepage />
         <ConnectionsSidebar />
 </div>
       </div>
