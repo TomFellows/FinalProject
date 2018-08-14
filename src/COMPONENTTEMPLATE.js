@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import {ACTION1, ACTION2} from './ACTIONS.js'
 import {connect} from 'react-redux'
 
+//Just a template to give an idea on how to map dispatches to props.
+//The component need to be included in a Provider parent (that I added in App.js)
+
 class ComponentTemplate extends Component {
     constructor() {
       super()
