@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import '../CSS/Homepage.css'
 import ConnectionCardLarge from './ConnectionCardLarge.js'
+import COMPONENTTEMPLATE from '../COMPONENTTEMPLATE.js'
 
 import ConnectionCardSmallContainer from './ConnectionCardSmallContainer';
 
