@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../CSS/ProfileSidebar.css'
-import ProfilePic from './ProfilePic'
+import Profile from './Profile'
 
 
 
@@ -8,7 +8,7 @@ class ProfileSidebar extends Component {
   render() {
     return (
       <div className="column1">
-       <ProfilePic src = "Images/chris.jpeg" />
+       <Profile src = "Images/chris.jpeg" />
       </div>
     );
   }

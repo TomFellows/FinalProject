@@ -30,15 +30,22 @@
 
 .btn{
     color: white;
-    background-color: black;
+    
     font-size: 15pt;
     outline: none;
     border: none;
     border-color: transparent;
     padding: 2vh;
-}    
+}  
+.btn:hover{
+    font-weight: bold;
+}  
 
 button{
     outline: none;
     border: none;
+}
+
+.info:hover{
+background-color: #009999;
 }

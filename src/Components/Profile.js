@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import '../CSS/ProfilePic.css'
+import '../CSS/Profile.css'
 
 
 
-class ProfilePic extends Component {
+class Profile extends Component {
     render() {
         return <div className = "profile">
             <img src={this.props.src} className="profilePic"/>
@@ -13,7 +13,7 @@ class ProfilePic extends Component {
 <div class="accordion" id="accordionExample">
 
 
-     <div>
+     <div className = "info">
         <button className = "btn"  type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
           Bio
         </button>
@@ -22,12 +22,12 @@ class ProfilePic extends Component {
 
     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
       <div className="card-body">
-        Anim pariatur cliche reprehenderit
+       Name: Chris Martin, Age: 35, Username: Coldplayer
       </div>
     </div>
   
 
-    <div>
+    <div className = "info">
         <button className = "btn" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
           Instruments
         </button>
@@ -36,12 +36,12 @@ class ProfilePic extends Component {
 
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
       <div className="card-body">
-        Anim pariatur cliche reprehenderit
+        Guitar, Piano, Vocals, Drums
       </div>
     </div>
  
 
-    <div>
+    <div className = "info">
         <button  className = "btn" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
           Connections
         </button>
@@ -68,4 +68,4 @@ class ProfilePic extends Component {
   }
 
 
-export default ProfilePic;
+export default Profile;
