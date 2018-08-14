@@ -8,7 +8,7 @@ import ConnectionCardSmallContainer from './ConnectionCardSmallContainer';
 class Homepage extends Component {
     render() {
         return (
-            <div className="area">
+            <div>
             <div className = "title">Suggested Connections</div>
             <ConnectionCardLarge/>
             <ConnectionCardLarge/>

@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import { BrowserRouter } from 'react-router-dom'
+
 import './App.css';
 import Navbar from './Components/Navbar.js'
 import ProfileSidebar from './Components/ProfileSidebar'
 import ConnectionsSidebar from './Components/ConnectionsSidebar'
-import Homepage from './Components/Homepage'
+import PageContent from './Components/PageContent.js'
 import OtherUserProfile from './Components/OtherUserProfile'
 
 
@@ -15,16 +17,18 @@ import store from './REDUCER.js'
 class App extends Component {
   render() {
     return (
+      <BrowserRouter>
       <Provider store={store}>
       <div className="App">
         <Navbar />
-<div className = "flex">
+      <div className = "flex">
         <ProfileSidebar />
-        <Homepage/>
+        <PageContent className = 'area'/>
         <ConnectionsSidebar />
-</div>
+      </div>
       </div>
       </Provider>
+      </BrowserRouter>
     );
   }
 }
