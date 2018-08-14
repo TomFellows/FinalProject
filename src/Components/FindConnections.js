@@ -12,9 +12,11 @@ class FindConnections extends Component {
 
         return(<div>
             <Filters/>
-            <ConnectionCardLarge/>
-            <ConnectionCardLarge/>
-            <ConnectionCardLarge/>
+            <ConnectionCardLarge src="Images/guy1.jpg"/>
+            <br/>
+            <ConnectionCardLarge src="Images/guy1.jpg"/>
+            <br/>
+            <ConnectionCardLarge src="Images/guy1.jpg"/>
             </div>
 
         )

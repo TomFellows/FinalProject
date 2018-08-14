@@ -9,7 +9,7 @@ class Filters extends Component{
 
     render () {
 
-        return (<div className='filters'></div>)
+        return (<div className='filters'>Add form here</div>)
     }
 
 
