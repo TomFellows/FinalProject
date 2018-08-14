@@ -9,6 +9,18 @@
     align-content: center;
 }
 
+.profilePic2{
+    
+    max-width: 11vw;
+    border-radius: 1000px;
+    align-content: center;
+    position: relative;
+    float: left;
+    top: 22vh;
+    left: 8vw;
+    
+}
+
 .space{
     margin-top: 3vh;
 }

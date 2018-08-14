@@ -1,0 +1,86 @@
+.area {
+    background-color: #dddddd;
+    position: absolute;
+    left: 15vw;
+    width: 60vw;
+    max-width:60vw;
+    height: 300vh;
+}
+
+.parent{
+   position: absolute;
+   background-color: white;
+   left: 5vw;
+   text-align: left;
+   top: 33vh;
+   width: 50vw;
+   height: 30vh;
+    
+}
+
+.profileInfo{
+   
+    position: relative;
+    top: 2vh;
+    left: 15vw;
+    font-size: 16pt;
+    color: black;
+}
+.profileInfo2{
+    
+    position: relative;
+    top: 3vh;
+    left: 15vw;
+    font-weight: bold;
+    text-decoration: underline;
+    font-size: 16pt;
+    margin: 2vh;
+    color: black;
+}
+
+.connect{
+   position: absolute;
+   left: 40vw;
+   top: 8vh;
+   background-color: #00aa00;
+   color: white;
+   font-weight: bold;
+   font-size: 20pt;
+   padding: 1vw;
+   border-radius: 1vw;
+   
+}
+
+.connect:hover{
+   color: black;
+}
+
+.name{
+    position: absolute;
+    top:26vh;
+    left: 20vw;
+    color: #0066cc
+}
+
+#rating{
+   
+    
+    
+    height: 3vh;
+    max-width: 10vw;
+  
+}
+
+.progress{
+    left: 36vw;
+    position: absolute;
+    top: 57vh;
+    height: 3vh;
+width: 15vw;
+}
+
+.reminder{
+    position: absolute;
+    top:80vh;
+    left:15vw;
+}
