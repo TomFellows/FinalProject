@@ -7,11 +7,11 @@ class ConnectionCardSmallContainer extends Component {
         return (
             <div class="smallContainer">
             
-                <div className = "row" class="row">
+                <div className = "row">
                     <div className = "profile2"><ConnectionCardSmall src="Images/guy1.jpg"/></div>
                     <div className = "profile2"><ConnectionCardSmall src="Images/guy1.jpg"/></div>
                 </div>
-                <div className = "row" class="row">
+                <div className = "row">
                     <div className = "profile2"><ConnectionCardSmall src="Images/guy1.jpg"/></div>
                     <div className = "profile2"><ConnectionCardSmall src="Images/guy1.jpg"/></div>
                 </div>

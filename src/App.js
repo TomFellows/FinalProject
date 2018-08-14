@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom'
 
+
 import './App.css';
 import Navbar from './Components/Navbar.js'
 import ProfileSidebar from './Components/ProfileSidebar'
@@ -23,7 +24,7 @@ class App extends Component {
         <Navbar />
       <div className = "flex">
         <ProfileSidebar />
-        <PageContent className = 'area'/>
+        <PageContent/>
         <ConnectionsSidebar />
       </div>
       </div>
