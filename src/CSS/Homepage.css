@@ -1,0 +1,13 @@
+.area {
+        background-color: white;
+        position: absolute;
+        left: 15vw;
+        width: 60vw;
+        max-width:60vw;
+        height: 100vh;
+    }
+
+.title {
+    position: relative;
+    top: 10vh;
+}
