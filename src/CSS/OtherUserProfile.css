@@ -85,6 +85,16 @@
 }
 
 .postReview {
+    position: absolute;
+    
+    background-color: #00aa00;
+    color: white;
+    font-weight: bold;
+    font-size: 20pt;
+    padding: 1vw;
+    border-radius: 1vw;
+    
+   
     top: 90vh;
     left: 15vw;
 }
