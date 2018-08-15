@@ -9,6 +9,8 @@
 # production
 /build
 
+/src/firebaselogin.js
+
 # misc
 .DS_Store
 .env.local
