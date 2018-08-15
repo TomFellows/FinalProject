@@ -6,18 +6,10 @@ import Image from './Image'
 // import '../CSS/PopUpWindow.css'
 
 class OtherUserProfile extends Component {
-    constructor() {
-        super()
-            this.setState = {popUp: false}
-        }
-    
-        popUp = (event)  => {
-            this.setState({popUp: event.target.value})
-        }
-    
+   
        
     render() {
-        popUp = (<PopUpWindow><PostReview/></PopUpWindow>)
+       
 
         return (<div>
             <div className="area">

@@ -7,7 +7,7 @@ class ConnectionCardLarge extends Component {
         return (
             <div className='individualProfile'>
                 <img src = {this.props.src} className = "connProfilePic"  />
-                <div class="container">
+                <div class="contain">
                     <div class="row">Name: Eminem</div>
                     <div class="row">Location: Los Angeles, CA</div>
                     <div class="row">Overall Rating: 4</div>
