@@ -17,7 +17,7 @@ class OtherUserProfile extends Component {
     
        
     render() {
-        popUp = (<PopUpWindow><PostReview/></PopUpWindow>)
+       // popUp = (<PopUpWindow><PostReview/></PopUpWindow>)
 
         return (<div>
             <div className="area">

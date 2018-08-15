@@ -1,8 +1,9 @@
 
 
 .navbar {
-  height: 3em;
+  min-height: 3em;
 }
+
 
 
 .cont{
@@ -13,14 +14,12 @@
 }
 
 .col1{
-
   
   width: 15%;
   min-height: 100%;
   
 }
 .col2{
-
   
   width: 60%;
   min-height: 100%;
@@ -28,5 +27,5 @@
 .col3{
   width: 25%;
   min-height: 100%;
-  
+
 }
