@@ -55,7 +55,7 @@ class OtherUserProfile extends Component {
             </h2>
         </div>
             <div className = "progress">
-                <div className="rating" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" ariaValuenow= '30' ariaValuemin='0' ariaValuemax='100' style={{width: '70%'}} ></div>     
+                <div className="rating" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" ariaValuenow= '30' ariaValuemin='0' ariaValuemax='100' style={{width: '10%'}} ></div>     
             </div>
             
         <div>

@@ -8,7 +8,9 @@ class PostReview extends Component {
 
     render() {
         return (
-         <div> dd </div>
+         <div> 
+         some text
+         </div>
         )
     }
 }
