@@ -6,7 +6,19 @@ import Image from './Image'
 // import '../CSS/PopUpWindow.css'
 
 class OtherUserProfile extends Component {
+    constructor() {
+        super()
+            this.setState = {popUp: false}
+        }
+    
+        popUp = (event)  => {
+            this.setState({popUp: event.target.value})
+        }
+    
+       
     render() {
+        popUp = (<PopUpWindow><PostReview/></PopUpWindow>)
+
         return (<div>
             <div className="area">
             <h1 className = "name">
@@ -33,7 +45,7 @@ class OtherUserProfile extends Component {
        
         
             <button className = "connect">Connect</button>
-        </div>
+        </div>x
             <Image src = "Images/guy1.jpg"/>
             <h2 className ="reminder">
                 INSERT ConnectionCardSmall Components
@@ -44,7 +56,7 @@ class OtherUserProfile extends Component {
             </div>
             
         <div>
-            <button className="postReview"> Review!!!!!!!!!!!! </button>
+            <button className="postReview" onClick={this.popUp} value='PostReview'> Review </button>
             {/* <Reviews/> */}
         </div>
         </div>
