@@ -20,17 +20,26 @@ class App extends Component {
     return (
       <BrowserRouter>
       <Provider store={store}>
-      <div className="App">
+      <div>
         <Navbar />
-      <div className = "flex">
-        <ProfileSidebar />
-        <OtherUserProfile/>
-        <ConnectionsSidebar />
-      </div>
-      </div>
+     
+     
+        <div className = "cont">
+           <div className = "col1">
+           <ProfileSidebar />
+           </div>
+           <div className = "col2">
+           <PageContent/>
+           </div>
+           <div className = "col3">
+            <ConnectionsSidebar/>
+           </div>
+        </div>
+        </div>
       </Provider>
-      </BrowserRouter>
-    );
+      </BrowserRouter> 
+      
+     );
   }
 }
 

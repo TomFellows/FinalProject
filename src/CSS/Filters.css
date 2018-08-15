@@ -1,7 +1,9 @@
-.filters {
-    width: 100%;
-    height: 300px;
+#filters {
+    
     margin-bottom: 2em; 
     padding: 1em;
-    border: 5px dashed black
+    text-align: left;
+   
+    
+    
 }

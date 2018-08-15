@@ -17,7 +17,7 @@
    text-align: left;
    top: 33vh;
    width: 50vw;
-   height: 30vh;
+   height: 40vh;
     
 }
 
@@ -43,8 +43,8 @@
 
 .connect{
    position: absolute;
-   left: 40vw;
-   top: 8vh;
+   left: 38vw;
+   top: 2vh;
    background-color: #00aa00;
    color: white;
    font-weight: bold;
@@ -73,7 +73,7 @@
 .progress{
     left: 36vw;
     position: absolute;
-    top: 57vh;
+    top: 70vh;
     height: 3vh;
     width: 15vw;
 }
