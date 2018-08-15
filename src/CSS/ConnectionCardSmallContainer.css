@@ -12,11 +12,11 @@
 
 .row{
    position: relative;
-   left: 10vw;
+   left: 5vw;
 }
 
 .profile2{
     padding-top:3vw;
-    padding-right: 9vw;
+    padding-left: 3vw;
     align-content: center;
 }

@@ -5,11 +5,11 @@
     background: -webkit-linear-gradient(to right, #200122, #6f0000); 
     background: linear-gradient(to right, #200122, #6f0000);  */
     color: white;
-    max-width: 25vw;
-    width: 25vw;
+    max-width: 26vw;
+    width: 26vw;
     position: relative;
 
-    left: 60vw;
+    left: 50vw;
     height: 300vh;
 }
 
