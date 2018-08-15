@@ -5,13 +5,40 @@ import PopUpWindow from './PopUpWindow.js'
 import PostReview from './PostReview.js'
 import '../CSS/PopUpWindow.css'
 import {connect} from 'react-redux'
+import ConnectionCardSmallContainer from './ConnectionCardSmallContainer';
 
 class OtherUserProfile extends Component {
     constructor() {
         super()
-           
-        }
+        this.state= {
+            user: {}
+         }
+        this.getUserProfile = this.getUserProfile.bind(this)
+    }
+
+    componentDidMount() {
+        this.getUserProfile();
+    }
+    getUserProfile() {
+        let bod = JSON.stringify({userId:3})
+    fetch('/getUserById', {
+        method: 'POST',
+        credentials: 'same-origin',
+        body: bod
+    })
+    .then(x=> x.text())
+    .then(responseBody => {
+        let parsedBody=JSON.parse(responseBody);
+        console.log(parsedBody)
     
+    if (parsedBody.success === true) {
+         this.setState({user: parsedBody.user})
+    } else {
+        console.log("invalid userId")
+    }
+    })
+    }
+
         popUp = (event)  => {
             this.props.dispatch({type: "pop up", popUpType: true})
         }
@@ -25,33 +52,35 @@ class OtherUserProfile extends Component {
             {this.props.popUp?<PopUpWindow><PostReview/></PopUpWindow>:null}
             <div className="area">
             <h1 className = "name">
-                FirstName LastName
+                {`Hi my name is ${this.state.user.firstName} ${this.state.user.lastName}`}
+               
             </h1>
         <div className = "parent">
 
             <div className = "profileInfo">
-            someguy@gmail.com
+            {this.state.user.email}
             </div>
             <div className = "profileInfo">
-            514-123-4567
+            {this.state.user.location}
             </div>
             <div className = "profileInfo">
-            More info More info More info 
+            {this.state.user.seeking}
             </div>
             <div className = "profileInfo">
-            More info More info More info
+            {this.state.user.style}
             </div>
-            <div className = "profileInfo2">
-               Overall score
-               
+            <div className = "profileInfo">
+            {this.state.user.instruments} 
             </div>
+         
+       
        
         
             <button className = "connect">Connect</button>
         </div>x
             <Image src = "Images/guy1.jpg"/>
             <h2 className ="reminder">
-                INSERT ConnectionCardSmall Components
+                <ConnectionCardSmallContainer/>
             </h2>
         </div>
             <div className = "progress">
