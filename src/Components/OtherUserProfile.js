@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import '../CSS/OtherUserProfile.css'
 import Image from './Image'
-// import PopUpWindow from './PopUpWindow.js'
-// import PostReview from './PostReview.js'
-// import '../CSS/PopUpWindow.css'
+import PopUpWindow from './PopUpWindow.js'
+import PostReview from './PostReview.js'
+import '../CSS/PopUpWindow.css'
+import {connect} from 'react-redux'
 
 class OtherUserProfile extends Component {
    
@@ -12,6 +13,7 @@ class OtherUserProfile extends Component {
        
 
         return (<div>
+            {this.props.popUp?<PopUpWindow><PostReview/></PopUpWindow>:null}
             <div className="area">
             <h1 className = "name">
                 FirstName LastName
@@ -60,4 +62,8 @@ class OtherUserProfile extends Component {
     }
 }
 
-export default OtherUserProfile;
+let mapStateToProps = (state) => {
+    return {popUp: state.popUp}
+}
+let ConnectedOtherUserProfile = connect(mapStateToProps)(OtherUserProfile)
+export default ConnectedOtherUserProfile;

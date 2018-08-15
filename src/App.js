@@ -23,13 +23,13 @@ class App extends Component {
       <div>
         <Navbar />
      
-      
+     
         <div className = "cont">
            <div className = "col1">
            <ProfileSidebar />
            </div>
            <div className = "col2">
-           <PageContent/>
+           <OtherUserProfile/>
            </div>
            <div className = "col3">
             <ConnectionsSidebar/>
