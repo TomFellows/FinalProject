@@ -11,8 +11,8 @@
 }
 .connSmallProfilePic{
     position: relative;
-    align-content: center;
-    max-width: 13vw;
+    left: 3vw;
+    max-width: 10vw;
     border-radius: 1000px;
    
 }
