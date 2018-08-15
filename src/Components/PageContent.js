@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom'
 
 import FindConnections from './FindConnections.js'
 import Homepage from './Homepage.js'
-import Profile from './Profile.js'
+import UserProfile from './UserProfile.js'
 
 import '../CSS/PageContent.css'
 
@@ -28,7 +28,7 @@ class PageContent extends Component {
 
     renderUserProfile () {
         return (<div>
-            <Profile/>
+            <UserProfile/>
             </div>)
     }
 

@@ -45,8 +45,7 @@ class OtherUserProfile extends Component {
     
        
     render() {
-
-        
+       
 
         return (<div>
             {this.props.popUp?<PopUpWindow><PostReview/></PopUpWindow>:null}

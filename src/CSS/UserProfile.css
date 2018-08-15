@@ -1,0 +1,15 @@
+.profileLabel {
+    font-size: 14pt;
+    margin: 0 1em 0 1em;
+    display: inline-block
+}
+
+.fieldLabel {
+    font-size: 14pt;
+    font-weight: bold;
+    margin-top: 1em;
+}
+
+input.form-control {
+    width: 60%;
+}
