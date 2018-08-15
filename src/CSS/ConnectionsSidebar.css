@@ -1,21 +1,23 @@
-.column2{
+.sidebar{
+    
+    
     background-color: black;
-/*     
-    background: #200122; 
-    background: -webkit-linear-gradient(to right, #200122, #6f0000); 
-    background: linear-gradient(to right, #200122, #6f0000);  */
-    color: white;
-    max-width: 26vw;
-    width: 26vw;
-    position: relative;
 
-    left: 50vw;
-    height: 300vh;
+    color: white;
+    
+    width: 100%;
+    
+    height: 100%;
+
+    padding: 1em;
+    
 }
 
 .header{
-    position: relative;
+    text-align: center;
+    
     font-size: 20pt;
     font-weight: bold;
-    top: 10vh;
+    
+    
 }

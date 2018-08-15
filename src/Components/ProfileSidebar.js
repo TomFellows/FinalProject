@@ -8,15 +8,11 @@ import Profile from './Profile'
 
 class ProfileSidebar extends Component {
 
-  
-
   render() {
     return (
    
-      <Profile src = "Images/chris.jpeg" />
+      <div class='profileSidebar'><Profile src = "Images/chris.jpeg" /></div>
 
-       
-     
     );
   }
 }

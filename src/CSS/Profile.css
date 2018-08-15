@@ -1,28 +1,24 @@
-.profile{
-    position: relative;
-    top: 5vw
-}
+
 .profilePic{
     
-    max-width: 10vw;
+    max-width: 60%;
     border-radius: 200px;
     align-content: center;
 }
 
 .profilePic2{
     
-    max-width: 11vw;
+    max-width: 65%;
     border-radius: 1000px;
     align-content: center;
-    position: relative;
-    float: left;
-    top: 22vh;
-    left: 8vw;
+    
+    
+
     
 }
 
 .space{
-    margin-top: 3vh;
+    margin-top: 1em;
 }
 
 .innerText{
@@ -47,7 +43,7 @@
     outline: none;
     border: none;
     border-color: transparent;
-    padding: 2vh;
+    padding: 1em;
 }  
 .btn:hover{
     font-weight: bold;
