@@ -35,7 +35,7 @@ class Login extends Component {
       var user = result.user;
       user.getIdToken().then(token => {
 
-       fetch('http://167.99.187.41:4000/sessionLogin', {
+       fetch('/sessionLogin', {
           method: 'POST',
           body: JSON.stringify({idToken: token}),
           credentials: 'same-origin'

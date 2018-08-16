@@ -14,10 +14,31 @@ class UserProfile extends Component {
 
         this.citiesResults = []
         this.cities = new Cities
-        
 
-        this.state = {editing: false, inputValue: '', firstName: 'Anton', lastName: 'Lelion', instrument: 'Guitar',
-        area: 'Montreal, Canada', lookingFor: 'Session', skillLevel: 'Advanced', musicalStyle: 'Metal'}
+        this.state = {editing: false, inputValue: '', firstName: '', lastName: '', instruments: '',
+        location: '', seeking: '', skillLevel: '', musicalStyles: ''}
+
+        fetch('/getCurrentUser', {
+            method: 'POST',
+            credentials: 'same-origin'
+        }).then(response => response.text())
+        .then((response) => {
+
+            let parsedResponse = JSON.parse(response).user
+
+            this.setState({editing: false, inputValue: '', firstName: parsedResponse.firstName, 
+            lastName: parsedResponse.lastName, instruments: parsedResponse.instruments.join(", "),
+            location: parsedResponse.location, seeking: parsedResponse.seeking.join(", "), 
+            skillLevel: parsedResponse.skillLevel, musicalStyles: parsedResponse.styles.join(", ")})
+
+        }).catch((err) => {
+
+            this.setState({editing: false, inputValue: '', firstName: 'Anton', lastName: 'Lelion', instruments: 'Guitar',
+        location: 'Montreal, Canada', seeking: 'Session', skillLevel: 'Advanced', musicalStyles: 'Metal'})
+        })
+        
+        
+        
     }
 
     
@@ -25,8 +46,8 @@ class UserProfile extends Component {
 
     handleChange = (event) => {
 
-        //Make a cities search if we're typing in the area field
-        if (this.state.editing = 'area'){
+        //Make a cities search if we're typing in the location field
+        if (this.state.editing = 'location'){
             this.citiesResults = this.cities.search(event.target.value, 6)
         }
 
@@ -47,29 +68,42 @@ class UserProfile extends Component {
             this.setState({lastName: this.state.inputValue, editing: false, inputValue: ''})
             break;
 
-            case 'instrument' :
-            this.setState({instrument: this.state.inputValue, editing: false, inputValue: ''})
+            case 'instruments' :
+            this.setState({instruments: this.state.inputValue, editing: false, inputValue: ''})
             break;
 
-            case 'area' :
+            case 'location' :
 
-            let area = document.getElementById('autocomplete')
+            let location = document.getElementById('autocomplete')
 
-            this.setState({area: area.value, editing: false, inputValue: ''})
+            this.setState({location: location.value, editing: false, inputValue: ''})
             break;
 
-            case 'lookingFor' :
-            this.setState({lookingFor: this.state.inputValue, editing: false, inputValue: ''})
+            case 'seeking' :
+            this.setState({seeking: this.state.inputValue, editing: false, inputValue: ''})
             break;
 
-            case 'musicalStyle' :
+            case 'musicalStyles' :
             this.setState({skillLevel: this.state.inputValue, editing: false, inputValue: ''})
             break;
 
             case 'skillLevel' :
             this.setState({skillLevel: this.state.inputValue, editing: false, inputValue: ''})
-            break;
+            break; 
         }
+
+        fetch('/modifyProfile', {
+            method: 'POST',
+            body: JSON.stringify({firstName: this.state.firstName, lastName: this.state.lastName,
+            instruments: this.state.instruments.split(', '), location: this.state.location,
+            styles: this.state.musicalStyles.split(', '), seeking: this.state.seeking,
+            skillLevel: this.state.skillLevel})
+        }).then(response => response.text())
+        .then(response => {
+
+            let parsedResponse = JSON.parse(response)
+            console.log('Success: ' + parsedResponse.success + ' Reason: ' + parsedResponse.reason)
+        })
 
     }
 
@@ -92,15 +126,15 @@ class UserProfile extends Component {
 
     render () {
 
-        let formEditing = {firstName: false, lastName: false, instrument: false, area: false,
-        lookingFor: false, skillLevel: false, musicalStyle: false}
+        let formEditing = {firstName: false, lastName: false, instruments: false, location: false,
+        seeking: false, skillLevel: false, musicalStyles: false}
         
         //Checks the editing property of the state and sets the appropriate formEditing property to true
        
         formEditing[this.state.editing] = true
         
         //Define variables that will refer to react elements to be rendered
-        let firstName, lastName, instrument, area, lookingFor, skillLevel, musicalStyle
+        let firstName, lastName, instruments, location, seeking, skillLevel, musicalStyles
 
        
          //Checks if the first name is being edited, if yes, it displays and input field with save buttons.
@@ -135,77 +169,77 @@ class UserProfile extends Component {
             lastName = (<div><div className='profileLabel'>{this.state.lastName}</div>{editButton}</div>)
         }
 
-        //Checks if the instrument is being edited, if yes, it displays and input field with save buttons.
+        //Checks if the instruments is being edited, if yes, it displays and input field with save buttons.
         //If not being edited, it displays non editable text
-        if (formEditing.instrument === true) {
-            instrument = (<div>
-                <input type="text" class="form-control" placeholder="Instrument" 
+        if (formEditing.instruments === true) {
+            instruments = (<div>
+                <input type="text" class="form-control" placeholder="instruments" 
                 value={this.state.inputValue} onChange={this.handleChange}/>
-        <button value='instrument' onClick={this.handleSubmit}>Save</button><button onClick={this.stopEdit}>Cancel edit</button> </div>)
+        <button value='instruments' onClick={this.handleSubmit}>Save</button><button onClick={this.stopEdit}>Cancel edit</button> </div>)
         } else {
             let editButton = ''
             if (this.state.editing === false) {
-                editButton = (<button value='instrument' onClick={this.handleEdit}>Edit</button>)
+                editButton = (<button value='instruments' onClick={this.handleEdit}>Edit</button>)
             }
-            instrument = (<div><div className='profileLabel'>{this.state.instrument}</div>{editButton}</div>)
+            instruments = (<div><div className='profileLabel'>{this.state.instruments}</div>{editButton}</div>)
         }
 
-        //Checks if the area is being edited, if yes, it displays and input field with save buttons.
+        //Checks if the location is being edited, if yes, it displays and input field with save buttons.
         //If not being edited, it displays non editable text
-        if (formEditing.area === true) {
+        if (formEditing.location === true) {
             
             let list = this.citiesResults.map(item => (<option value={item}/>))
 
             list = (<datalist id='cities'>{list}</datalist>)
 
         
-            area = (<div>
+            location = (<div>
 
                 {list}
-                <input type="text" list='cities' class="form-control" id='autocomplete' placeholder="Area" 
+                <input type="text" list='cities' class="form-control" id='autocomplete' placeholder="location" 
                 value={this.state.inputValue} onChange={this.handleChange}/>
-        <button value='area' onClick={this.handleSubmit}>Save</button><button onClick={this.stopEdit}>Cancel edit</button> </div>)
+        <button value='location' onClick={this.handleSubmit}>Save</button><button onClick={this.stopEdit}>Cancel edit</button> </div>)
         } else {
             let editButton = ''
             if (this.state.editing === false) {
-                editButton = (<button value='area' onClick={this.handleEdit}>Edit</button>)
+                editButton = (<button value='location' onClick={this.handleEdit}>Edit</button>)
             }
-            area = (<div><div className='profileLabel'>{this.state.area}</div>{editButton}</div>)
+            location = (<div><div className='profileLabel'>{this.state.location}</div>{editButton}</div>)
         }
 
-        //Checks if the Looking for... is being edited, if yes, it displays and input field with save buttons.
+        //Checks if the Seeking... is being edited, if yes, it displays and input field with save buttons.
         //If not being edited, it displays non editable text
-        if (formEditing.lookingFor === true) {
-            lookingFor = (<div>
-                <input type="text" class="form-control" placeholder="Looking for..." 
+        if (formEditing.seeking === true) {
+            seeking = (<div>
+                <input type="text" class="form-control" placeholder="Seeking..." 
                 value={this.state.inputValue} onChange={this.handleChange}/>
-        <button value='lookingFor' onClick={this.handleSubmit}>Save</button><button onClick={this.stopEdit}>Cancel edit</button> </div>)
+        <button value='seeking' onClick={this.handleSubmit}>Save</button><button onClick={this.stopEdit}>Cancel edit</button> </div>)
         } else {
             let editButton = ''
             if (this.state.editing === false) {
-                editButton = (<button value='lookingFor' onClick={this.handleEdit}>Edit</button>)
+                editButton = (<button value='seeking' onClick={this.handleEdit}>Edit</button>)
             }
-            lookingFor = (<div><div className='profileLabel'>{this.state.lookingFor}</div>{editButton}</div>)
+            seeking = (<div><div className='profileLabel'>{this.state.seeking}</div>{editButton}</div>)
         }
 
-        //Checks if the musical style is being edited, if yes, it displays and input field with save buttons.
+        //Checks if the musical styles is being edited, if yes, it displays and input field with save buttons.
         //If not being edited, it displays non editable text
-        if (formEditing.musicalStyle === true) {
-            musicalStyle = (<div>
-                <input type="text" class="form-control" placeholder="Musical style" 
+        if (formEditing.musicalStyles === true) {
+            musicalStyles = (<div>
+                <input type="text" class="form-control" placeholder="Musical styles" 
                 value={this.state.inputValue} onChange={this.handleChange}/>
-        <button value='musicalStyle' onClick={this.handleSubmit}>Save</button><button onClick={this.stopEdit}>Cancel edit</button> </div>)
+        <button value='musicalStyles' onClick={this.handleSubmit}>Save</button><button onClick={this.stopEdit}>Cancel edit</button> </div>)
         } else {
             let editButton = ''
             if (this.state.editing === false) {
-                editButton = (<button value='musicalStyle' onClick={this.handleEdit}>Edit</button>)
+                editButton = (<button value='musicalStyles' onClick={this.handleEdit}>Edit</button>)
             }
-            musicalStyle = (<div><div className='profileLabel'>{this.state.musicalStyle}</div>{editButton}</div>)
+            musicalStyles = (<div><div className='profileLabel'>{this.state.musicalStyles}</div>{editButton}</div>)
         }
 
         //Checks if the skill level is being edited, if yes, it displays and input field with save buttons.
         //If not being edited, it displays non editable text
-        if (formEditing.skilllevel === true) {
+        if (formEditing.skillLevel === true) {
             skillLevel = (<div>
                 <input type="text" class="form-control" placeholder="Skill level" 
                 value={this.state.inputValue} onChange={this.handleChange}/>
@@ -227,11 +261,11 @@ class UserProfile extends Component {
                     <div className='fieldLabel'>Last name:</div> {lastName}
                 
                 
-                    <div className='fieldLabel'>Instrument:</div> {instrument}
-                    <div className='fieldLabel'>Area :</div>{area}
+                    <div className='fieldLabel'>Instruments:</div> {instruments}
+                    <div className='fieldLabel'>Location :</div>{location}
               
-                    <div className='fieldLabel'>Looking for :</div> {lookingFor}
-                    <div className='fieldLabel'>Musical style :</div> {musicalStyle}
+                    <div className='fieldLabel'>Seeking :</div> {seeking}
+                    <div className='fieldLabel'>Musical styles :</div> {musicalStyles}
 
                     <div className='fieldLabel'>Skill level:</div> {skillLevel}
                

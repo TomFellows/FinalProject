@@ -239,9 +239,10 @@ search (city, number) {
        let searchItem  = item.toLowerCase()
         
 
-        return searchItem.search(searchCity) != -1
+        return searchItem.search(searchCity) !== -1
     })
 
+    //Returns only 'number' cities
     let trimmedResults = result.slice(0, number)
 
     return trimmedResults;

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom'
 import '../CSS/Navbar.css'
 import Login from './Login.js'
 import Filters from './Filters.js'
@@ -20,6 +21,7 @@ class Navbar extends Component {
             <span>Find connections</span>
             </button>
             <Login/>
+            <Link to='/Profile'>My profile</Link>
 
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
