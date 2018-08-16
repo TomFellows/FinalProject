@@ -51,7 +51,7 @@ class OtherUserProfile extends Component {
             {this.props.popUp?<PopUpWindow><PostReview/></PopUpWindow>:null}
             <div className="area">
             <h1 className = "name">
-                {`Hi my name is ${this.state.user.firstName} ${this.state.user.lastName}`}
+                {`${this.state.user.firstName} ${this.state.user.lastName}`}
                
             </h1>
         <div className = "parent">
@@ -71,25 +71,22 @@ class OtherUserProfile extends Component {
             <div className = "profileInfo">
             {this.state.user.instruments} 
             </div>
-         
-       
-       
-        
-            <button className = "connect">Connect</button>
-        </div>x
-            <Image src = "Images/guy1.jpg"/>
-            <h2 className ="reminder">
-                <ConnectionCardSmallContainer key="otherUserProfile"/>
-            </h2>
-        </div>
             <div className = "progress">
-                <div className="rating" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" ariaValuenow= '30' ariaValuemin='0' ariaValuemax='100' style={{width: '10%'}} ></div>     
+                <div className="rating" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" ariaValuenow= '30' ariaValuemin='0' ariaValuemax='100' style={{width: '70%'}} ></div>     
             </div>
             
-        <div>
-            <button className="postReview" onClick={this.popUp} value='PostReview'> Review </button>
-            {/* <Reviews/> */}
         </div>
+            <Image src = "Images/guy1.jpg"/>
+            
+                <ConnectionCardSmallContainer/>
+                <div className = "twoButtons">
+                <button className = "connect">Connect</button>
+            <button className="connect" onClick={this.popUp} value='PostReview'> Review </button>
+            </div>
+        </div>
+            
+            
+        
         </div>
        
 
