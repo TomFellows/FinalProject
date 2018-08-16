@@ -12,4 +12,24 @@
 
 input.form-control {
     width: 60%;
+    margin-bottom: 0.5em; 
+}
+
+
+.userProfilePic{
+    
+    
+    border-radius: 200px;
+    width: 100%;
+    
+    
+    
+}
+
+.picBackground{
+    background-color: lightgray;
+    max-width: 25%;
+    
+    
+    
 }
