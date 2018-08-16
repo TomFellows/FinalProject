@@ -29,7 +29,7 @@ class App extends Component {
            <ProfileSidebar />
            </div>
            <div className = "col2">
-           <PageContent/>
+           <OtherUserProfile/>
            </div>
            <div className = "col3">
             <ConnectionsSidebar/>

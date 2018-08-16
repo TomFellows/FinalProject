@@ -29,7 +29,7 @@ class OtherUserProfile extends Component {
     .then(x=> x.text())
     .then(responseBody => {
         let parsedBody=JSON.parse(responseBody);
-        console.log(parsedBody)
+      //  console.log(parsedBody)
     
     if (parsedBody.success === true) {
          this.setState({user: parsedBody.user})

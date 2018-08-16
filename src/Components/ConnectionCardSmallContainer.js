@@ -3,6 +3,15 @@ import ConnectionCardSmall from './ConnectionCardSmall.js'
 import '../CSS/ConnectionCardSmallContainer.css'
 
 class ConnectionCardSmallContainer extends Component {
+   
+
+//     getConnectionCardSmall() {
+//     let component = []
+//     for(let i =0; i <this.props.number; i++) {
+//         return component [i];
+//     }
+// }
+
     render() {
 
         
