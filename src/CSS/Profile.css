@@ -6,15 +6,13 @@
     align-content: center;
 }
 
-.profilePic2{
-    
-    max-width: 65%;
+.profilePic2{   
+    max-width: 18%;
+    position: absolute;
+    margin-top: 14%;
+    margin-left:10%;
     border-radius: 1000px;
-    align-content: center;
-    
-    
-
-    
+    align-content: center;  
 }
 
 .space{

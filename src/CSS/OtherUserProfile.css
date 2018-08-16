@@ -1,9 +1,7 @@
 .area {
-    /* background-image: url("Images/bg.jpg"); */
-   
-
     background-color: #e9ebee;
     position: absolute;
+    margin-top: 0em;
     left: 15vw;
     width: 60vw;
     max-width:60vw;
@@ -13,11 +11,11 @@
 .parent{
    position: absolute;
    background-color: white;
-   left: 5vw;
+   margin-left: 5vw;
    text-align: left;
-   top: 33vh;
+   margin-top: 25vh;
    width: 50vw;
-   height: 40vh;
+   height: 38vh;
     
 }
 
@@ -42,14 +40,14 @@
 }
 
 .connect{
-   position: absolute;
-   left: 38vw;
-   top: 2vh;
+   position: relative;
+   margin-left: 70%;
+    margin-top:5%;
    background-color: #00aa00;
    color: white;
    font-weight: bold;
    font-size: 20pt;
-   padding: 1vw;
+   
    border-radius: 1vw;
    
 }
@@ -58,10 +56,16 @@
    color: black;
 }
 
+.twoButtons{
+    position: absolute;
+    top: 8.5%;
+    left: 50%;
+    
+}
 .name{
     position: absolute;
-    top:26vh;
-    left: 20vw;
+    margin-top: 14%;
+    margin-left: 30%;
     color: #0066cc
 }
 
@@ -71,9 +75,8 @@
 }
 
 .progress{
-    left: 36vw;
-    position: absolute;
-    top: 70vh;
+    margin-left: 30%;
+    margin-top :10%;
     height: 3vh;
     width: 15vw;
 }

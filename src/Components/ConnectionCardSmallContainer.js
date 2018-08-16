@@ -8,7 +8,7 @@ class ConnectionCardSmallContainer extends Component {
         
 
         return (
-            <div class="smallContainer">
+            <div className="smallContainer">
             
                 <div className = "row">
                
