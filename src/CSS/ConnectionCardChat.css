@@ -1,0 +1,21 @@
+.connectionCardChat {
+    width: 100%;
+    font-size: 14pt;
+    font-weight: bold;
+    height: auto;
+    line-height: 4em;
+    white-space: nowrap;
+    display: flex;
+    margin: 1em 0 1em 0;
+    padding: 0.5em;
+    border-radius: 200px;
+    background-color: #009999;
+}
+
+.contactChatPic {
+    box-sizing: border-box;
+    margin-right: 1em;
+    
+    height: 4em;
+    border-radius: 200px
+}
