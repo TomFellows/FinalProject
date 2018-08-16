@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../CSS/Navbar.css'
+import '../CSS/Login.css'
 import key from '../firebaselogin.js'
 
 var firebase = require('firebase');
@@ -54,7 +55,7 @@ class Login extends Component {
 
     render () {
 
-        return(<button onClick={this.loginGoogle}>Login with Google</button>)
+        return(<button className = "google" onClick={this.loginGoogle}>Google Login</button>)
 
     }
 }

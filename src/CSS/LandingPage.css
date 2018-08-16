@@ -1,0 +1,64 @@
+.pic{
+    width: 100vw;
+    height: 100vh;
+}
+
+.contain{
+    position: relative;
+   
+}
+.form{
+        position: absolute;
+        top: 30%;
+        left: 5%;
+}
+
+.pic2{
+    position: absolute;
+    width: 3vw;
+        margin-top: 5%;
+        margin-left: 124%;
+}
+
+.input{
+    margin: 3%;
+    border-radius: 5vw;
+    text-align: center;
+    /* background-color: #222222 */
+    background-color: transparent;
+    outline: none;
+  
+}
+.input2{
+    margin: 3%;
+    margin-left:22%;
+    border-radius: 5vw;
+    text-align: center;
+    /* background-color: #222222 */
+    background-color: transparent;
+    outline: none;
+}
+
+.login{
+    margin-left:28%;
+    margin-top: 3%
+}
+
+.loginBtn{
+    color: white;
+    background-color: #ff0033;
+   border-radius: 2vw;
+}
+.loginBtn:hover{
+    color: white;
+    background-color: #009900
+  
+}
+
+.heading{
+    font-family: 'Lobster', cursive;
+    position: absolute;
+    margin-left: 114%;
+    margin-top: 12%;
+    font-size:35pt;
+}

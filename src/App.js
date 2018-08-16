@@ -12,32 +12,33 @@ import OtherUserProfile from './Components/OtherUserProfile'
 
 import {Provider} from 'react-redux'
 import store from './REDUCER.js'
+import LandingPage from './Components/LandingPage';
 
 
 
 class App extends Component {
   render() {
-    return (
-      <BrowserRouter>
-      <Provider store={store}>
-      <div>
-        <Navbar />
+    return (<LandingPage/>
+      // <BrowserRouter>
+      // <Provider store={store}>
+      // <div>
+      //   <Navbar />
      
      
-        <div className = "cont">
-           <div className = "col1">
-           <ProfileSidebar />
-           </div>
-           <div className = "col2">
-           <OtherUserProfile/>
-           </div>
-           <div className = "col3">
-            <ConnectionsSidebar/>
-           </div>
-        </div>
-        </div>
-      </Provider>
-      </BrowserRouter> 
+      //   <div className = "cont">
+      //      <div className = "col1">
+      //      <ProfileSidebar />
+      //      </div>
+      //      <div className = "col2">
+      //      <PageContent/>
+      //      </div>
+      //      <div className = "col3">
+      //       <ConnectionsSidebar/>
+      //      </div>
+      //   </div>
+      //   </div>
+      // </Provider>
+      // </BrowserRouter> 
       
      );
   }
