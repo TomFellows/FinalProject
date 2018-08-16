@@ -16,8 +16,10 @@
 .pic2{
     position: absolute;
     width: 3vw;
-        margin-top: 5%;
-        margin-left: 124%;
+    margin-top: 12%;
+    margin-left: 135%;
+    transform: rotate(-45deg)
+    
 }
 
 .input{
@@ -58,7 +60,7 @@
 .heading{
     font-family: 'Lobster', cursive;
     position: absolute;
-    margin-left: 114%;
-    margin-top: 12%;
+    margin-left: 108%;
+    margin-top: 11%;
     font-size:35pt;
 }
