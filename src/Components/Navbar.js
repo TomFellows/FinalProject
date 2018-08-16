@@ -3,14 +3,59 @@ import {Link} from 'react-router-dom'
 import '../CSS/Navbar.css'
 import Login from './Login.js'
 import Filters from './Filters.js'
+import {connect} from 'react-redux'
+import { SETCURRENTUSER } from '../ACTIONS';
+
 
 
 
 
 class Navbar extends Component {
 
+  componentDidMount = () => {
+
+    fetch('/getCurrentUser', {
+      method: 'POST',
+      credentials: 'same-origin'
+    }).then(response => response.text())
+      .then((response) => {
+
+        let parsedResponse = JSON.parse(response)
+
+        if (parsedResponse.user) {
+        let currentUser = parsedResponse.user
+
+        this.props.setCurrentUser(JSON.parse(JSON.stringify(currentUser)))
+      }
+
+      }).catch((err) => {
+
+        let currentUser =  {
+            firstName: 'Unavailable', lastName: 'Unavailable', instruments: 'Unavailable',
+            location: 'Unavailable', seeking: 'Unavailable', skillLevel: 'Unavailable', musicalStyles: 'Unavailable'
+        }
+
+        this.props.setCurrentUser(currentUser)
+      })
+    
+  }
+
+ 
+
+  
+
 
   render() {
+
+    let connectionStatus;
+
+    if (this.props.connected) {
+
+      connectionStatus = (<div>Connected as {this.props.currentUser.firstName}</div>)
+    } else {
+      connectionStatus = (<Login/>)
+    }
+
     return (
       <div >
         <nav className = "Navbar" class="navbar fixed-top  navbar-light bg-light">
@@ -20,7 +65,7 @@ class Navbar extends Component {
            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Filters" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span>Find connections</span>
             </button>
-            <Login/>
+            {connectionStatus}
             <Link to='/Profile'>My profile</Link>
 
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -67,4 +112,15 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar;
+let mapStateToProps = (state) => {
+  return {currentUser: state.currentUser, popUp: state.popUp, connected: state.connected}
+}
+
+let mapDispatchToProps = (dispatch) => {
+  return {setCurrentUser: (user) => dispatch({type: SETCURRENTUSER, user: user})
+  }
+}
+
+let ConnectedNavbar = connect(mapStateToProps,mapDispatchToProps)(Navbar)
+
+export default ConnectedNavbar;

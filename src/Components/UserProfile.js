@@ -1,45 +1,30 @@
 import React, { Component } from 'react'
 import '../CSS/UserProfile.css'
+import {connect} from 'react-redux'
 import Cities from '../CITIES.js'
+import { SETCURRENTUSER } from '../ACTIONS';
 
 
 
 
 class UserProfile extends Component {
 
-    constructor () {
-        super()
+    constructor (props) {
+        super(props)
 
         this.autocomplete = '';
 
         this.citiesResults = []
         this.cities = new Cities
 
-        this.state = {editing: false, inputValue: '', firstName: '', lastName: '', instruments: '',
-        location: '', seeking: '', skillLevel: '', musicalStyles: ''}
-
-        fetch('/getCurrentUser', {
-            method: 'POST',
-            credentials: 'same-origin'
-        }).then(response => response.text())
-        .then((response) => {
-
-            let parsedResponse = JSON.parse(response).user
-
-            this.setState({editing: false, inputValue: '', firstName: parsedResponse.firstName, 
-            lastName: parsedResponse.lastName, instruments: parsedResponse.instruments.join(", "),
-            location: parsedResponse.location, seeking: parsedResponse.seeking.join(", "), 
-            skillLevel: parsedResponse.skillLevel, musicalStyles: parsedResponse.styles.join(", ")})
-
-        }).catch((err) => {
-
-            this.setState({editing: false, inputValue: '', firstName: 'Anton', lastName: 'Lelion', instruments: 'Guitar',
-        location: 'Montreal, Canada', seeking: 'Session', skillLevel: 'Advanced', musicalStyles: 'Metal'})
-        })
+        this.setUserAfterEdit = this.setUserAfterEdit.bind(this)
         
-        
-        
+        this.state = {editing: false, inputValue: ''}
+
+
     }
+
+
 
     
    
@@ -47,7 +32,7 @@ class UserProfile extends Component {
     handleChange = (event) => {
 
         //Make a cities search if we're typing in the location field
-        if (this.state.editing = 'location'){
+        if (this.state.editing === 'location'){
             this.citiesResults = this.cities.search(event.target.value, 6)
         }
 
@@ -57,56 +42,77 @@ class UserProfile extends Component {
     
     handleSubmit = (event) => {
         event.preventDefault()
-        
+        let modifiedUser = {...this.props.currentUser}
+
         //Finds out which field is being submitted
         switch (event.target.value) {
+
+
             case 'firstName' :
-            this.setState({firstName: this.state.inputValue, editing: false, inputValue: ''})
+            modifiedUser = {...this.props.currentUser, firstName: this.state.inputValue}
             break;
 
             case 'lastName' :
-            this.setState({lastName: this.state.inputValue, editing: false, inputValue: ''})
+            modifiedUser = ({...this.props.currentUser, lastName: this.state.inputValue})
             break;
 
             case 'instruments' :
-            this.setState({instruments: this.state.inputValue, editing: false, inputValue: ''})
+            modifiedUser = ({...this.props.currentUser, instruments: this.state.inputValue.split(', ')})
             break;
 
             case 'location' :
 
-            let location = document.getElementById('autocomplete')
-
-            this.setState({location: location.value, editing: false, inputValue: ''})
+            modifiedUser = ({...this.props.currentUser, location: this.state.inputValue})
             break;
 
             case 'seeking' :
-            this.setState({seeking: this.state.inputValue, editing: false, inputValue: ''})
+            modifiedUser = ({...this.props.currentUser, seeking: this.state.inputValue})
             break;
 
             case 'musicalStyles' :
-            this.setState({skillLevel: this.state.inputValue, editing: false, inputValue: ''})
+            modifiedUser = ({...this.props.currentUser, lastName: this.state.musicalStyles.split(', ')})
             break;
 
             case 'skillLevel' :
-            this.setState({skillLevel: this.state.inputValue, editing: false, inputValue: ''})
+            modifiedUser = ({...this.props.currentUser, skillLevel: this.state.inputValue})
             break; 
         }
 
+        this.setState({editing: false, inputValue:''})
+
+        let setUser = this.setUserAfterEdit
+        
         fetch('/modifyProfile', {
             method: 'POST',
-            body: JSON.stringify({firstName: this.state.firstName, lastName: this.state.lastName,
-            instruments: this.state.instruments.split(', '), location: this.state.location,
-            styles: this.state.musicalStyles.split(', '), seeking: this.state.seeking,
-            skillLevel: this.state.skillLevel})
+            body: JSON.stringify(modifiedUser)
         }).then(response => response.text())
         .then(response => {
 
             let parsedResponse = JSON.parse(response)
             console.log('Success: ' + parsedResponse.success + ' Reason: ' + parsedResponse.reason)
-        })
+        }).then(setUser)
 
     }
 
+    setUserAfterEdit () {
+        fetch('/getCurrentUser', {
+            method: 'POST',
+            credentials: 'same-origin'
+        }).then(response => response.text())
+            .then((response) => {
+
+                let parsedResponse = JSON.parse(response)
+
+                if (parsedResponse.user) {
+                    let currentUser = parsedResponse.user
+
+                    //Remove line below once the endpoint actually works
+                    currentUser.firstName = 'I HAVE BEEN CHANGED AND RETURNED!'
+
+                    this.props.setCurrentUser(JSON.parse(JSON.stringify(currentUser)))
+                }
+            })
+    }
     
 
     handleEdit = (event) => {
@@ -116,7 +122,7 @@ class UserProfile extends Component {
         //and puts it in the editing property of the state
         this.citiesResults = []
 
-        this.setState({editing: event.target.value, inputValue: this.state[event.target.value]})
+        this.setState({editing: event.target.value, inputValue: this.props.currentUser[event.target.value]})
     }
 
     stopEdit = () => {
@@ -151,7 +157,7 @@ class UserProfile extends Component {
             if (this.state.editing === false) {
                 editButton = (<button value='firstName' onClick={this.handleEdit}>Edit</button>)
             }
-            firstName = (<div><div className='profileLabel'>{this.state.firstName}</div>{editButton}</div>)
+            firstName = (<div><div className='profileLabel'>{this.props.currentUser.firstName}</div>{editButton}</div>)
         }
 
         //Checks if the last name is being edited, if yes, it displays and input field with save buttons.
@@ -166,7 +172,7 @@ class UserProfile extends Component {
             if (this.state.editing === false) {
                 editButton = (<button value='lastName' onClick={this.handleEdit}>Edit</button>)
             }
-            lastName = (<div><div className='profileLabel'>{this.state.lastName}</div>{editButton}</div>)
+            lastName = (<div><div className='profileLabel'>{this.props.currentUser.lastName}</div>{editButton}</div>)
         }
 
         //Checks if the instruments is being edited, if yes, it displays and input field with save buttons.
@@ -181,7 +187,7 @@ class UserProfile extends Component {
             if (this.state.editing === false) {
                 editButton = (<button value='instruments' onClick={this.handleEdit}>Edit</button>)
             }
-            instruments = (<div><div className='profileLabel'>{this.state.instruments}</div>{editButton}</div>)
+            instruments = (<div><div className='profileLabel'>{this.props.currentUser.instruments.join(', ')}</div>{editButton}</div>)
         }
 
         //Checks if the location is being edited, if yes, it displays and input field with save buttons.
@@ -204,7 +210,7 @@ class UserProfile extends Component {
             if (this.state.editing === false) {
                 editButton = (<button value='location' onClick={this.handleEdit}>Edit</button>)
             }
-            location = (<div><div className='profileLabel'>{this.state.location}</div>{editButton}</div>)
+            location = (<div><div className='profileLabel'>{this.props.currentUser.location}</div>{editButton}</div>)
         }
 
         //Checks if the Seeking... is being edited, if yes, it displays and input field with save buttons.
@@ -219,7 +225,7 @@ class UserProfile extends Component {
             if (this.state.editing === false) {
                 editButton = (<button value='seeking' onClick={this.handleEdit}>Edit</button>)
             }
-            seeking = (<div><div className='profileLabel'>{this.state.seeking}</div>{editButton}</div>)
+            seeking = (<div><div className='profileLabel'>{this.props.currentUser.seeking}</div>{editButton}</div>)
         }
 
         //Checks if the musical styles is being edited, if yes, it displays and input field with save buttons.
@@ -234,7 +240,7 @@ class UserProfile extends Component {
             if (this.state.editing === false) {
                 editButton = (<button value='musicalStyles' onClick={this.handleEdit}>Edit</button>)
             }
-            musicalStyles = (<div><div className='profileLabel'>{this.state.musicalStyles}</div>{editButton}</div>)
+            musicalStyles = (<div><div className='profileLabel'>{this.props.currentUser.styles.join(', ')}</div>{editButton}</div>)
         }
 
         //Checks if the skill level is being edited, if yes, it displays and input field with save buttons.
@@ -249,7 +255,7 @@ class UserProfile extends Component {
             if (this.state.editing === false) {
                 editButton = (<button value='skillLevel' onClick={this.handleEdit}>Edit</button>)
             }
-            skillLevel = (<div><div className='profileLabel'>{this.state.skillLevel}</div>{editButton}</div>)
+            skillLevel = (<div><div className='profileLabel'>{this.props.currentUser.skillLevel}</div>{editButton}</div>)
         }
         
         return (<div>
@@ -277,4 +283,15 @@ class UserProfile extends Component {
     }
 }
 
-export default UserProfile
+let mapStateToProps = (state) => {
+    return {currentUser: state.currentUser, popUp: state.popUp}
+  }
+
+  let mapDispatchToProps = (dispatch) => {
+    return {setCurrentUser: (user) => dispatch({type: SETCURRENTUSER, user: user})
+    }
+  }
+  
+  let ConnectedUserProfile = connect(mapStateToProps,mapDispatchToProps)(UserProfile)
+  
+  export default ConnectedUserProfile;
