@@ -49,4 +49,4 @@ class PageContent extends Component {
 
 }
 
-export default PageContent
+export default PageContent;

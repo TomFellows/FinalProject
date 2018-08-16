@@ -29,7 +29,7 @@ class OtherUserProfile extends Component {
     .then(x=> x.text())
     .then(responseBody => {
         let parsedBody=JSON.parse(responseBody);
-        console.log(parsedBody)
+      //  console.log(parsedBody)
     
     if (parsedBody.success === true) {
          this.setState({user: parsedBody.user})
@@ -79,7 +79,7 @@ class OtherUserProfile extends Component {
         </div>x
             <Image src = "Images/guy1.jpg"/>
             <h2 className ="reminder">
-                <ConnectionCardSmallContainer/>
+                <ConnectionCardSmallContainer key="otherUserProfile"/>
             </h2>
         </div>
             <div className = "progress">
