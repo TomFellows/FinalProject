@@ -12,6 +12,7 @@ import OtherUserProfile from './Components/OtherUserProfile'
 
 import {Provider} from 'react-redux'
 import store from './REDUCER.js'
+import LandingPage from './Components/LandingPage';
 
 
 
@@ -22,7 +23,7 @@ class App extends Component {
       <Provider store={store}>
       <div>
         <Navbar />
-     
+       {/* <LandingPage/> */}
      
         <div className = "cont">
            <div className = "col1">
@@ -35,7 +36,7 @@ class App extends Component {
             <ConnectionsSidebar/>
            </div>
         </div>
-        </div>
+       </div>
       </Provider>
       </BrowserRouter> 
       

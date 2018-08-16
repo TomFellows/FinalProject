@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import '../CSS/Navbar.css'
+import '../CSS/Login.css'
 import key from '../firebaselogin.js'
 import { SETCURRENTUSER } from '../ACTIONS';
 
