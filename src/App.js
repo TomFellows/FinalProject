@@ -19,11 +19,11 @@ import LandingPage from './Components/LandingPage';
 class App extends Component {
   render() {
     return (
-      // <BrowserRouter>
-      // <Provider store={store}>
-      // <div>
-      //   <Navbar />
-      // <LandingPage/>
+      <BrowserRouter>
+      <Provider store={store}>
+      <div>
+        <Navbar />
+       {/* <LandingPage/> */}
      
         <div className = "cont">
            <div className = "col1">
@@ -36,7 +36,7 @@ class App extends Component {
             <ConnectionsSidebar/>
            </div>
         </div>
-        </div>
+       </div>
       </Provider>
       </BrowserRouter> 
       
