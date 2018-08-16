@@ -14,13 +14,13 @@
 }
 
 .col1{
-  
+  height: 300vh;
   width: 15%;
   min-height: 100%;
   
 }
 .col2{
-  
+ 
   width: 60%;
   min-height: 100%;
 }
