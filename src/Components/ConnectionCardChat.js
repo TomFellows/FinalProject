@@ -6,7 +6,7 @@ class ConnectionCardChat extends Component {
     render() {
 
         return(<div className='connectionCardChat'><img src='/Images/Eminem.jpg' className='contactChatPic'/>
-        {this.props.firstName + ' ' + this.props.lastName + ' - user Id: ' + this.props.connectionUserId}
+        {this.props.firstName + ' ' + this.props.lastName}
         </div>)
     }
 

@@ -96,7 +96,6 @@ class UserProfile extends Component {
 
     setUserAfterEdit () {
         fetch('/getCurrentUser', {
-            method: 'POST',
             credentials: 'same-origin'
         }).then(response => response.text())
             .then((response) => {
@@ -258,7 +257,7 @@ class UserProfile extends Component {
             skillLevel = (<div><div className='profileLabel'>{this.props.currentUser.skillLevel}</div>{editButton}</div>)
         }
         
-        return (<div>
+        return (<div className='userProfile'>
 
             <div className='picBackground'><img src='/Images/Eminem.jpg' className='userProfilePic'/></div>
             <form>

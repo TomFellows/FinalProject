@@ -58,7 +58,6 @@ class Login extends Component {
     
   setUserAfterLogin () {
     fetch('/getCurrentUser', {
-      method: 'POST',
       credentials: 'same-origin'
     }).then(response => response.text())
       .then((response) => {
