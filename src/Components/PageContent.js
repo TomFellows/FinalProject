@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom'
 
+
 import FindConnections from './FindConnections.js'
 import Homepage from './Homepage.js'
 import UserProfile from './UserProfile.js'
@@ -33,9 +34,12 @@ class PageContent extends Component {
             </div>)
     }
 
-    renderOtherUserProfile () {
+    renderOtherUserProfile (routerData) {
+
+        let renderedUsername = routerData.match.params.username
+
         return (<div className = "color">
-            <OtherUserProfile/>
+            <OtherUserProfile username={renderedUsername}/>
             </div>)
     }
 
@@ -50,7 +54,7 @@ class PageContent extends Component {
         <Route exact={true} path='/' render={this.renderHomePage} />
         <Route exact={true} path='/Profile' render={this.renderUserProfile} />
         <Route exact={true} path='/FindConnections' render={this.renderFindConnections} />
-        <Route exact={true} path='/OtherUserProfile' render={this.renderOtherUserProfile} />
+        <Route exact={true} path='/OtherUserProfile/:username' render={this.renderOtherUserProfile} />
         </div>)
     }
 

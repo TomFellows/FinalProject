@@ -108,7 +108,7 @@ class UserProfile extends Component {
                     //Remove line below once the endpoint actually works
                     currentUser.firstName = 'I HAVE BEEN CHANGED AND RETURNED!'
 
-                    this.props.setCurrentUser(JSON.parse(JSON.stringify(currentUser)))
+                    this.props.setCurrentUser(JSON.parse(JSON.stringify(currentUser)), true)
                 }
             })
     }
@@ -287,7 +287,7 @@ let mapStateToProps = (state) => {
   }
 
   let mapDispatchToProps = (dispatch) => {
-    return {setCurrentUser: (user) => dispatch({type: SETCURRENTUSER, user: user})
+    return {setCurrentUser: (user, connected) => dispatch({type: SETCURRENTUSER, user: user, connected: connected})
     }
   }
   
