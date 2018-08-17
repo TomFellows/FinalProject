@@ -109,8 +109,7 @@ class UserProfile extends Component {
                 if (parsedResponse.user) {
                     let currentUser = parsedResponse.user
 
-                    //Remove line below once the endpoint actually works
-                    currentUser.firstName = 'I HAVE BEEN CHANGED AND RETURNED!'
+        
 
                     this.props.setCurrentUser(JSON.parse(JSON.stringify(currentUser)), true)
                 }

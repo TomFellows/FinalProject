@@ -21,7 +21,7 @@ class OtherUserProfile extends Component {
         this.getUserProfile();
     }
     getUserProfile() {
-        let bod = JSON.stringify({userId: this.props.username})
+        let bod = JSON.stringify({username: this.props.username})
     fetch('/getUserByUsername', {
         method: 'POST',
         credentials: 'same-origin',

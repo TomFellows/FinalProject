@@ -28,8 +28,7 @@ class ConnectionCardSmallContainer extends Component {
     }
 
     getSuggestedUsers() {
-        if (this.props.which === "style") {
-        let bod = JSON.stringify({ style: "experimental" })
+        let bod = JSON.stringify({ styles: "experimental" })
         fetch('/getUsersByCriteria', {
             method: 'POST',
             credentials: 'same-origin',
@@ -57,7 +56,7 @@ class ConnectionCardSmallContainer extends Component {
                     console.log("invalid userId")
                 }
             })
-        } 
+         
         if(this.props.which === "seeking") {
         let bod = JSON.stringify({ seeking: "gig" })
         fetch('/getUsersByCriteria', {
@@ -152,6 +151,7 @@ class ConnectionCardSmallContainer extends Component {
                     name={user.firstName + " " + user.lastName}
                     location={user.location}
                     styles ={user.styles}
+                    connections = {user.connections.length}
                 />
               
             )})
