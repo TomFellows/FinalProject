@@ -23,9 +23,9 @@ class App extends Component {
       <Provider store={store}>
       <div>
         <Navbar />
-       {/* <LandingPage/> */}
+       <LandingPage/>
      
-        <div className = "cont">
+        {/* <div className = "cont">
            <div className = "col1">
            <ProfileSidebar />
            </div>
@@ -35,7 +35,7 @@ class App extends Component {
            <div className = "col3">
             <ConnectionsSidebar/>
            </div>
-        </div>
+        </div> */}
        </div>
       </Provider>
       </BrowserRouter> 

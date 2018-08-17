@@ -20,7 +20,7 @@ class Profile extends Component {
       </div>
  
 
-    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
       <div className="card-body">
        Name: Chris Martin, Age: 35, Username: Coldplayer
       </div>
