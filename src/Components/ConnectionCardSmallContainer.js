@@ -16,11 +16,11 @@ class ConnectionCardSmallContainer extends Component {
         this.getSuggestedUsers = this.getSuggestedUsers.bind(this)
     }
     componentDidMount() {
-        if (this.props.key === "suggested") {
+        if (this.props.which === "criteria") {
          this.getSuggestedUsers()
          console.log("test")
         }
-        if (this.props.key === "criteria") {
+        if (this.props.which === "connections") {
         this.getOtherUserConnections()
         console.log("otherTest")
          }
@@ -95,7 +95,7 @@ class ConnectionCardSmallContainer extends Component {
 
     renderSmallContainer() {
     let user;
-       if( this.props.key === "suggested"){
+       if( this.props.which === "connections"){
         return this.state.randomizerSuggested.map(ran => {
             user = this.state.connectedUsers[ran]
             console.log(user)
@@ -104,13 +104,14 @@ class ConnectionCardSmallContainer extends Component {
             <ConnectionCardSmall
                 name={user.firstName + " " + user.lastName}
                 location={user.location}
+                styles ={user.styles}
             />)})
         }
           
            
         
               
-        if (this.props.key === "criteria") {
+        if (this.props.which === "criteria") {
         return this.state.randomizerCriteria.map(ran => {
            user = this.state.usersByStyle[ran]
           console.log(user)  
@@ -119,6 +120,9 @@ class ConnectionCardSmallContainer extends Component {
                 <ConnectionCardSmall
                     name={user.firstName + " " + user.lastName}
                     location={user.location}
+                    styles ={user.styles}
+
+
                 />
             )})
         }
