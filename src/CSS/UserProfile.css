@@ -33,3 +33,9 @@ input.form-control {
     
     
 }
+
+.userProfile {
+    background-color: #cccccc;
+    padding: 1em;
+    height: 100%
+}
