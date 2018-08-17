@@ -76,6 +76,10 @@ class UserProfile extends Component {
             case 'skillLevel' :
             modifiedUser = ({...this.props.currentUser, skillLevel: this.state.inputValue})
             break; 
+
+            case 'aboutMe' :
+            modifiedUser = ({...this.props.currentUser, experience: this.state.inputValue})
+            break; 
         }
 
         this.setState({editing: false, inputValue:''})
@@ -132,14 +136,14 @@ class UserProfile extends Component {
     render () {
 
         let formEditing = {firstName: false, lastName: false, instruments: false, location: false,
-        seeking: false, skillLevel: false, musicalStyles: false}
+        seeking: false, skillLevel: false, musicalStyles: false, aboutMe: false}
         
         //Checks the editing property of the state and sets the appropriate formEditing property to true
        
         formEditing[this.state.editing] = true
         
         //Define variables that will refer to react elements to be rendered
-        let firstName, lastName, instruments, location, seeking, skillLevel, musicalStyles
+        let firstName, lastName, instruments, location, seeking, skillLevel, musicalStyles, aboutMe
 
        
          //Checks if the first name is being edited, if yes, it displays and input field with save buttons.
@@ -256,6 +260,21 @@ class UserProfile extends Component {
             }
             skillLevel = (<div><div className='profileLabel'>{this.props.currentUser.skillLevel}</div>{editButton}</div>)
         }
+
+        //Checks if the about me is being edited, if yes, it displays and input field with save buttons.
+        //If not being edited, it displays non editable text
+        if (formEditing.aboutMe === true) {
+            aboutMe = (<div>
+                <textarea class="form-control" placeholder="About me..." rows='5'
+                value={this.state.inputValue} onChange={this.handleChange}/>
+        <button value='aboutMe' onClick={this.handleSubmit}>Save</button><button onClick={this.stopEdit}>Cancel edit</button> </div>)
+        } else {
+            let editButton = ''
+            if (this.state.editing === false) {
+                editButton = (<button value='aboutMe' onClick={this.handleEdit}>Edit</button>)
+            }
+            aboutMe = (<div><div className='profileLabel'>{this.props.currentUser.experience}</div>{editButton}</div>)
+        }
         
         return (<div className='userProfile'>
 
@@ -273,6 +292,8 @@ class UserProfile extends Component {
                     <div className='fieldLabel'>Musical styles :</div> {musicalStyles}
 
                     <div className='fieldLabel'>Skill level:</div> {skillLevel}
+
+                    <div className='fieldLabel'>About me:</div> {aboutMe}
                
                 
                 
