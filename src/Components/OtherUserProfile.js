@@ -87,8 +87,10 @@ class OtherUserProfile extends Component {
             
         </div>
             <Image src = "Images/guy1.jpg"/>
-            
+                <div>
+                <h4>Connections</h4>
                 <ConnectionCardSmallContainer which="connections" number="5"/>
+                </div>
                 <div className = "twoButtons">
                 <button className = "connect">Connect</button>
             <button className="connect" onClick={this.popUp} value='PostReview'> Review </button>

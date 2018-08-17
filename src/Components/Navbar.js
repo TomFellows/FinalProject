@@ -15,7 +15,7 @@ class Navbar extends Component {
   componentDidMount = () => {
 
     fetch('/getCurrentUser', {
-      method: 'POST',
+      method: 'GET',
       credentials: 'same-origin'
     }).then(response => response.text())
       .then((response) => {
