@@ -11,7 +11,7 @@ class ProfileSidebar extends Component {
   render() {
     return (
    
-      <div class='profileSidebar'><Profile src = "Images/chris.jpeg" /></div>
+      <div class='profileSidebar'><Profile src = "Images/tom.jpg" /></div>
 
     );
   }
