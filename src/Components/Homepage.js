@@ -16,8 +16,8 @@ class Homepage extends Component {
             <ConnectionCardLarge src="Images/guy1.jpg"/>
             <br/>
             <ConnectionCardLarge src="Images/guy1.jpg"/> */}
-           <Link to='/Profile'>My profile</Link>
-            <div className = "spaceOut"><ConnectionCardSmallContainer number='6'/></div>
+           
+            <div className = "spaceOut"><ConnectionCardSmallContainer which="criteria" number='4'/></div>
             </div>
         );
     }
