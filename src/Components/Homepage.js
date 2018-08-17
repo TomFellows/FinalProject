@@ -10,11 +10,11 @@ class Homepage extends Component {
         return (
             <div>
             <div className = "title">Suggested Connections</div>
-            <ConnectionCardLarge src="Images/guy1.jpg"/>
+            {/* <ConnectionCardLarge src="Images/guy1.jpg"/>
             <br/>
             <ConnectionCardLarge src="Images/guy1.jpg"/>
             <br/>
-            <ConnectionCardLarge src="Images/guy1.jpg"/>
+            <ConnectionCardLarge src="Images/guy1.jpg"/> */}
            
             <div className = "spaceOut"><ConnectionCardSmallContainer key="criteria" number='4'/></div>
             </div>

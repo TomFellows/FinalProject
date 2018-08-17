@@ -1,26 +1,66 @@
 .individualMiniProfile{
     background-color: white;
-    padding: 10px;
+    /* padding: 2vw; */
     font-size:10px;
-    max-width: 250px;
-    border-radius: 3vw;
+    width: 40%;
+    margin-bottom: 5%;
+    border-radius: 2vw;
+  
 }
-.individualMiniProfile:hover{
-    background-color: #666666;
-    color: white;
-   
-}
-.connSmallProfilePic{
+
+.connBackgroundPic{
     position: relative;
-    left: 3vw;
-    max-width: 10vw;
-    border-radius: 1000px;
-   
+    left: 0vw;
+    opacity: 0.85;
+    border-top-left-radius: 2vw;
+    border-top-right-radius: 2vw;
+    width: 100%; 
+}
+
+.connProfilePic{
+    position: absolute;
+    left: 10%;
+    margin-top: 6%;
+    width: 20%; 
 }
 
 .info2{
-    padding:1vw;
+    padding-bottom:1vw;
     font-weight: bold;
     font-size: 12pt;
 }
+.info3{
+    color: #555555;
+    padding:0vw;
+    font-size: 10pt;
+}
 
+.infoCont{
+    margin-top: 17%;
+    text-align: center;
+}
+
+.connectButton{
+ margin: 5%;
+ color: #eeeeee;
+ font: bolder;
+ 
+ font-size:10pt;
+ padding-left: 10%;
+ padding-right: 10%;
+ padding-top:1%;
+ padding-bottom:1%;
+ background-color: #666666;
+ border-radius: 5px;
+ text-align: center;
+}
+
+.individualMiniProfile:hover {
+    background-color: black;
+    color: white;  
+}
+
+.individualMiniProfile:hover .info3 {
+        background-color: black;
+        color: white;
+    }
