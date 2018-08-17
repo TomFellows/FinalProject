@@ -48,7 +48,7 @@ class ConnectionCardSmallContainer extends Component {
                         }
                     }
                     this.setState({ connectedUsers: parsedBody.connectedUsers, randomizer: ranArr })
-                      
+                    console.log(parsedBody.connectedUsers, ranArr)  
                 
                 } else {
                     console.log("invalid userId")
@@ -64,6 +64,7 @@ class ConnectionCardSmallContainer extends Component {
                 <ConnectionCardSmall 
                 name={user.firstName + " " + user.lastName} 
                 location={user.location}
+                styles={user.styles}
             /> 
         )})
    }
