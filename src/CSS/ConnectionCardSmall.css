@@ -5,7 +5,8 @@
     width: 40%;
     margin-bottom: 5%;
     border-radius: 2vw;
-  
+   
+    
 }
 
 .connBackgroundPic{
@@ -56,11 +57,84 @@
 }
 
 .individualMiniProfile:hover {
-    background-color: black;
+    /* background-color: black; */
+    background: #141E30;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
     color: white;  
 }
 
 .individualMiniProfile:hover .info3 {
-        background-color: black;
+    background: #141E30;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
         color: white;
     }
+
+ .individualMiniProfile:hover .connectButton {
+        background-color: #00bb00;
+        color: white;
+        font-weight: bold;
+
+}
+
+.bottom{
+    display: flex;
+    margin-left: 4%;
+    padding-bottom: 8%;
+    padding-top: 5%;
+    justify-content: space-around;
+}
+.info4{
+    padding-left: 1.2vw;
+    padding-right: 1.6vw;
+   border-right-style: solid;
+    border-width: 1px;
+   border-color: #666666;
+   color: #0066ff;
+   font-weight: bold;
+    font-size: 13pt;
+    
+}
+.info14{
+    padding-left: 0.6vw;
+    padding-right: 0.8vw;
+   font-weight: 400;
+    color: #666666;
+    font-size: 9pt;
+}
+
+.info5{
+    padding-left: 1.2vw;
+    padding-right: 1.6vw;
+   border-color: #666666;
+   color: #0066ff;
+   font-weight: bold;
+    font-size: 13pt;
+}
+.info15{
+    padding-left: 0.6vw;
+    padding-right: 0.8vw;
+   font-weight: 400;
+   color: #666666;
+  
+    font-size: 9pt;
+}
+.individualMiniProfile:hover .info4 {
+    color:red;
+    
+}
+.individualMiniProfile:hover .info5 {
+    color:red;
+
+}
+.individualMiniProfile:hover .info14 {
+    color:white;
+    
+}
+.individualMiniProfile:hover .info15 {
+    color:white;
+
+}

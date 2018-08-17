@@ -1,9 +1,10 @@
 
 .profilePic{
-    
-    max-width: 60%;
+    margin-top: 15%;
+    margin-left:15%;
+    max-width: 70%;
     border-radius: 200px;
-    align-content: center;
+    
 }
 
 .profilePic2{   
@@ -27,31 +28,34 @@
 
 .btn{
     background-color: transparent;
-    font-size: 17pt;
+    font-size: 15pt;
+    border: none;
+    color:white;
+    outline: none;
+    
 }
 
+.btn:focus{
+    box-shadow: none;
+}
 .card-body{
    color: white;
 }
 
-.btn{
-    color: white;
-    
-    font-size: 15pt;
-    outline: none;
-    border: none;
-    border-color: transparent;
-    padding: 1em;
-}  
-.btn:hover{
-    font-weight: bold;
-}  
 
-button{
-    outline: none;
-    border: none;
+
+.info{
+ border-bottom-style: solid;
+ border-color: white;
+ border-width: 1px;
 }
 
+
 .info:hover{
-background-color: #009999;
+background-color: #000033;
+
+}
+.info:hover .btn {
+    font-weight: bold;
+
 }

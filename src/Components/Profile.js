@@ -9,9 +9,24 @@ class Profile extends Component {
 
     render() {
 
+      let instStr = this.props.currentUser.instruments.join(", ")
+      let instArr = instStr.split("")
+      let instruments = instArr[0].toUpperCase() + instArr.splice(1).join("")
+
+      let styleStr = this.props.currentUser.styles.join(", ")
+      let styleArr = styleStr.split("")
+      let styles = styleArr[0].toUpperCase() + styleArr.splice(1).join("")
+
+      let seekingStr = this.props.currentUser.seeking.join(", ")
+      let seekingArr = seekingStr.split("")
+      let seeking = seekingArr[0].toUpperCase() + seekingArr.splice(1).join("")
+
+      let skillStr = this.props.currentUser.skillLevel
+ 
+      let skillLevel = skillStr[0].toUpperCase() + skillStr.slice(1)
 
         return <div className = "profile">
-            <img src={this.props.src} className="profilePic"/>
+          <img src={this.props.src} className="profilePic"/>
                 <br/>
                 <br/>
 
@@ -27,6 +42,7 @@ class Profile extends Component {
 
     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
       <div className="card-body">
+    
        {this.props.currentUser.firstName}&nbsp;{this.props.currentUser.lastName}
       </div>
     </div>
@@ -37,13 +53,77 @@ class Profile extends Component {
           Instruments
         </button>
     </div>
+    
 
 
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
       <div className="card-body">
-       {this.props.currentUser.instruments}
+       {instruments}
+      
       </div>
     </div>
+
+
+    <div className = "info">
+        <button className = "btn" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Styles 
+        </button>
+    </div>
+
+    
+    
+
+
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+      <div className="card-body">
+       {styles}
+      </div>
+    </div>
+
+
+    <div className = "info">
+        <button className = "btn" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+          Skill Level
+        </button>
+    </div>
+
+    
+    
+
+
+    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+      <div className="card-body">
+       {skillLevel}
+      </div>
+    </div>
+
+
+     <div className = "info">
+        <button className = "btn" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+          Location
+        </button>
+    </div>
+
+    <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+      <div className="card-body">
+       {this.props.currentUser.location}
+      </div>
+    </div>
+
+
+     <div className = "info">
+        <button className = "btn" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+        Seeking
+        </button>
+    </div>
+
+    <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
+      <div className="card-body">
+       {seeking}
+      </div>
+    </div>
+
+
 
           </div>
 
