@@ -27,7 +27,7 @@ class ConnectionCardSmallContainer extends Component {
     }
 
     getSuggestedUsers() {
-        let bod = JSON.stringify({ style: "experimental" })
+        let bod = JSON.stringify({ styles: "experimental" })
         fetch('/getUsersByCriteria', {
             method: 'POST',
             credentials: 'same-origin',

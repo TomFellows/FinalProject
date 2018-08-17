@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {withRouter} from 'react-router-dom'
 import '../CSS/Filters.css'
 
 class Filters extends Component{
@@ -7,16 +8,16 @@ class Filters extends Component{
         super ()
 
 
-        this.state = {instrument: '', area: '',
-                    lookingFor: '', skillLevel: '', musicalStyle: ''}
+        this.state = {instruments: '', location: '',
+                    lookingFor: '', skillLevel: '', styles: ''}
     }
 
     handleInstrumentChange = (event) => {
-        this.setState({instrument: event.target.value})
+        this.setState({instruments: event.target.value})
     }
 
     handleAreaChange = (event) => {
-        this.setState({area: event.target.value})
+        this.setState({location: event.target.value})
     }
 
     handleLookingForChange = (event) => {
@@ -24,7 +25,7 @@ class Filters extends Component{
     }
 
     handleMusicalStyleChange = (event) => {
-        this.setState({musicalStyle: event.target.value})
+        this.setState({styles: event.target.value})
     }
 
     handleSkillLevelChange = (event) => {
@@ -33,7 +34,23 @@ class Filters extends Component{
 
     handleSubmit = (event) => {
         event.preventDefault()
-        //Insert fetch here
+        
+        fetch('/getUsersByCriteria', {
+            method: 'POST',
+            credentials: 'same-origin',
+            body: JSON.stringify(this.state)
+        }).then(response => response.text())
+        .then(response => {
+            
+            let parsedResponse = JSON.parse(response)
+
+            let results = parsedResponse.result
+
+            this.props.history.push({
+                pathname: '/FindConnections',
+                users: results})
+            
+        })
 
     }
 
@@ -47,7 +64,7 @@ class Filters extends Component{
                         value={this.state.instrument} onChange={this.handleInstrumentChange}/>
                     </div>
                     <div class="col-md-4">
-                        <input type="text" class="form-control" placeholder="Area" 
+                        <input type="text" class="form-control" placeholder="Location" 
                         value={this.state.area} onChange={this.handleAreaChange}/>
                     </div>
                 </div>
@@ -88,4 +105,4 @@ class Filters extends Component{
 
 }
 
-export default Filters
+export default withRouter(Filters)
