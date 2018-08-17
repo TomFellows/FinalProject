@@ -58,7 +58,7 @@ class OtherUserProfile extends Component {
                 {`${this.state.user.firstName} ${this.state.user.lastName}`}
                
             </h1>
-        <div className = "parent">
+        {/* <div className = "parent">
 
             <div className = "profileInfo">
             {this.state.user.email}
@@ -85,7 +85,7 @@ class OtherUserProfile extends Component {
                 <div className="rating" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" ariaValuenow= '30' ariaValuemin='0' ariaValuemax='100' style={{width: '70%'}} ></div>     
             </div>
             
-        </div>
+        </div> */}
             <Image src = "Images/guy1.jpg"/>
                 <div>
                 <h4>Connections</h4>
