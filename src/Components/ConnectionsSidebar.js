@@ -7,20 +7,40 @@ import '../CSS/ConnectionsSidebar.css'
 
 
 class ConnectionsSidebar extends Component {
+
+    constructor() {
+        super()
+
+        
+    }
+
+
+
+
+
     render() {
 
-        let connections = []
+        let mappedConnections = []
 
-        connections = this.props.currentUser.connections.map(item => {
-           return (<ConnectionCardChat firstName='Leo' lastName='Krupps' connectionUserId={item.userId}/>)
-       })
 
-        return (
-            <div className = 'sidebar'>
-               <div className = "header">CHAT</div>
-               {connections}
-            </div>
-        );
+        fetch('/getAllConnections', {
+            credentials: 'same-origin'
+        }).then(response => response.text())
+            .then(response => {
+                let parsedResponse = JSON.parse(response)
+                let connections = parsedResponse.connectedUsers
+                mappedConnections = connections.map(item => {
+                    return (<ConnectionCardChat firstName='Leo' lastName='Krupps' connectionUserId={item.userId} />)
+                })
+
+            })
+
+            return (
+                <div className='sidebar'>
+                    <div className="header">CHAT</div>
+                    {mappedConnections}
+                </div>)
+
     }
 }
 

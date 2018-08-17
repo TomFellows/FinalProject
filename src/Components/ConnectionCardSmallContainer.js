@@ -23,9 +23,7 @@ class ConnectionCardSmallContainer extends Component {
        // let bod = JSON.stringify({this.props.user})
         let bod = JSON.stringify({ userId: 12345 })
         fetch('/getAllConnections', {
-            method: 'POST',
             credentials: 'same-origin',
-            body: bod
 
         })
             .then(x => x.text())
