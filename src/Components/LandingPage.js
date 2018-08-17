@@ -91,7 +91,7 @@ class LandingPage extends Component {
         <div>
             <img className="pic2" src="Images/headphones.png"></img>
             <h1 className = "heading">GigHub</h1>
-            </div>
+        </div>
             <img className="pic" src="Images/bg3.jpg"></img>
             
         <form className = "form" onSubmit= {this.handleSubmit}>
