@@ -50,7 +50,7 @@ class Navbar extends Component {
 
     if (this.props.connected) {
 
-      connectionStatus = (<div>Connected as {this.props.currentUser.username}</div>)
+      connectionStatus = (<div>Connected as {this.props.currentUser.firstName}</div>)
     } else {
       connectionStatus = (<Login/>)
     }
