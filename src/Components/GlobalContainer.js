@@ -6,6 +6,8 @@ import ProfileSidebar from './ProfileSidebar'
 import ConnectionsSidebar from './ConnectionsSidebar'
 import PageContent from './PageContent.js'
 
+import {withRouter} from 'react-router-dom'
+
 import LandingPage from './LandingPage';
 
 class GlobalContainer extends Component {
@@ -13,23 +15,25 @@ class GlobalContainer extends Component {
 
     render () {
 
+        let connected = this.props.connected
+
         let content = '';
 
-        if (this.props.connected === true) {
+        if (this.props.connected) {
 
             content = (<div className = "cont">
             <div className = "col1">
-            <ProfileSidebar />
+            {connected ? <ProfileSidebar /> : null}
             </div>
             <div className = "col2">
-            <PageContent/>
+            {connected ?  <PageContent/> : null}
             </div>
             <div className = "col3">
-             <ConnectionsSidebar/>
+            {connected ?   <ConnectionsSidebar/> : null}
             </div>
             </div>)
         } else {
-            content = <LandingPage/>
+            content = (<div>{connected ? <LandingPage/> : null}</div>)
         }
 
 
@@ -45,4 +49,4 @@ let mapStateToProps = (state) => {
   
   let ConnectedGlobalContainer = connect(mapStateToProps)(GlobalContainer)
   
-  export default ConnectedGlobalContainer;
+  export default withRouter(ConnectedGlobalContainer);

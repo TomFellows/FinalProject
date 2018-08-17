@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import ConnectionCardChat from './ConnectionCardChat.js'
 import '../CSS/ConnectionsSidebar.css'
+import { SETCURRENTCONNECTIONS } from '../ACTIONS.js';
 
 
 
@@ -11,11 +12,27 @@ class ConnectionsSidebar extends Component {
     constructor() {
         super()
 
+        this.componentDidMount = this.componentDidMount.bind(this)
         
     }
 
+    componentDidMount () {
+        fetch('/getAllConnections', {
+            credentials: 'same-origin'
+        }).then(response => response.text())
+            .then(response => {
 
+                let parsedResponse = JSON.parse(response)
 
+                if (parsedResponse.connectedUsers) {
+                
+                let connections = parsedResponse.connectedUsers
+
+                this.props.setCurrentConnections(connections)
+                }
+        })
+
+    }
 
 
     render() {
@@ -23,17 +40,12 @@ class ConnectionsSidebar extends Component {
         let mappedConnections = []
 
 
-        fetch('/getAllConnections', {
-            credentials: 'same-origin'
-        }).then(response => response.text())
-            .then(response => {
-                let parsedResponse = JSON.parse(response)
-                let connections = parsedResponse.connectedUsers
-                mappedConnections = connections.map(item => {
-                    return (<ConnectionCardChat firstName='Leo' lastName='Krupps' connectionUserId={item.userId} />)
+        
+                mappedConnections = this.props.currentConnections.map(item => {
+                    return (<ConnectionCardChat username={item.username} firstName={item.firstName} lastName={item.lastName}/>)
                 })
 
-            })
+            
 
             return (
                 <div className='sidebar'>
@@ -45,10 +57,15 @@ class ConnectionsSidebar extends Component {
 }
 
 let mapStateToProps = (state) => {
-    return {currentUser: state.currentUser, popUp: state.popUp}
+    return {currentUser: state.currentUser, currentConnections: state.currentConnections, popUp: state.popUp}
+  }
+
+  let mapDispatchToProps = (dispatch) => {
+    return {setCurrentConnections: (connections) => dispatch({type: SETCURRENTCONNECTIONS, connections: connections})
+    }
   }
 
   
-  let ConnectedConnectionsSidebar = connect(mapStateToProps)(ConnectionsSidebar)
+  let ConnectedConnectionsSidebar = connect(mapStateToProps, mapDispatchToProps)(ConnectionsSidebar)
   
   export default ConnectedConnectionsSidebar;

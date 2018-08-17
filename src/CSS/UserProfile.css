@@ -15,6 +15,10 @@ input.form-control {
     margin-bottom: 0.5em; 
 }
 
+textarea.form-control {
+    width: 90%;
+    margin-bottom: 0.5em; 
+}
 
 .userProfilePic{
     
@@ -32,4 +36,10 @@ input.form-control {
     
     
     
+}
+
+.userProfile {
+    background-color: #cccccc;
+    padding: 1em;
+    height: 100%
 }

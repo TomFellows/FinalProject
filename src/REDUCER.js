@@ -1,22 +1,22 @@
 import {createStore} from 'redux'
-import {ACTION1, ACTION2, POPUP, SETCURRENTUSER} from './ACTIONS.js'
+import {POPUP, SETCURRENTUSER, SETCURRENTCONNECTIONS} from './ACTIONS.js'
 
 function reducer (state, action) {
 
-    if (action.type === ACTION1) {
-      return state
-    }
-    if (action.type === ACTION2) {
-      return state
-    }
     if (action.type === POPUP) {
       return {...state, popUp: action.popUpType}
     }
 
     if (action.type === SETCURRENTUSER) {
 
-      return {...state, connected: true, currentUser: action.user}
+      return {...state, connected: action.connected, currentUser: action.user}
     }
+
+    if (action.type === SETCURRENTCONNECTIONS) {
+
+      return {...state, currentConnections: action.connections}
+    }
+
 
     return state
   }
@@ -25,7 +25,7 @@ function reducer (state, action) {
   const store = createStore(reducer, 
     {connected: false, currentUser: { userId: '', email: '', firstName: '', lastName: '', instruments: [],
                     location: '', seeking: '', skillLevel: '', styles: [], review: [], connections: []}, 
-    popUp: false},
+    currentConnections: [], popUp: false},
 
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 

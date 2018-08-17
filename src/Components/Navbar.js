@@ -15,7 +15,6 @@ class Navbar extends Component {
   componentDidMount = () => {
 
     fetch('/getCurrentUser', {
-      method: 'POST',
       credentials: 'same-origin'
     }).then(response => response.text())
       .then((response) => {
@@ -25,7 +24,7 @@ class Navbar extends Component {
         if (parsedResponse.user) {
         let currentUser = parsedResponse.user
 
-        this.props.setCurrentUser(JSON.parse(JSON.stringify(currentUser)))
+        this.props.setCurrentUser(JSON.parse(JSON.stringify(currentUser)), true)
       }
 
       }).catch((err) => {
@@ -35,7 +34,7 @@ class Navbar extends Component {
             location: 'Unavailable', seeking: 'Unavailable', skillLevel: 'Unavailable', musicalStyles: 'Unavailable'
         }
 
-        this.props.setCurrentUser(currentUser)
+        this.props.setCurrentUser(currentUser, false)
       })
     
   }
@@ -51,7 +50,7 @@ class Navbar extends Component {
 
     if (this.props.connected) {
 
-      connectionStatus = (<div>Connected as {this.props.currentUser.firstName}</div>)
+      connectionStatus = (<div>Connected as {this.props.currentUser.username}</div>)
     } else {
       connectionStatus = (<Login/>)
     }
@@ -117,7 +116,7 @@ let mapStateToProps = (state) => {
 }
 
 let mapDispatchToProps = (dispatch) => {
-  return {setCurrentUser: (user) => dispatch({type: SETCURRENTUSER, user: user})
+  return {setCurrentUser: (user, connected) => dispatch({type: SETCURRENTUSER, user: user, connected: connected})
   }
 }
 
