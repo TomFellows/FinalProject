@@ -11,7 +11,7 @@ class Profile extends Component {
 
 
         return <div className = "profile">
-            <img src={this.props.src} className="profilePic"/>
+          <img src={this.props.src} className="profilePic"/>
                 <br/>
                 <br/>
 
@@ -27,7 +27,8 @@ class Profile extends Component {
 
     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
       <div className="card-body">
-       {this.props.currentUser.firstName}&nbsp;{this.props.currentUser.lastName}
+      FullName
+       {/* {this.props.currentUser.firstName}&nbsp;{this.props.currentUser.lastName} */}
       </div>
     </div>
   
@@ -37,11 +38,30 @@ class Profile extends Component {
           Instruments
         </button>
     </div>
+    
 
 
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
       <div className="card-body">
-       {this.props.currentUser.instruments}
+        Doesn't seem to be sending info
+       {/* {this.props.currentUser.instruments} */}
+      </div>
+    </div>
+
+
+    <div className = "info">
+        <button className = "btn" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Styles
+        </button>
+    </div>
+
+    
+    
+
+
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+      <div className="card-body">
+       Needs to be sent
       </div>
     </div>
 

@@ -9,7 +9,7 @@ class Homepage extends Component {
     render() {
         return (
             <div>
-            <div className = "title">Suggested Connections</div>
+            {/* <div className = "title">Suggested Connections</div> */}
             {/* <ConnectionCardLarge src="Images/guy1.jpg"/>
             <br/>
             <ConnectionCardLarge src="Images/guy1.jpg"/>
