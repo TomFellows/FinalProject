@@ -6,6 +6,8 @@ import ProfileSidebar from './ProfileSidebar'
 import ConnectionsSidebar from './ConnectionsSidebar'
 import PageContent from './PageContent.js'
 
+import {withRouter} from 'react-router-dom'
+
 import LandingPage from './LandingPage';
 
 class GlobalContainer extends Component {
@@ -47,4 +49,4 @@ let mapStateToProps = (state) => {
   
   let ConnectedGlobalContainer = connect(mapStateToProps)(GlobalContainer)
   
-  export default ConnectedGlobalContainer;
+  export default withRouter(ConnectedGlobalContainer);

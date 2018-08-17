@@ -67,7 +67,7 @@ class Login extends Component {
         if (parsedResponse.user) {
           let currentUser = parsedResponse.user
 
-          this.props.setCurrentUser(JSON.parse(JSON.stringify(currentUser)))
+          this.props.setCurrentUser(JSON.parse(JSON.stringify(currentUser)), true)
       }
 
       }).catch((err) => {
@@ -77,7 +77,7 @@ class Login extends Component {
             location: 'Unavailable', seeking: 'Unavailable', skillLevel: 'Unavailable', musicalStyles: 'Unavailable'
         }
 
-        this.props.setCurrentUser(currentUser)
+        this.props.setCurrentUser(currentUser, false)
       })
   
   }
@@ -97,7 +97,7 @@ let mapStateToProps = (state) => {
 }
 
 let mapDispatchToProps = (dispatch) => {
-  return {setCurrentUser: (user) => dispatch({type: SETCURRENTUSER, user: user})
+  return {setCurrentUser: (user, connected) => dispatch({type: SETCURRENTUSER, user: user, connected: connected})
   }
 }
 

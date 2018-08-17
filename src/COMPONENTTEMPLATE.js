@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {ACTION1, ACTION2, POPUP} from './ACTIONS.js'
+import {POPUP} from './ACTIONS.js'
 import {connect} from 'react-redux'
 import PopUpWindow from './Components/PopUpWindow.js'
 
@@ -9,19 +9,9 @@ import PopUpWindow from './Components/PopUpWindow.js'
 class ComponentTemplate extends Component {
     constructor() {
       super()
-      this.function1 = this.function1.bind(this)
-      this.function2 = this.function2.bind(this)
+      
       this.displayPopUp = this.displayPopUp.bind(this)
   
-    }
-    function1(evt) {
-      evt.preventDefault()
-      this.props.doSomething('some Value') //Get the mapped dispatch function in the props at the bottom
-  
-      
-    }
-    function2(evt) {
-        this.props.doSomethingElse('some Value') //Get the mapped dispatch function in the props at the bottom
     }
 
     displayPopUp(evt) {
@@ -40,8 +30,7 @@ class ComponentTemplate extends Component {
         }
 
       return (<div>
-          <button onClick={this.function1}>Function 1</button>
-          <button onClick={this.function2}>Function 2</button>
+       
           <button onClick={this.displayPopUp} value='popUp'>Display PopUp</button>
           {popUpWindow}
           </div>)
@@ -53,9 +42,7 @@ class ComponentTemplate extends Component {
   }
   
   let mapDispatchToProps = (dispatch) => {
-    return {doSomething: (value) => dispatch({type: ACTION1, data: value}), //the data property is not used in the actual reducer
-            doSomethingElse: (value) => dispatch({type: ACTION2, data: value}),
-            showPopUp: (value) => dispatch({type: POPUP, popUpType: value})  //the data property is not used in the actual reducer
+    return {showPopUp: (value) => dispatch({type: POPUP, popUpType: value})  //the data property is not used in the actual reducer
     }
   }
   

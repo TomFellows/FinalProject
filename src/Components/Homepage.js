@@ -10,6 +10,7 @@ class Homepage extends Component {
     render() {
         return (
             <div className='homepage'>
+            <Link to='/Profile'>My profile</Link>
             <div className = "title">Suggested Connections</div>
             {/* <ConnectionCardLarge src="Images/guy1.jpg"/>
             <br/>

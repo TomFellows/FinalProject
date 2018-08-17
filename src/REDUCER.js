@@ -1,21 +1,15 @@
 import {createStore} from 'redux'
-import {ACTION1, ACTION2, POPUP, SETCURRENTUSER, SETCURRENTCONNECTIONS} from './ACTIONS.js'
+import {POPUP, SETCURRENTUSER, SETCURRENTCONNECTIONS} from './ACTIONS.js'
 
 function reducer (state, action) {
 
-    if (action.type === ACTION1) {
-      return state
-    }
-    if (action.type === ACTION2) {
-      return state
-    }
     if (action.type === POPUP) {
       return {...state, popUp: action.popUpType}
     }
 
     if (action.type === SETCURRENTUSER) {
 
-      return {...state, connected: true, currentUser: action.user}
+      return {...state, connected: action.connected, currentUser: action.user}
     }
 
     if (action.type === SETCURRENTCONNECTIONS) {
