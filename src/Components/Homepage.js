@@ -11,13 +11,18 @@ class Homepage extends Component {
         return (
             <div className='homepage'>
             <div className = "title">Suggested Connections</div>
+            <div className = "spaceOut"><ConnectionCardSmallContainer which="specific" number='4'/></div>
+
             {/* <ConnectionCardLarge src="Images/guy1.jpg"/>
             <br/>
             <ConnectionCardLarge src="Images/guy1.jpg"/>
             <br/>
             <ConnectionCardLarge src="Images/guy1.jpg"/> */}
-           
-            <div className = "spaceOut"><ConnectionCardSmallContainer which="criteria" number='4'/></div>
+
+            <h4>Suggestions by style</h4>
+            <div className = "spaceOut"><ConnectionCardSmallContainer which="style" spec="experimental" number='4'/></div>
+            <h4>Suggestions by location</h4>
+            <div className = "spaceOut"><ConnectionCardSmallContainer which="seeking" spec="gig" number='4'/></div>          
             </div>
         );
     }
