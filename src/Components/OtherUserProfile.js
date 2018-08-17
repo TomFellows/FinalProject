@@ -13,6 +13,7 @@ class OtherUserProfile extends Component {
         this.state= {
             user: {}
          }
+        this.renderList = this.renderList.bind(this)
         this.getUserProfile = this.getUserProfile.bind(this)
     }
 
@@ -29,10 +30,11 @@ class OtherUserProfile extends Component {
     .then(x=> x.text())
     .then(responseBody => {
         let parsedBody=JSON.parse(responseBody);
-      //  console.log(parsedBody)
-    
+     
     if (parsedBody.success === true) {
          this.setState({user: parsedBody.user})
+       
+
     } else {
         console.log("invalid userId")
     }
@@ -42,7 +44,9 @@ class OtherUserProfile extends Component {
         popUp = (event)  => {
             this.props.dispatch({type: "pop up", popUpType: true})
         }
-    
+    renderList(x) {
+        return <div>{x}</div>
+    }
        
     render() {
        
@@ -63,13 +67,19 @@ class OtherUserProfile extends Component {
             {this.state.user.location}
             </div>
             <div className = "profileInfo">
-            {this.state.user.seeking}
+            {this.state.user.seeking?this.state.user.seeking.map(this.renderList):null} 
             </div>
             <div className = "profileInfo">
             {this.state.user.style}
             </div>
             <div className = "profileInfo">
-            {this.state.user.instruments} 
+            {this.state.user.experience}
+            </div>
+            <div className = "profileInfo">
+            {this.state.user.instruments?this.state.user.instruments.map(this.renderList):null} 
+            </div>
+            <div className = "profileInfo">
+            {this.state.user.skillLevel} 
             </div>
             <div className = "progress">
                 <div className="rating" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" ariaValuenow= '30' ariaValuemin='0' ariaValuemax='100' style={{width: '70%'}} ></div>     
@@ -78,7 +88,7 @@ class OtherUserProfile extends Component {
         </div>
             <Image src = "Images/guy1.jpg"/>
             
-                <ConnectionCardSmallContainer number="5"/>
+                <ConnectionCardSmallContainer key="suggested" number="5"/>
                 <div className = "twoButtons">
                 <button className = "connect">Connect</button>
             <button className="connect" onClick={this.popUp} value='PostReview'> Review </button>

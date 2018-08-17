@@ -2,12 +2,10 @@
   position: relative;
   align-content: center;
   margin-top: 70%;
+  display: flex;
 }
 
 
-.col-sm-6{
-    display: flex;
-}
 
 
 .row{

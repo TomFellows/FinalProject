@@ -1,7 +1,8 @@
 .individualMiniProfile{
     background-color: white;
-    padding: 2vw;
+    padding: 10px;
     font-size:10px;
+    max-width: 250px;
     border-radius: 3vw;
 }
 .individualMiniProfile:hover{

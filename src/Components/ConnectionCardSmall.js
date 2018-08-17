@@ -10,6 +10,7 @@ class ConnectionCardSmall extends Component {
         return (
             <div className="individualMiniProfile">
                  {/* <div className = "align"><img src= {this.parsedBody.src} className = "connSmallProfilePic"/></div> */}
+                 <div className = "align"><img src= '/images/geddyLee.jpg' className = "connSmallProfilePic"/></div>                
                 <div className="info2">Name: {this.props.name}</div>
                 <div className="info2">Location: {this.props.location}</div>
                 <div className="info2">Overall Rating: {this.props.overallRating}</div>
