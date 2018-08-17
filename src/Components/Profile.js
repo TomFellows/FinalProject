@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux'
 import '../CSS/Profile.css'
 
 
 
 class Profile extends Component {
+
+
     render() {
+
+
         return <div className = "profile">
             <img src={this.props.src} className="profilePic"/>
                 <br/>
                 <br/>
 
-<div class="accordion" id="accordionExample">
+    <div class="accordion" id="accordionExample">
 
 
      <div className = "info">
@@ -22,7 +27,7 @@ class Profile extends Component {
 
     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
       <div className="card-body">
-       Name: Chris Martin, Age: 35, Username: Coldplayer
+       {this.props.currentUser.firstName}&nbsp;{this.props.currentUser.lastName}
       </div>
     </div>
   
@@ -36,36 +41,23 @@ class Profile extends Component {
 
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
       <div className="card-body">
-        Guitar, Piano, Vocals, Drums
-      </div>
-    </div>
- 
-
-    <div className = "info">
-        <button  className = "btn" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Connections
-        </button>
-     </div> 
-
-    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-      <div className="card-body">
-      nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+       {this.props.currentUser.instruments}
       </div>
     </div>
 
+          </div>
 
-  
-</div>
-
-
-
-
-        
-            
-            </div>
+        </div>
 
       }
   }
 
-
-export default Profile;
+  let mapStateToProps = (state) => {
+    return {currentUser: state.currentUser, popUp: state.popUp}
+  }
+  
+ 
+  
+  let ConnectedProfile = connect(mapStateToProps)(Profile)
+  
+  export default ConnectedProfile;
