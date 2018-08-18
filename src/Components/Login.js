@@ -67,7 +67,10 @@ class Login extends Component {
         if (parsedResponse.user) {
           let currentUser = parsedResponse.user
 
-          this.props.setCurrentUser(JSON.parse(JSON.stringify(currentUser)), true)
+          this.props.setCurrentUser(JSON.parse(JSON.stringify(currentUser)), 'connected')
+      } else {
+
+        this.props.setCurrentUser({}, 'landingPage')
       }
 
       }).catch((err) => {
@@ -77,7 +80,7 @@ class Login extends Component {
             location: 'Unavailable', seeking: 'Unavailable', skillLevel: 'Unavailable', musicalStyles: 'Unavailable'
         }
 
-        this.props.setCurrentUser(currentUser, false)
+        this.props.setCurrentUser(currentUser, 'landingPage')
       })
   
   }
