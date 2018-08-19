@@ -12,14 +12,22 @@ class ConnectionCardSmallContainer extends Component {
             randomizerSuggested: [],
             randomizerCriteria: []
         }
-        this.renderSmallContainer = this.renderSmallContainer.bind(this)
+        this.renderByConnectedUsers = this.renderByConnectedUsers.bind(this)
+        this.renderByStyle = this.renderByStyle.bind(this)
+        this.renderByLocation = this.renderByLocation.bind(this)
+        
         this.getOtherUserConnections = this.getOtherUserConnections.bind(this)
-        this.getSuggestedUsers = this.getSuggestedUsers.bind(this)
+        this.getSuggestedUsersByLocation = this.getSuggestedUsersByLocation.bind(this)
+        this.getSuggestedUsersByStyle = this.getSuggestedUsersByStyle.bind(this)
     }
     componentDidMount() {
-        if (this.props.which === "style" || this.props.which === "seeking") {
-         this.getSuggestedUsers()
+        if (this.props.which === "style") { 
+        this.getSuggestedUsersByStyle()
          console.log("test")
+        }
+        
+        if (this.props.which === "location") {
+        this.getSuggestedUsersByLocation()
         }
         if (this.props.which === "connections") {
         this.getOtherUserConnections()
@@ -27,7 +35,7 @@ class ConnectionCardSmallContainer extends Component {
          }
     }
 
-    getSuggestedUsers() {
+    getSuggestedUsersByStyle() {
         let bod = JSON.stringify({ styles: "experimental" })
         fetch('/getUsersByCriteria', {
             method: 'POST',
@@ -56,9 +64,12 @@ class ConnectionCardSmallContainer extends Component {
                     console.log("invalid userId")
                 }
             })
-         
-        if(this.props.which === "seeking") {
-        let bod = JSON.stringify({ seeking: "gig" })
+        
+        }
+    
+
+    getSuggestedUsersByLocation() {
+        let bod = JSON.stringify({ location: "Montreal" })
         fetch('/getUsersByCriteria', {
             method: 'POST',
             credentials: 'same-origin',
@@ -87,7 +98,7 @@ class ConnectionCardSmallContainer extends Component {
                 }
             })
         }
-    }
+    
     
         
 
@@ -126,9 +137,8 @@ class ConnectionCardSmallContainer extends Component {
             })
     }
 
-    renderSmallContainer() {
+    renderByConnectedUsers() {
     let user;
-       if( this.props.which === "connections"){
         return this.state.randomizerSuggested.map(ran => {
             user = this.state.connectedUsers[ran]
             console.log(user)
@@ -140,8 +150,9 @@ class ConnectionCardSmallContainer extends Component {
                 styles ={user.styles}
             />)})
         }
-              
-        if (this.props.which === "style") {
+    
+    renderByStyle(){
+        let user;
         return this.state.randomizerCriteria.map(ran => {
            user = this.state.usersByStyle[ran]
           console.log(user)  
@@ -156,8 +167,10 @@ class ConnectionCardSmallContainer extends Component {
               
             )})
         }
-        if (this.props.which === "seeking") {
-            return this.state.randomizerCriteria.map(ran => {
+        
+    renderByLocation(){
+        let user;
+        return this.state.randomizerCriteria.map(ran => {
                user = this.state.usersByLocation[ran]
               console.log("hello")  
                
@@ -170,14 +183,17 @@ class ConnectionCardSmallContainer extends Component {
                   
                 )})
             }
-    }   
+    
     
 
     render() {
         return (
           
             <div className="smallContainer">
-                {this.renderSmallContainer()}
+                {this.state.usersByLocation.length >0?this.renderByLocation():null}
+                {this.state.usersByStyle.length >0?this.renderByStyle():null}
+                {this.state.connectedUsers.length >0?this.renderByConnectedUsers():null}
+
             </div>
             
         )
