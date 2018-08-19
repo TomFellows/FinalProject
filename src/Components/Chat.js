@@ -15,11 +15,11 @@ class Chat extends Component {
 
         socket = socketIO("/")
 
-        let roomName = this.props.roomName
+        let roomInfos = this.props.roomInfos
 
         socket.on('connect', function() {
             // Connected, let's sign-up for to receive messages for this room
-            socket.emit('room', roomName);
+            socket.emit('room', roomInfos);
 
             
          })
@@ -44,7 +44,7 @@ class Chat extends Component {
 
     sendMessage = (event) => {
         event.preventDefault()
-        socket.emit('message', {room: this.props.roomName, content: this.state.inputValue.toString()})
+        socket.emit('message', {room: this.props.roomInfos.name, content: this.state.inputValue.toString()})
         this.setState({inputValue: ''})
 
     }
