@@ -7,8 +7,8 @@ class ConnectionCardChat extends Component {
     render() {
 
         return(<div className='connectionCardChat'>
-        <Link to={'/OtherUserProfile/' + this.props.username}>
-        <img src='/Images/Eminem.jpg' className='contactChatPic'/>
+        <Link className = "link" to={'/OtherUserProfile/' + this.props.username}>
+        <img src='/Images/tom.jpg' className='contactChatPic'/>
         {this.props.firstName + ' ' + this.props.lastName}</Link>
         </div>)
     }

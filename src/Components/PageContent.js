@@ -39,7 +39,7 @@ class PageContent extends Component {
         let renderedUsername = routerData.match.params.username
 
         return (<div className = "color">
-            <OtherUserProfile username={renderedUsername}/>
+            <OtherUserProfile key = {renderedUsername} username={renderedUsername}/>
             </div>)
     }
 

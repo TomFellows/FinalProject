@@ -11,10 +11,12 @@ class OtherUserProfile extends Component {
     constructor() {
         super()
         this.state= {
-            user: {}
+            user: {},
+            text: "Connect"
          }
         this.renderList = this.renderList.bind(this)
         this.getUserProfile = this.getUserProfile.bind(this)
+        this.addConnection = this.addConnection.bind(this)
     }
 
     componentDidMount() {
@@ -22,6 +24,8 @@ class OtherUserProfile extends Component {
     }
     getUserProfile() {
         let bod = JSON.stringify({username: this.props.username})
+       
+        
     fetch('/getUserByUsername', {
         method: 'POST',
         credentials: 'same-origin',
@@ -47,7 +51,45 @@ class OtherUserProfile extends Component {
     renderList(x) {
         return <div>{x}</div>
     }
-       
+
+    addConnection(evt) {
+        // this.props.currentUser.connections = this.props.currentUser.connections.concat({connectionUserId: })
+        evt.preventDefault();
+        if (this.state.text === "Connect") {
+            this.setState({ text: "Disconnect" })
+            fetch('/addConnection',
+                {
+                    method: "POST",
+                    credentials: "same-origin",
+                    body: (JSON.stringify({ connectionUserId: this.state.user.userId }))
+                })
+                .then(response => response.text())
+                .then(response => {
+                    let parsedResponse = JSON.parse(response)
+                    console.log(parsedResponse)
+                })
+        }
+        else{
+            this.setState({text: "Connect"})
+            fetch('/removeConnection',
+                {
+                    method: "POST",
+                    credentials: "same-origin",
+                    body: (JSON.stringify({ connectionUserId: this.state.user.userId }))
+                })
+                .then(response => response.text())
+                .then(response => {
+                    let parsedResponse = JSON.parse(response)
+                    console.log(parsedResponse)
+                })
+        }
+
+
+       }
+    
+        
+
+
     render() {
        
 
@@ -92,8 +134,8 @@ class OtherUserProfile extends Component {
                 <ConnectionCardSmallContainer which="connections" number="5"/>
                 </div>
                 <div className = "twoButtons">
-                <button className = "connect">Connect</button>
-            <button className="connect" onClick={this.popUp} value='PostReview'> Review </button>
+                <button className = "connect" onClick = {this.addConnection}>{this.state.text}</button>
+                <button className="connect" onClick={this.popUp} value='PostReview'> Review </button>
             </div>
         </div>
             
@@ -109,7 +151,8 @@ class OtherUserProfile extends Component {
 }
 
 let mapStateToProps = (state) => {
-    return {popUp: state.popUp}
+    return {popUp: state.popUp,
+            currentUser: state.currentUser}
 }
 let ConnectedOtherUserProfile = connect(mapStateToProps)(OtherUserProfile)
 export default ConnectedOtherUserProfile;
