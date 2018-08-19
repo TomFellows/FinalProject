@@ -12,7 +12,7 @@ class Homepage extends Component {
             <div className='homepage'>
             <Link to='/Profile'>My profile</Link>
             <div className = "title">Suggested Connections</div>
-            <div className = "spaceOut"><ConnectionCardSmallContainer which="specific" number='4'/></div>
+            {/* <div className = "spaceOut"><ConnectionCardSmallContainer which="specific" number='4'/></div> */}
 
             {/* <ConnectionCardLarge src="Images/guy1.jpg"/>
             <br/>
@@ -23,7 +23,7 @@ class Homepage extends Component {
             <h4>Suggestions by style</h4>
             <div className = "spaceOut"><ConnectionCardSmallContainer which="style" spec="experimental" number='4'/></div>
             <h4>Suggestions by location</h4>
-            <div className = "spaceOut"><ConnectionCardSmallContainer which="seeking" spec="gig" number='4'/></div>          
+            <div className = "spaceOut"><ConnectionCardSmallContainer which="location" spec="gig" number='4'/></div>          
             </div>
         );
     }
