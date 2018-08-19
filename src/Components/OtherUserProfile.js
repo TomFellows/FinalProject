@@ -39,6 +39,7 @@ class OtherUserProfile extends Component {
     if (parsedBody.success === true) {
          this.setState({user: parsedBody.user})
         console.log(this.state.user.userId)
+        console.log(this.state.user)
 
     } else {
         console.log("invalid userId")
@@ -95,7 +96,7 @@ class OtherUserProfile extends Component {
     render() {
     
         return (<div>
-            {this.props.popUp?<PopUpWindow><PostReview userId={this.props.currentUser.userId} revieweeId="1234"/></PopUpWindow>:null}
+            {this.props.popUp?<PopUpWindow><PostReview userId={this.props.currentUser.userId} revieweeId={this.state.user.userId}/></PopUpWindow>:null}
             <div className="area">
             <h1 className = "name">
                 {`${this.state.user.firstName} ${this.state.user.lastName}`}

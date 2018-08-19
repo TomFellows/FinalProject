@@ -8,9 +8,12 @@ class PostReview extends Component {
         this.state = {
             overallExperienceRating: "",
             skillLevelRating: "",
-            reliabilityRating: ""
+            reliabilityRating: "",
+            comment: ""
         }
         this.handleRadio = this.handleRadio.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleComment = this.handleComment.bind(this)
     }
 
     handleRadio(evt) {
@@ -24,12 +27,44 @@ class PostReview extends Component {
             this.setState({reliabilityRating: evt.target.value})
         }
     }
+    handleComment(evt){
+        this.setState({comment:evt.target.value})
+    }
+    handleSubmit(evt) {
+        evt.preventDefault()
+        let review= {}
+        review.overall=this.state.overallExperienceRating
+        review.skill=this.state.skillLevelRating
+        review.reliability=this.state.reliabilityRating
+        review.comment=this.state.comment
+        let bod = JSON.stringify({userId:this.props.userId, revieweeId: this.props.revieweeId, review})
+        console.log(bod)
+        fetch('/reviewUser', {
+            method: 'POST',
+            credentials: 'same-origin',
+            body: bod
+        })
+            .then(x => x.text())
+            .then(responseBody =>{
+                console.log(responseBody)
+                let parsedBody=JSON.parse(responseBody)
+                console.log(parsedBody)
+                if (parsedBody.success === true){
+                    console.log("review posted")
+                }
+                else {
+                    console.log("something went wrong!!")
+                }
+            })
+    }    
+
+       
 
     render() {
         return (
             <div>
                 <h2 class="reviewTitle">Please rate this user on:</h2>
-                <form>
+                <form onSubmit= {this.handleSubmit}>
                     <p>Overall experience (5 = great!):</p>
                     <label class="radio">
                         <input id="Radio1" name="overallExperience" type="radio" value="1" onChange={this.handleRadio}/><span>1</span>
@@ -77,7 +112,13 @@ class PostReview extends Component {
                     <label class="radio">
                         <input id="Radio5" name="reliability" type="radio" value="5" onChange={this.handleRadio}/><span>5</span>
                     </label>
- 
+                    <label>
+                        Leave a comment
+                    <input type ="text" name="comment" value={this.state.comment} onChange={this.handleComment}/>
+                    </label>
+                    
+                    <input type = "submit" className = "loginBtn"/>
+                {/* <button onSubmit={this.handleSubmit}>Submit Review</button> */}
                 </form>
             </div>
         )
