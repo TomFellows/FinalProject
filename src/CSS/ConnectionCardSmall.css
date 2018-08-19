@@ -138,3 +138,7 @@ background: linear-gradient(to left, #243B55, #141E30); /* W3C, IE 10+/ Edge, Fi
     color:white;
 
 }
+.individualMiniProfile:hover .connBackgroundPic {
+    opacity: 1;
+
+}

@@ -24,11 +24,9 @@ class App extends Component {
       <div>
         <Navbar />
         <GlobalContainer/>
-       </div>
-       </BrowserRouter> 
-      </Provider>
-     
-      
+      </div>
+      </BrowserRouter> 
+      </Provider>   
      );
   }
 }
