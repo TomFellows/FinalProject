@@ -8,11 +8,13 @@ import ConnectionCardSmallContainer from './ConnectionCardSmallContainer';
     
 class Homepage extends Component {
     render() {
-        return (
+
+        return (<div></div>)
+       return (
             <div className='homepage'>
             <Link to='/Profile'>My profile</Link>
             <div className = "title">Suggested Connections</div>
-            <div className = "spaceOut"><ConnectionCardSmallContainer which="specific" number='4'/></div>
+            <div className = "spaceOut"><ConnectionCardSmallContainer which="specific" number='4'/></div> 
 
             {/* <ConnectionCardLarge src="Images/guy1.jpg"/>
             <br/>
@@ -25,7 +27,7 @@ class Homepage extends Component {
             <h4>Suggestions by location</h4>
             <div className = "spaceOut"><ConnectionCardSmallContainer which="seeking" spec="gig" number='4'/></div>          
             </div>
-        );
+       );
     }
 }
 
