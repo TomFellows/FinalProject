@@ -57,9 +57,9 @@
 }
 
 .twoButtons{
-    position: absolute;
-    top: 8.5%;
-    left: 50%;
+    position: relative;
+    top: 30vh;
+    width: 30vw;
     
 }
 .name{
