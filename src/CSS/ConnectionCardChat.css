@@ -9,13 +9,20 @@
     margin: 1em 0 1em 0;
     padding: 0.5em;
     border-radius: 200px;
-    background-color: #009999;
+    background-color: transparent;
+}
+.connectionCardChat:hover {
+ 
+    background-color: #eeeeee;
 }
 
 .contactChatPic {
     box-sizing: border-box;
     margin-right: 1em;
-    
-    height: 4em;
+    height: 3em;
     border-radius: 200px
+}
+
+.link{
+    color: white;
 }
