@@ -195,7 +195,7 @@ class ConnectionCardSmallContainer extends Component {
             <div className="smallContainer">
                 {this.state.usersByLocation.length >0?this.renderByLocation():null}
                 {this.state.usersByStyle.length >0?this.renderByStyle():null}
-                {/* {this.state.connectedUsers.length >0?this.renderByConnectedUsers():null} */}
+                {this.state.connectedUsers.length >0?this.renderByConnectedUsers():null}
 
             </div>
             

@@ -9,7 +9,7 @@ import ConnectionCardSmallContainer from './ConnectionCardSmallContainer';
 
 class OtherUserProfile extends Component {
     constructor() {
-        super()
+        super() 
         this.state= {
             user: {},
             text: "Connect"
@@ -93,7 +93,7 @@ class OtherUserProfile extends Component {
     render() {
     
         return (<div>
-            {this.props.popUp?<PopUpWindow><PostReview/></PopUpWindow>:null}
+            {this.props.popUp?<PopUpWindow><PostReview userId={this.props.currentUser.userId} revieweeId="1234"/></PopUpWindow>:null}
             <div className="area">
             <h1 className = "name">
                 {`${this.state.user.firstName} ${this.state.user.lastName}`}
