@@ -16,7 +16,7 @@ class FindConnections extends Component {
 
                 if (this.props.location.users) {
                 mappedConnections = this.props.location.users.map(item => {
-                    return (<ConnectionCardChat username={item.username} firstName={item.firstName} lastName={item.lastName}/>)
+                    return (<ConnectionCardChat user={item}/>)
                 })
                 }
 

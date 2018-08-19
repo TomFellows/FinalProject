@@ -42,7 +42,7 @@ class ConnectionsSidebar extends Component {
 
         
                 mappedConnections = this.props.currentConnections.map(item => {
-                    return (<ConnectionCardChat username={item.username} firstName={item.firstName} lastName={item.lastName}/>)
+                    return (<ConnectionCardChat user={item}/>)
                 })
 
             
