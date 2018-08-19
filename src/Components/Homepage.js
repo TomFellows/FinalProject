@@ -8,7 +8,8 @@ import ConnectionCardSmallContainer from './ConnectionCardSmallContainer';
     
 class Homepage extends Component {
     render() {
-        return (
+
+       return (
             <div className='homepage'>
             <Link to='/Profile'>My profile</Link>
             <div className = "title">Suggested Connections</div>
@@ -25,7 +26,7 @@ class Homepage extends Component {
             <h4>Suggestions by location</h4>
             <div className = "spaceOut"><ConnectionCardSmallContainer which="location" spec="gig" number='4'/></div>          
             </div>
-        );
+       );
     }
 }
 

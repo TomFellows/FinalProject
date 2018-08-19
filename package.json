@@ -13,7 +13,8 @@
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
-    "redux": "^4.0.0"
+    "redux": "^4.0.0",
+    "socket.io-client": "^2.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -21,6 +22,11 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
+<<<<<<< HEAD
   "proxy": "http://10.65.107.141:5000"
 
 }
+=======
+  "proxy": "http://167.99.187.41:5000/"
+}
+>>>>>>> c26b33341473805969c3694425940ed53b8fa760
