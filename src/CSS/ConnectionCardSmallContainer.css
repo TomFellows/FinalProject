@@ -2,6 +2,9 @@
   position: relative;
   align-content: center;
   /* margin-top: 70%; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 
