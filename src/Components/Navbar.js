@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 import '../CSS/Navbar.css'
 import Login from './Login.js'
 import Filters from './Filters.js'
@@ -24,7 +24,10 @@ class Navbar extends Component {
         if (parsedResponse.user) {
         let currentUser = parsedResponse.user
 
-        this.props.setCurrentUser(JSON.parse(JSON.stringify(currentUser)), true)
+        this.props.setCurrentUser(JSON.parse(JSON.stringify(currentUser)), 'connected')
+      } else {
+
+        this.props.setCurrentUser({}, 'landingPage')
       }
 
       }).catch((err) => {
@@ -34,11 +37,21 @@ class Navbar extends Component {
             location: 'Unavailable', seeking: 'Unavailable', skillLevel: 'Unavailable', musicalStyles: 'Unavailable'
         }
 
-        this.props.setCurrentUser(currentUser, false)
+        this.props.setCurrentUser(currentUser, 'landingPage')
       })
     
   }
 
+
+  logout = (event) => {
+    event.preventDefault()
+    fetch('/logout')
+    .then(() => {
+
+      this.props.setCurrentUser({}, 'landingPage')
+
+    })
+  }
  
 
   
@@ -48,9 +61,10 @@ class Navbar extends Component {
 
     let connectionStatus;
 
-    if (this.props.connected) {
+    if (this.props.connected === 'connected') {
 
-      connectionStatus = (<div>Connected as {this.props.currentUser.firstName}</div>)
+      connectionStatus = (<div>Connected as {this.props.currentUser.firstName}&nbsp;
+        | &nbsp;<Link to='/Profile'>My profile</Link>&nbsp; | &nbsp;<Link to='/logout' onClick={this.logout}>Log out</Link></div>)
     } else {
       connectionStatus = (<Login/>)
     }
@@ -65,7 +79,7 @@ class Navbar extends Component {
             <span>Find connections</span>
             </button>
             {connectionStatus}
-            <Link to='/Profile'>My profile</Link>
+            
 
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -122,4 +136,4 @@ let mapDispatchToProps = (dispatch) => {
 
 let ConnectedNavbar = connect(mapStateToProps,mapDispatchToProps)(Navbar)
 
-export default ConnectedNavbar;
+export default withRouter(ConnectedNavbar);

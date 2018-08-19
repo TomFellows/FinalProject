@@ -19,7 +19,7 @@ class GlobalContainer extends Component {
 
         let content = '';
 
-        if (this.props.connected) {
+        if (this.props.connected === 'connected') {
 
             content = (<div className = "cont">
             <div className = "col1">
@@ -32,8 +32,10 @@ class GlobalContainer extends Component {
             {connected ?   <ConnectionsSidebar/> : null}
             </div>
             </div>)
-        } else {
-            content = (<div>{connected ? <LandingPage/> : null}</div>)
+        }
+
+        if (this.props.connected === 'landingPage') {
+            content = (<div><LandingPage/></div>)
         }
 
 

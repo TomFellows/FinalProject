@@ -69,15 +69,15 @@ class UserProfile extends Component {
             modifiedUser = ({...this.props.currentUser, seeking: this.state.inputValue})
             break;
 
-            case 'musicalStyles' :
-            modifiedUser = ({...this.props.currentUser, lastName: this.state.musicalStyles.split(', ')})
+            case 'styles' :
+            modifiedUser = ({...this.props.currentUser, lastName: this.state.styles.split(', ')})
             break;
 
             case 'skillLevel' :
             modifiedUser = ({...this.props.currentUser, skillLevel: this.state.inputValue})
             break; 
 
-            case 'aboutMe' :
+            case 'experience' :
             modifiedUser = ({...this.props.currentUser, experience: this.state.inputValue})
             break; 
         }
@@ -109,10 +109,8 @@ class UserProfile extends Component {
                 if (parsedResponse.user) {
                     let currentUser = parsedResponse.user
 
-        
-
-                    this.props.setCurrentUser(JSON.parse(JSON.stringify(currentUser)), true)
-                }
+                    this.props.setCurrentUser(JSON.parse(JSON.stringify(currentUser)), 'connected')
+                } 
             })
     }
     
@@ -124,7 +122,16 @@ class UserProfile extends Component {
         //and puts it in the editing property of the state
         this.citiesResults = []
 
-        this.setState({editing: event.target.value, inputValue: this.props.currentUser[event.target.value]})
+        let initialInput
+
+        if (event.target.value === 'styles' || event.target.value === 'instruments' || event.target.value === 'seeking' ) {
+
+            initialInput = this.props.currentUser[event.target.value].join(', ')
+        } else {
+            initialInput = this.props.currentUser[event.target.value]
+        }
+
+        this.setState({editing: event.target.value, inputValue: initialInput})
     }
 
     stopEdit = () => {
@@ -135,14 +142,14 @@ class UserProfile extends Component {
     render () {
 
         let formEditing = {firstName: false, lastName: false, instruments: false, location: false,
-        seeking: false, skillLevel: false, musicalStyles: false, aboutMe: false}
+        seeking: false, skillLevel: false, styles: false, experience: false}
         
         //Checks the editing property of the state and sets the appropriate formEditing property to true
        
         formEditing[this.state.editing] = true
         
         //Define variables that will refer to react elements to be rendered
-        let firstName, lastName, instruments, location, seeking, skillLevel, musicalStyles, aboutMe
+        let firstName, lastName, instruments, location, seeking, skillLevel, styles, experience
 
        
          //Checks if the first name is being edited, if yes, it displays and input field with save buttons.
@@ -227,22 +234,22 @@ class UserProfile extends Component {
             if (this.state.editing === false) {
                 editButton = (<button value='seeking' onClick={this.handleEdit}>Edit</button>)
             }
-            seeking = (<div><div className='profileLabel'>{this.props.currentUser.seeking}</div>{editButton}</div>)
+            seeking = (<div><div className='profileLabel'>{this.props.currentUser.seeking.join(', ')}</div>{editButton}</div>)
         }
 
         //Checks if the musical styles is being edited, if yes, it displays and input field with save buttons.
         //If not being edited, it displays non editable text
-        if (formEditing.musicalStyles === true) {
-            musicalStyles = (<div>
+        if (formEditing.styles === true) {
+            styles = (<div>
                 <input type="text" class="form-control" placeholder="Musical styles" 
                 value={this.state.inputValue} onChange={this.handleChange}/>
-        <button value='musicalStyles' onClick={this.handleSubmit}>Save</button><button onClick={this.stopEdit}>Cancel edit</button> </div>)
+        <button value='styles' onClick={this.handleSubmit}>Save</button><button onClick={this.stopEdit}>Cancel edit</button> </div>)
         } else {
             let editButton = ''
             if (this.state.editing === false) {
-                editButton = (<button value='musicalStyles' onClick={this.handleEdit}>Edit</button>)
+                editButton = (<button value='styles' onClick={this.handleEdit}>Edit</button>)
             }
-            musicalStyles = (<div><div className='profileLabel'>{this.props.currentUser.styles.join(', ')}</div>{editButton}</div>)
+            styles = (<div><div className='profileLabel'>{this.props.currentUser.styles.join(', ')}</div>{editButton}</div>)
         }
 
         //Checks if the skill level is being edited, if yes, it displays and input field with save buttons.
@@ -262,17 +269,17 @@ class UserProfile extends Component {
 
         //Checks if the about me is being edited, if yes, it displays and input field with save buttons.
         //If not being edited, it displays non editable text
-        if (formEditing.aboutMe === true) {
-            aboutMe = (<div>
+        if (formEditing.experience === true) {
+            experience = (<div>
                 <textarea class="form-control" placeholder="About me..." rows='5'
                 value={this.state.inputValue} onChange={this.handleChange}/>
-        <button value='aboutMe' onClick={this.handleSubmit}>Save</button><button onClick={this.stopEdit}>Cancel edit</button> </div>)
+        <button value='experience' onClick={this.handleSubmit}>Save</button><button onClick={this.stopEdit}>Cancel edit</button> </div>)
         } else {
             let editButton = ''
             if (this.state.editing === false) {
-                editButton = (<button value='aboutMe' onClick={this.handleEdit}>Edit</button>)
+                editButton = (<button value='experience' onClick={this.handleEdit}>Edit</button>)
             }
-            aboutMe = (<div><div className='profileLabel'>{this.props.currentUser.experience}</div>{editButton}</div>)
+            experience = (<div><div className='profileLabel'>{this.props.currentUser.experience}</div>{editButton}</div>)
         }
         
         return (<div className='userProfile'>
@@ -288,11 +295,11 @@ class UserProfile extends Component {
                     <div className='fieldLabel'>Location :</div>{location}
               
                     <div className='fieldLabel'>Seeking :</div> {seeking}
-                    <div className='fieldLabel'>Musical styles :</div> {musicalStyles}
+                    <div className='fieldLabel'>Musical styles :</div> {styles}
 
                     <div className='fieldLabel'>Skill level:</div> {skillLevel}
 
-                    <div className='fieldLabel'>About me:</div> {aboutMe}
+                    <div className='fieldLabel'>About me:</div> {experience}
                
                 
                 

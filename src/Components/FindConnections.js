@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import Filters from './Filters.js'
-import ConnectionCardLarge from './ConnectionCardLarge.js'
+import {withRouter} from 'react-router-dom'
+import ConnectionCardChat from './ConnectionCardChat.js'
+
 
 class FindConnections extends Component {
 
@@ -10,9 +11,23 @@ class FindConnections extends Component {
 
     render () {
 
-        return(<div style={{marginTop: '40px'}}>
+        let mappedConnections = []
+
+
+                if (this.props.location.users) {
+                mappedConnections = this.props.location.users.map(item => {
+                    return (<ConnectionCardChat username={item.username} firstName={item.firstName} lastName={item.lastName}/>)
+                })
+                }
 
             
+
+           
+
+        return(<div>
+            {mappedConnections}    
+                
+
             </div>
 
         )
@@ -22,4 +37,4 @@ class FindConnections extends Component {
 
 }
 
-export default FindConnections
+export default withRouter(FindConnections)
