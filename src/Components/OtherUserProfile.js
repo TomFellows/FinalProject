@@ -100,34 +100,7 @@ class OtherUserProfile extends Component {
                 {`${this.state.user.firstName} ${this.state.user.lastName}`}
                
             </h1>
-        {/* <div className = "parent">
-
-            <div className = "profileInfo">
-            {this.state.user.email}
-            </div>
-            <div className = "profileInfo">
-            {this.state.user.location}
-            </div>
-            <div className = "profileInfo">
-            {this.state.user.seeking?this.state.user.seeking.map(this.renderList):null} 
-            </div>
-            <div className = "profileInfo">
-            {this.state.user.style}
-            </div>
-            <div className = "profileInfo">
-            {this.state.user.experience}
-            </div>
-            <div className = "profileInfo">
-            {this.state.user.instruments?this.state.user.instruments.map(this.renderList):null} 
-            </div>
-            <div className = "profileInfo">
-            {this.state.user.skillLevel} 
-            </div>
-            <div className = "progress">
-                <div className="rating" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" ariaValuenow= '30' ariaValuemin='0' ariaValuemax='100' style={{width: '70%'}} ></div>     
-            </div>
-            
-        </div> */}
+        
             <Image src = "Images/guy1.jpg"/>
                 <div>
                 <h4>Connections</h4>
