@@ -103,17 +103,19 @@ class ConnectionCardSmallContainer extends Component {
         
 
     getOtherUserConnections() {
-        // let bod = JSON.stringify({this.props.user})
-        let bod = JSON.stringify({ userId: 12345 })
-        fetch('/getAllConnections', {
+        let bod = JSON.stringify({userId: "gWfAnyUoADT0hokf23dx5Hx1eMh2"})
+        
+        fetch('/getConnectionsByUserId', {
+            method: 'POST',
             credentials: 'same-origin',
+            body: bod
             
         })
             .then(x => x.text())
             .then(responseBody => {
                 let parsedBody = JSON.parse(responseBody)
-                // console.log(bod)
-                // console.log(parsedBody);
+                console.log(bod)
+                console.log(parsedBody);
                 if (parsedBody.success === true) {
                     //this.setState({connectedUsers: parsedBody.connectedUsers[0]
                     let maxNumber = parseInt(this.props.number)
@@ -129,10 +131,11 @@ class ConnectionCardSmallContainer extends Component {
                         }
                     }
                     this.setState({ connectedUsers: parsedBody.connectedUsers, randomizerSuggested: ranArr })
-
+                    console.log(this.state.connectedUsers)
 
                 } else {
                     console.log("invalid userId")
+                    
                 }
             })
     }
@@ -192,7 +195,7 @@ class ConnectionCardSmallContainer extends Component {
             <div className="smallContainer">
                 {this.state.usersByLocation.length >0?this.renderByLocation():null}
                 {this.state.usersByStyle.length >0?this.renderByStyle():null}
-                {this.state.connectedUsers.length >0?this.renderByConnectedUsers():null}
+                {/* {this.state.connectedUsers.length >0?this.renderByConnectedUsers():null} */}
 
             </div>
             

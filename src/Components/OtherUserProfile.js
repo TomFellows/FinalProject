@@ -19,7 +19,7 @@ class OtherUserProfile extends Component {
         this.addConnection = this.addConnection.bind(this)
         this.remConnection = this.remConnection.bind(this)
     }
-
+    
     componentDidMount() {
         this.getUserProfile();
     }
@@ -38,7 +38,7 @@ class OtherUserProfile extends Component {
      
     if (parsedBody.success === true) {
          this.setState({user: parsedBody.user})
-       
+        console.log(this.state.user.userId)
 
     } else {
         console.log("invalid userId")
@@ -93,8 +93,7 @@ class OtherUserProfile extends Component {
 
 
     render() {
-       
-
+    
         return (<div>
             {this.props.popUp?<PopUpWindow><PostReview/></PopUpWindow>:null}
             <div className="area">
@@ -106,7 +105,9 @@ class OtherUserProfile extends Component {
             <Image src = "Images/guy1.jpg"/>
                 <div>
                 <h4>Connections</h4>
-                <ConnectionCardSmallContainer which="connections" number="5"/>
+                
+              <ConnectionCardSmallContainer which="connections" userId={this.state.user.userId} number="5"/>
+              
                 </div>
                 <div className = "twoButtons">
                 <button className = "connect" onClick = {this.addConnection}>Connect</button>
