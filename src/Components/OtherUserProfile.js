@@ -17,6 +17,7 @@ class OtherUserProfile extends Component {
         this.renderList = this.renderList.bind(this)
         this.getUserProfile = this.getUserProfile.bind(this)
         this.addConnection = this.addConnection.bind(this)
+        this.remConnection = this.remConnection.bind(this)
     }
 
     componentDidMount() {
@@ -53,9 +54,10 @@ class OtherUserProfile extends Component {
     }
 
     addConnection(evt) {
-        // this.props.currentUser.connections = this.props.currentUser.connections.concat({connectionUserId: })
+   
         evt.preventDefault();
-        if (this.state.text === "Connect") {
+        console.log(this.props.currentUser)
+        
             this.setState({ text: "Disconnect" })
             fetch('/addConnection',
                 {
@@ -68,9 +70,9 @@ class OtherUserProfile extends Component {
                     let parsedResponse = JSON.parse(response)
                     console.log(parsedResponse)
                 })
-        }
-        else{
-            this.setState({text: "Connect"})
+            }
+       remConnection(){
+        
             fetch('/removeConnection',
                 {
                     method: "POST",
@@ -82,9 +84,9 @@ class OtherUserProfile extends Component {
                     let parsedResponse = JSON.parse(response)
                     console.log(parsedResponse)
                 })
-        }
+        
 
-
+                console.log(this.props.currentUser)
        }
     
         
@@ -107,7 +109,8 @@ class OtherUserProfile extends Component {
                 <ConnectionCardSmallContainer which="connections" number="5"/>
                 </div>
                 <div className = "twoButtons">
-                <button className = "connect" onClick = {this.addConnection}>{this.state.text}</button>
+                <button className = "connect" onClick = {this.addConnection}>Connect</button>
+                <button className = "connect" onClick = {this.remConnection}>Disconnect</button>
                 <button className="connect" onClick={this.popUp} value='PostReview'> Review </button>
             </div>
         </div>
