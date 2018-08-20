@@ -23,7 +23,7 @@ class ConnectionCardSmall extends Component {
                   {console.log("This is the username",this.props.connections)}
                 <Link className = "link" to={'/OtherUserProfile/' + this.props.username}>
                 <div className="info2">{this.props.name}</div>
-       </Link>
+                </Link>
 
                 
                 <div className="info3">Styles: {styles}</div>
