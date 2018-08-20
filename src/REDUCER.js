@@ -24,7 +24,7 @@ function reducer (state, action) {
   //Not sure if we are gonna use a currentUser state since we are using google login
   const store = createStore(reducer, 
     {connected: false, currentUser: { userId: '', email: '', firstName: '', lastName: '', instruments: [],
-                    location: '', seeking: '', skillLevel: '', styles: [], review: [], connections: []}, 
+                    location: '', seeking: '', skillLevel: '', styles: [], review: [], connections: [], notifications: []}, 
     currentConnections: [], popUp: false},
 
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())

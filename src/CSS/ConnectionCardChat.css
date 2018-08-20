@@ -31,3 +31,13 @@
 .connectionCardChat:hover .link {
     color: black;
 }
+
+.nbMessages {
+    padding: 0.5em;
+    position: relative;
+    bottom: 1em;
+    background-color: red;
+    font-weight: bold;
+    color: white;
+    border: 1px solid white;
+}
