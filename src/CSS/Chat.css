@@ -1,13 +1,17 @@
 
 .chat {
-    padding: 1em;
+    padding: 0;
     border: 1px solid white;
+    
+    
 }
 
 .list {
-    list-style-type: none;
-    list-style-position: outside;
-    margin: 0
+    margin: 0;
+    padding: 0.5em;
+    max-height: 400px;
+    min-height: 100px;
+    overflow: auto;
 }
 
 .listItem {
@@ -16,6 +20,18 @@
     padding: 0 0.5em 0 0.5em;
     width: 100%;
     
+}
+
+form {
+    margin-top: 0.5em;
+}
+
+form input.inputText {
+    width: 80%;
+}
+
+form input.inputSubmit {
+    width: 20%;
 }
 
 .listItem div {

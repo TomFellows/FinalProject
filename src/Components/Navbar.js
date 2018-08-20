@@ -5,6 +5,7 @@ import Login from './Login.js'
 import Filters from './Filters.js'
 import {connect} from 'react-redux'
 import { SETCURRENTUSER } from '../ACTIONS';
+import NotificationsList from './NotificationsList';
 
 
 
@@ -49,7 +50,7 @@ class Navbar extends Component {
     .then(() => {
 
       this.props.setCurrentUser({}, 'landingPage')
-
+      this.props.history.push('/');
     })
   }
  
@@ -61,10 +62,20 @@ class Navbar extends Component {
 
     let connectionStatus;
 
+    let notifications = (<div></div>)
+
+
+
     if (this.props.connected === 'connected') {
 
+    // notifications = <NotificationsList/>
+
+
       connectionStatus = (<div>Connected as {this.props.currentUser.firstName}&nbsp;
-        | &nbsp;<Link to='/Profile'>My profile</Link>&nbsp; | &nbsp;<Link to='/logout' onClick={this.logout}>Log out</Link></div>)
+        | &nbsp;<Link to='/Profile'>My profile</Link>&nbsp; 
+        | &nbsp;<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Notifications" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        Notifications</button>&nbsp;
+        | &nbsp;<Link to='/logout' onClick={this.logout}>Log out</Link></div>)
     } else {
       connectionStatus = (<Login/>)
     }
@@ -117,6 +128,9 @@ class Navbar extends Component {
 
           <div class="collapse navbar-collapse" id='Filters'>
             <Filters/>
+          </div>
+          <div class="collapse navbar-collapse" id='Notifications'>
+           
           </div>
         </nav>
         

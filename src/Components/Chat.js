@@ -12,35 +12,57 @@ class Chat extends Component {
     constructor () {
         super ()
 
+        this.chatBox 
         this.state = {inputValue: '', messages: []}
     }
 
     componentDidMount = () => {
 
-        socket = socketIO("/")
 
-        let roomInfos = this.props.roomInfos
+        this.chatBox = document.getElementById('chatBox')
 
-        socket.on('connect', function() {
-            // Connected, let's sign-up for to receive messages for this room
-            socket.emit('room', roomInfos);
-
-            
-         })
-
-         socket.on('message', this.getMessage);
-         socket.on('serverMessage', this.getServerMessage);
-            
+        this.getMessage = this.getMessage.bind(this);
+        this.getServerMessage = this.getServerMessage.bind(this)
+        this.getPreviousMessages = this.getPreviousMessages.bind(this)
        
+        socket = this.props.socket
+
+        socket.on('message', this.getMessage);
+        socket.on('serverMessage', this.getServerMessage);
+        socket.on('previousMessages', this.getPreviousMessages)
+
+        socket.emit('enterChat', {roomName: this.props.roomInfos.name})
+
+        
     }
 
+
+    getPreviousMessages = (msg) => {
+        if (msg.roomName === this.props.roomInfos.name) {
+            this.setState({messages: msg.messages})
+            }
+        
+        this.updateScroll()
+    }
     
     getMessage = (msg) => {
+        if (msg.roomName === this.props.roomInfos.name) {
         this.setState({messages: this.state.messages.concat({content: msg.content, userId: msg.userId})})
+        }
+
+        this.updateScroll()
     }
 
     getServerMessage = (msg) => {
+        if (msg.roomName === this.props.roomInfos.name) {
         this.setState({messages: this.state.messages.concat({content: msg.content, userId: msg.userId})})
+        }
+
+        this.updateScroll()
+    }
+
+    updateScroll = () => {
+        this.chatBox.scrollTop = this.chatBox.scrollHeight
     }
 
 
@@ -50,7 +72,7 @@ class Chat extends Component {
 
     sendMessage = (event) => {
         event.preventDefault()
-        socket.emit('message', {room: this.props.roomInfos.name, content: this.state.inputValue.toString()})
+        socket.emit('message', {roomName: this.props.roomInfos.name, content: this.state.inputValue})
         this.setState({inputValue: ''})
 
     }
@@ -87,10 +109,10 @@ class Chat extends Component {
 
         return(<div className='chat'>
 
-            <div className='list'>{mappedMessages}</div>
+            <div className='list' id='chatBox'>{mappedMessages}</div>
             <form onSubmit={this.sendMessage}>
-                <input type='text' value={this.state.inputValue} onChange={this.handleChange}/>
-                <input type='submit'/>
+                <input className='inputText' type='text' value={this.state.inputValue} onChange={this.handleChange}/>
+                <input className='inputSubmit' value='=>' type='submit'/>
             </form>     
         </div>)
     }

@@ -31,21 +31,14 @@
 
 .connectionCardChat:hover .link {
     color: black;
-    text-decoration: none;
 }
 
-.chat{
-    padding: 0em;
-    margin-left: 1em;
-    background-color: transparent;
-    color: white;
-    border: none;
-}
-.connectionCardChat:hover .chat{
-    color: black;
+.nbMessages {
+    padding: 0.5em;
+    position: relative;
+    bottom: 1em;
+    background-color: red;
     font-weight: bold;
-}
-
-.chat:focus{
-    outline: none;
+    color: white;
+    border: 1px solid white;
 }
