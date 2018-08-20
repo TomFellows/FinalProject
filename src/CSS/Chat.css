@@ -13,7 +13,7 @@
 .listItem {
     display: block;
     margin: 0;
-    padding: 0.5em;
+    padding: 0 0.5em 0 0.5em;
     width: 100%;
     
 }
@@ -22,7 +22,7 @@
    
     padding: 0.5em;
     width: auto;
-    max-width: 100%
+    
 }
 
 .right {
@@ -39,6 +39,8 @@
 .chatLine {
     border: 1px solid white;
     border-radius: 20px;
+    display: inline-block;
+    max-width: 80%
 
 }
 
