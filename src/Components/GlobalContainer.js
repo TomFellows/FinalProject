@@ -26,7 +26,9 @@ class GlobalContainer extends Component {
             {connected ? <ProfileSidebar /> : null}
             </div>
             <div className = "col2">
+           
             {connected ?  <PageContent/> : null}
+            
             </div>
             <div className = "col3">
             {connected ?   <ConnectionsSidebar/> : null}

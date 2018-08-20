@@ -174,12 +174,15 @@ class OtherUserProfile extends Component {
         return (<div>
             {this.props.popUp ? <PopUpWindow><PostReview userId={this.props.currentUser.userId} revieweeId={this.state.user.userId} popUp={this.props.popUp}/></PopUpWindow> : null}
             <div className="area">
-                <div className="flex2">
-                    <h1 className="name">
-                        {`${this.state.user.firstName} ${this.state.user.lastName}`}
-                    </h1>
-                    <img src="/Images/shaun.jpg" className="connProfilePic2" />
-
+                <div className = "flex2">
+                <h1 className="name">
+                    {`${this.state.user.firstName} ${this.state.user.lastName}`}
+                </h1>
+                <h10 className = "name2">
+                    {this.state.user.experience}
+                </h10>
+                <img src="/Images/shaun.jpg" className="connProfilePic2" />
+                
                 </div>
                 <div className="flex">
                     <div className="accordion2" id="accordionExample">
@@ -256,21 +259,9 @@ class OtherUserProfile extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="card">
-                            <div className="card-header" id="headingSixteen">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSixteen" aria-expanded="false" aria-controls="collapseSixteen">
-                                        Experience
-                                </button>
-                                </h5>
-                            </div>
-                            <div id="collapseSixteen" class="collapse" aria-labelledby="headingSixteen" data-parent="#accordionExample">
-                                <div class="card-body">
-                                    {this.state.user.experience}
-                                </div>
-                            </div>
-                        </div>
                     </div>
+                   
+               
 
 
 
@@ -288,18 +279,18 @@ class OtherUserProfile extends Component {
 
 
 
-                <Image src="Images/guy1.jpg" />
-                <div>
-                    <h4>Connections</h4>
+             
+                <div className="connections">
+                    <h1 className = "connetionHeader">Connections</h1>
                     <ConnectionCardSmallContainer which="connections" userId={this.state.user.userId} number="5" />
 
                 </div>
-
+                </div>
             </div>
 
 
 
-        </div>
+    
 
 
 

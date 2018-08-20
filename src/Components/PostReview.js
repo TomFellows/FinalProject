@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import '../CSS/PopUpWindow.css'
 import '../CSS/PostReview.css'
+import { connect } from 'react-redux';
+import { POPUP } from '../ACTIONS';
 
 class PostReview extends Component {
     constructor() {
@@ -56,7 +58,7 @@ class PostReview extends Component {
                     console.log("something went wrong!!")
                 }
             })
-
+            this.props.dispatch({ type: "pop up", popUpType: false })
     }    
 
        
@@ -129,4 +131,11 @@ class PostReview extends Component {
     }
 }
 
-export default PostReview;
+let mapDispatchToProps = (dispatch) => {
+    return {showPopUp: (value) => dispatch({type: POPUP, popUpType: value})  //the data property is not used in the actual reducer
+    }
+  }
+
+  let ConnectedPostReview= connect(mapDispatchToProps)(PostReview)
+
+export default ConnectedPostReview;
