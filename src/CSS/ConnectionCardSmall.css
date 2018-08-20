@@ -6,7 +6,7 @@
     width: 40%;
     margin-bottom: 5%;
     border-radius: 2vw;
-    transition: all 1s;
+    transition: all 0.6s;
 }
 
 
@@ -43,13 +43,13 @@
     font-size: 14pt;
     font-weight: bold;
     padding: 3%;
-    transition: all 1s;
+    transition: all 0.6s;
 }
 .info3{
     color: #555555;
     padding:0vw;
     font-size: 10pt;
-    transition: all 1s;
+    transition: all 0.6s;
 }
 
 .infoCont{
@@ -61,7 +61,7 @@
  margin: 5%;
  color: #eeeeee;
  font: bolder;
- transition: all 1s;
+ transition: all 0.6s;
  font-size:10pt;
  padding-left: 10%;
  padding-right: 10%;
