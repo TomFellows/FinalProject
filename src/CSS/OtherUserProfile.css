@@ -5,7 +5,7 @@
     left: 15vw;
     width: 60vw;
     max-width:60vw;
-    height: auto;
+    height: 300vh;
 }
 
 .parent{
@@ -41,16 +41,26 @@
 
 .connect{
    position: relative;
-   margin-left: 70%;
-    margin-top:5%;
-   background-color: #00aa00;
+    margin-bottom: 5%;
+     margin-left: 8%;
+
+    background: #141E30;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
    color: white;
    font-weight: bold;
-   font-size: 20pt;
-   
-   border-radius: 1vw;
-   
+   font-size: 14pt;   
 }
+
+.connect2{
+    position: relative;
+     margin-top: 14%;
+      margin-left: 93%;
+    background-color: #ffcc00;
+    color:black;
+    font-weight: bold;
+    font-size: 14pt;   
+ }
 
 .connect:hover{
    color: black;
@@ -58,15 +68,15 @@
 
 .twoButtons{
     position: relative;
-    top: 30vh;
-    width: 30vw;
+   
     
 }
 .name{
     position: absolute;
-    margin-top: 14%;
-    margin-left: 30%;
-    color: #0066cc
+    margin-top: 20%;
+    margin-left: 40%;
+    /* color: #0066cc */
+    color: #141E30
 }
 
 .rating{ 
@@ -100,4 +110,79 @@
    
     top: 90vh;
     left: 15vw;
+}
+
+.connections{
+    position: absolute;
+    margin-top: 80%;
+}
+
+.connProfilePic2{
+ 
+    width: 26.7%;
+    margin-left: 10%;
+    margin-top: 2em;
+}
+
+.individualMiniProfile2{
+    background-color: white;
+    margin-left: 10%;
+    margin-right: 3%;
+    margin-top: 10%;
+    font-size:10px;
+    width: 80%;
+    margin-bottom: 5%;
+    /* border-radius: 2vw; */
+}
+
+.infoCont2{
+    text-align: center;
+}
+
+.card{
+    border-radius: 0rem;
+    background: #141E30;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+}
+
+.accordion2{
+    margin-left: 10%;
+    width: 16vw;
+  
+}
+
+.btn-link{
+ color: white;
+}
+
+.card-header{
+    /* text-align: center; */
+    padding: 0.25rem 0.5rem;
+    background: #141E30;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+    /* background-color: white; */
+}
+.card-body{
+    background-color: white;
+    color: black;
+    padding: none;
+    padding-left:3%;
+    padding-right:3%;
+    text-align: center;
+}
+
+.flex{
+    display: flex;
+}
+
+.revTitle{
+    position: absolute;
+    margin-left: 32vw;
+    margin-top: 12vh;
+    font-size: 25pt;
+    color: #141E30
 }

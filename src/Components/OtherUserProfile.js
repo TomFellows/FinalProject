@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import '../CSS/OtherUserProfile.css'
+import '../CSS/ConnectionCardSmall.css'
 import Image from './Image'
 import PopUpWindow from './PopUpWindow.js'
+import { Link } from 'react-router-dom'
 import PostReview from './PostReview.js'
 import '../CSS/PopUpWindow.css'
 import {connect} from 'react-redux'
@@ -38,8 +40,8 @@ class OtherUserProfile extends Component {
      
     if (parsedBody.success === true) {
          this.setState({user: parsedBody.user})
-        console.log(this.state.user.userId)
-        console.log(this.state.user)
+  
+  
 
     } else {
         console.log("invalid userId")
@@ -57,8 +59,9 @@ class OtherUserProfile extends Component {
     addConnection(evt) {
    
         evt.preventDefault();
-        console.log(this.props.currentUser)
-        
+        console.log("this is the current username", this.props.username)
+        console.log("This is state.user", this.state.user)
+
             this.setState({ text: "Disconnect" })
             fetch('/addConnection',
                 {
@@ -87,36 +90,168 @@ class OtherUserProfile extends Component {
                 })
         
 
-                console.log(this.props.currentUser)
+                
        }
     
         
 
 
     render() {
-    
-        return (<div>
-            {this.props.popUp?<PopUpWindow><PostReview userId={this.props.currentUser.userId} revieweeId={this.state.user.userId}/></PopUpWindow>:null}
-            <div className="area">
-            <h1 className = "name">
-                {`${this.state.user.firstName} ${this.state.user.lastName}`}
-               
-            </h1>
+        let styles = undefined
+       if(this.state.user.styles !== undefined){
+        let styleStr = this.state.user.styles.join(", ")
         
-            <Image src = "Images/guy1.jpg"/>
-                <div>
-                <h4>Connections</h4>
+        let styleArr = styleStr.split("")
+        styles = styleArr[0].toUpperCase() + styleArr.splice(1).join("")
+       }
+
+        let instruments = undefined
+       if(this.state.user.instruments !== undefined){
+        let instStr = this.state.user.instruments.join(", ")
+        
+        let instArr = instStr.split("")
+        instruments = instArr[0].toUpperCase() + instArr.splice(1).join("")
+       }
+
+       let seeking = undefined
+       if(this.state.user.seeking !== undefined){
+        let seekStr = this.state.user.seeking.join(", ")
+        
+        let seekArr = seekStr.split("")
+        seeking = seekArr[0].toUpperCase() + seekArr.splice(1).join("")
+       }
+
+       let skillLevel = undefined
+       if(this.state.user.skillLevel !== undefined){
+        let skillStr = this.state.user.skillLevel
+        skillLevel = skillStr[0].toUpperCase() + skillStr.slice(1)
+       }
+
+        return (<div>
+            {this.props.popUp ? <PopUpWindow><PostReview userId={this.props.currentUser.userId} revieweeId={this.state.user.userId} /></PopUpWindow> : null}
+            <div className="area">
+                <div className = "flex2">
+                <h1 className="name">
+                    {`${this.state.user.firstName} ${this.state.user.lastName}`}
+                </h1>
+                <img src="/Images/shaun.jpg" className="connProfilePic2" />
                 
-              <ConnectionCardSmallContainer which="connections" userId={this.state.user.userId} number="5"/>
-              
                 </div>
-                <div className = "twoButtons">
-                <button className = "connect" onClick = {this.addConnection}>Connect</button>
-                <button className = "connect" onClick = {this.remConnection}>Disconnect</button>
-                <button className="connect" onClick={this.popUp} value='PostReview'> Review </button>
+                <div className = "flex">
+                <div className="accordion2" id="accordionExample">
+                   
+                    <div className="card">
+                        <div className="card-header" id="headingEleven">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
+                                Location
+                                 </button>
+                            </h5>
+                        </div>
+                        <div id="collapseEleven" class="collapse" aria-labelledby="headingEleven" data-parent="#accordionExample">
+                            <div class="card-body">
+                                {this.state.user.location}
+                            </div>
+                        </div>
+                    </div>
+                    <div className="card">
+                        <div className="card-header" id="headingTwelve">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwelve" aria-expanded="false" aria-controls="collapseTwelve">
+                                Styles
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseTwelve" class="collapse" aria-labelledby="headingTwelve" data-parent="#accordionExample">
+                            <div class="card-body">
+                            {styles}
+                             </div>
+                        </div>
+                    </div>
+
+                             <div className="card">
+                        <div className="card-header" id="headingThirteen">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseThirteen" aria-expanded="true" aria-controls="collapseThirteen">
+                                Instruments
+                                </button>
+                            </h5>
+                        </div>
+
+                        <div id="collapseThirteen" class="collapse" aria-labelledby="headingThirteen" data-parent="#accordionExample">
+                            <div class="card-body">
+                            {instruments}
+                            </div>
+                        </div>
+                    </div>
+                    <div className="card">
+                        <div className="card-header" id="headingFourteen">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFourteen" aria-expanded="false" aria-controls="collapseFourteen">
+                                Seeking
+                                 </button>
+                            </h5>
+                        </div>
+                        <div id="collapseFourteen" class="collapse" aria-labelledby="headingFourteen" data-parent="#accordionExample">
+                            <div class="card-body">
+                                {seeking}
+                            </div>
+                        </div>
+                    </div>
+                    <div className="card">
+                        <div className="card-header" id="headingFifteen">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFifteen" aria-expanded="false" aria-controls="collapseTwelve">
+                                Skill Level
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseFifteen" class="collapse" aria-labelledby="headingFifteen" data-parent="#accordionExample">
+                            <div class="card-body">
+                            {skillLevel}
+                             </div>
+                        </div>
+                    </div>
+                    <div className="card">
+                        <div className="card-header" id="headingSixteen">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSixteen" aria-expanded="false" aria-controls="collapseSixteen">
+                                Experience
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseSixteen" class="collapse" aria-labelledby="headingSixteen" data-parent="#accordionExample">
+                            <div class="card-body">
+                            {this.state.user.experience}
+                             </div>
+                        </div>
+                    </div>
+                </div>
+
+
+           
+                <div className="twoButtons">
+                            <button className="connect" onClick={this.addConnection}>Connect</button>
+                            <button className="connect" onClick={this.remConnection}>Disconnect</button>
+                            <button className="connect2" onClick={this.popUp} value='PostReview'> Review </button>
+                </div>
+
+                <div className ="revTitle">Review</div>
+                </div>
+
+
+                
+
+
+                <Image src="Images/guy1.jpg" />
+                <div className="connections">
+                    <h4>Connections</h4>
+                    <ConnectionCardSmallContainer which="connections" userId={this.state.user.userId} number="5" />
+
+                </div>
+                
             </div>
-        </div>
-            
+
             
         
         </div>
@@ -134,3 +269,32 @@ let mapStateToProps = (state) => {
 }
 let ConnectedOtherUserProfile = connect(mapStateToProps)(OtherUserProfile)
 export default ConnectedOtherUserProfile;
+
+
+
+
+
+
+
+     {/* <div className="individualMiniProfile2">
+                    
+                    <img src="/Images/shaun.jpg" className="connProfilePic2" />
+                    <div className="infoCont2">
+                        <div className="info2">{this.state.user.firstName} {this.state.user.lastName}</div>
+                        <div className="info3">Location: {this.state.user.location}</div>
+                        <div className="info3">Styles: {styles}</div>
+                        <div className="info3">Instruments: {instruments}</div>
+                        <div className="info3">Seeking: {seeking}</div>
+                        <div className="info3">Skill Level: {this.state.user.skillLevel}</div>
+                        <div className="info3">Experience: {this.state.user.experience}</div>
+                        <button className="connectButton" onClick={this.addConnection}>Connect</button>
+                    </div>
+        </div> */}
+
+    
+
+
+
+
+
+
