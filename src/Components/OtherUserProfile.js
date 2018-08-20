@@ -4,123 +4,141 @@ import Image from './Image'
 import PopUpWindow from './PopUpWindow.js'
 import PostReview from './PostReview.js'
 import '../CSS/PopUpWindow.css'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import ConnectionCardSmallContainer from './ConnectionCardSmallContainer';
 
 class OtherUserProfile extends Component {
     constructor() {
-        super() 
-        this.state= {
+        super()
+        this.state = {
             user: {},
             text: "Connect"
-         }
+        }
         this.renderList = this.renderList.bind(this)
         this.getUserProfile = this.getUserProfile.bind(this)
         this.addConnection = this.addConnection.bind(this)
         this.remConnection = this.remConnection.bind(this)
+        this.renderReviews = this.renderReviews.bind(this)
+       
+
+
     }
-    
+
     componentDidMount() {
         this.getUserProfile();
     }
     getUserProfile() {
-        let bod = JSON.stringify({username: this.props.username})
-       
-        
-    fetch('/getUserByUsername', {
-        method: 'POST',
-        credentials: 'same-origin',
-        body: bod
-    })
-    .then(x=> x.text())
-    .then(responseBody => {
-        let parsedBody=JSON.parse(responseBody);
-     
-    if (parsedBody.success === true) {
-         this.setState({user: parsedBody.user})
-        console.log(this.state.user.userId)
-        console.log(this.state.user)
+        let bod = JSON.stringify({ username: this.props.username })
 
-    } else {
-        console.log("invalid userId")
-    }
-    })
+
+        fetch('/getUserByUsername', {
+            method: 'POST',
+            credentials: 'same-origin',
+            body: bod
+        })
+            .then(x => x.text())
+            .then(responseBody => {
+                let parsedBody = JSON.parse(responseBody);
+
+                if (parsedBody.success === true) {
+                    this.setState({ user: parsedBody.user })
+                    console.log(this.state.user.userId)
+                    console.log(this.state.user)
+                    
+                } else {
+                    console.log("invalid userId")
+                }
+            })
     }
 
-        popUp = (event)  => {
-            this.props.dispatch({type: "pop up", popUpType: true})
-        }
+    popUp = (event) => {
+        this.props.dispatch({ type: "pop up", popUpType: true })
+    }
+
     renderList(x) {
         return <div>{x}</div>
     }
 
+    renderReviews() {
+    let reviews;
+        if(this.state.user.reviews) {
+        reviews=this.state.user.reviews.map(rev => {
+           return [rev.review, rev.reviewerId]
+            })
+            console.log(this.state.user.reviews)
+        } console.log(reviews)
+        console.log("nothing yet")
+        
+            
+    }
+    
     addConnection(evt) {
-   
+
         evt.preventDefault();
         console.log(this.props.currentUser)
-        
-            this.setState({ text: "Disconnect" })
-            fetch('/addConnection',
-                {
-                    method: "POST",
-                    credentials: "same-origin",
-                    body: (JSON.stringify({ connectionUserId: this.state.user.userId }))
-                })
-                .then(response => response.text())
-                .then(response => {
-                    let parsedResponse = JSON.parse(response)
-                    console.log(parsedResponse)
-                })
-            }
-       remConnection(){
-        
-            fetch('/removeConnection',
-                {
-                    method: "POST",
-                    credentials: "same-origin",
-                    body: (JSON.stringify({ connectionUserId: this.state.user.userId }))
-                })
-                .then(response => response.text())
-                .then(response => {
-                    let parsedResponse = JSON.parse(response)
-                    console.log(parsedResponse)
-                })
-        
 
-                console.log(this.props.currentUser)
-       }
-    
-        
+        this.setState({ text: "Disconnect" })
+        fetch('/addConnection',
+            {
+                method: "POST",
+                credentials: "same-origin",
+                body: (JSON.stringify({ connectionUserId: this.state.user.userId }))
+            })
+            .then(response => response.text())
+            .then(response => {
+                let parsedResponse = JSON.parse(response)
+                console.log(parsedResponse)
+            })
+    }
+    remConnection() {
+
+        fetch('/removeConnection',
+            {
+                method: "POST",
+                credentials: "same-origin",
+                body: (JSON.stringify({ connectionUserId: this.state.user.userId }))
+            })
+            .then(response => response.text())
+            .then(response => {
+                let parsedResponse = JSON.parse(response)
+                console.log(parsedResponse)
+            })
+
+
+        console.log(this.props.currentUser)
+    }
+
 
 
     render() {
-    
+        
+
         return (<div>
-            {this.props.popUp?<PopUpWindow><PostReview userId={this.props.currentUser.userId} revieweeId={this.state.user.userId}/></PopUpWindow>:null}
-            <div className="area">
-            <h1 className = "name">
-                {`${this.state.user.firstName} ${this.state.user.lastName}`}
-               
-            </h1>
+            {this.props.popUp ? <PopUpWindow><PostReview userId={this.props.currentUser.userId} revieweeId={this.state.user.userId} /></PopUpWindow> : null}
+            {/* <div className="area"> */}
         
-            <Image src = "Images/guy1.jpg"/>
-                <div>
-                <h4>Connections</h4>
+                    <h1 className="name">
+                        {`${this.state.user.firstName} ${this.state.user.lastName}`}
+                    </h1>
                 
-              <ConnectionCardSmallContainer which="connections" userId={this.state.user.userId} number="5"/>
-              
+                <Image src="Images/guy1.jpg" />
+                <div className="smallContainer">
+                    <h4>Connections</h4>
+
+                    <ConnectionCardSmallContainer which="connections" userId={this.state.user.userId} number="5" />
+
                 </div>
-                <div className = "twoButtons">
-                <button className = "connect" onClick = {this.addConnection}>Connect</button>
-                <button className = "connect" onClick = {this.remConnection}>Disconnect</button>
-                <button className="connect" onClick={this.popUp} value='PostReview'> Review </button>
-            </div>
+                
+                <div className="twoButtons">
+                    <button className="connect" onClick={this.addConnection}>Connect</button>
+                    <button className="connect" onClick={this.remConnection}>Disconnect</button>
+                    <button className="connect" onClick={this.popUp} value='PostReview'> Review </button>
+                </div>
+                <div className="reviews">{this.state.user.reviews?this.renderReviews():null}</div>
+                {/* <div>{this.state.user.reviews.length >0?this.renderReviews():null}</div> */}
+            {/* </div> */}
         </div>
-            
-            
-        
-        </div>
-       
+
 
 
 
@@ -129,8 +147,10 @@ class OtherUserProfile extends Component {
 }
 
 let mapStateToProps = (state) => {
-    return {popUp: state.popUp,
-            currentUser: state.currentUser}
+    return {
+        popUp: state.popUp,
+        currentUser: state.currentUser
+    }
 }
 let ConnectedOtherUserProfile = connect(mapStateToProps)(OtherUserProfile)
 export default ConnectedOtherUserProfile;
