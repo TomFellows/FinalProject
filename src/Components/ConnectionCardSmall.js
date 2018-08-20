@@ -10,7 +10,6 @@ class ConnectionCardSmall extends Component {
     render() {
         let styleStr = this.props.styles.join(", ")
         let styleArr = styleStr.split("")
-        
         let styles = styleArr[0].toUpperCase() + styleArr.splice(1).join("")
         console.log(styles)
         // let styleStrNew = styleArr.join(" ")
@@ -18,13 +17,13 @@ class ConnectionCardSmall extends Component {
        
         return (
             <div className="individualMiniProfile">
-                 <img src = "Images/profbg.jpg"  className = "connBackgroundPic"/>
-                 <img src = "Images/shaun.jpg" className = "connProfilePic"/>
+                 <img src = "/Images/profbg.jpg"  className = "connBackgroundPic"/>
+                 <img src = "/Images/shaun.jpg" className = "connProfilePic"/>
                  <div className = "infoCont">
                   {console.log("This is the username",this.props.connections)}
                 <Link className = "link" to={'/OtherUserProfile/' + this.props.username}>
                 <div className="info2">{this.props.name}</div>
-       </Link>
+                </Link>
 
                 
                 <div className="info3">Styles: {styles}</div>

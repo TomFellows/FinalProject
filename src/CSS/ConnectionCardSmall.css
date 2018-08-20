@@ -6,7 +6,10 @@
     width: 40%;
     margin-bottom: 5%;
     border-radius: 2vw;
+    transition: all 1s;
 }
+
+
 
 .connBackgroundPic{
     position: relative;
@@ -27,6 +30,8 @@
     width: 8vw;
 }
 
+
+
 .infobord{
     padding-bottom:1vw;
     font-weight: bold;
@@ -38,11 +43,13 @@
     font-size: 14pt;
     font-weight: bold;
     padding: 3%;
+    transition: all 1s;
 }
 .info3{
     color: #555555;
     padding:0vw;
     font-size: 10pt;
+    transition: all 1s;
 }
 
 .infoCont{
@@ -54,7 +61,7 @@
  margin: 5%;
  color: #eeeeee;
  font: bolder;
- 
+ transition: all 1s;
  font-size:10pt;
  padding-left: 10%;
  padding-right: 10%;
@@ -68,17 +75,11 @@
 .individualMiniProfile:hover {
     /* background-color: black; */
     background: #141E30;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to left, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to left, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
     color: white;  
 }
 
 .individualMiniProfile:hover .info3 {
-    background: #141E30;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to left, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to left, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    
+   
         color: white;
     }
 .individualMiniProfile:hover .info2 {

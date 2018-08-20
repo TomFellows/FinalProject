@@ -186,7 +186,7 @@ class ConnectionCardSmallContainer extends Component {
                         location={user.location}
                         styles ={user.styles}
                         connections = {user.connections.length}
-                     username = {user.username}
+                        username = {user.username}
                     />
                   
                 )})
