@@ -23,5 +23,4 @@
     "eject": "react-scripts eject"
   },
   "proxy": "http://167.99.187.41:5000"
-
 }

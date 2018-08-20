@@ -1,0 +1,52 @@
+
+.chat {
+    padding: 1em;
+    border: 1px solid white;
+}
+
+.list {
+    list-style-type: none;
+    list-style-position: outside;
+    margin: 0
+}
+
+.listItem {
+    display: block;
+    margin: 0;
+    padding: 0 0.5em 0 0.5em;
+    width: 100%;
+    
+}
+
+.listItem div {
+   
+    padding: 0.5em;
+    width: auto;
+    
+}
+
+.right {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.left {
+    display: flex;
+    justify-content: flex-start;
+}
+
+
+.chatLine {
+    border: 1px solid white;
+    border-radius: 20px;
+    display: inline-block;
+    max-width: 80%
+
+}
+
+.serverMessage {
+    text-align: left;
+    font-style: italic;
+    border: none;
+    border-radius: 0px;
+}

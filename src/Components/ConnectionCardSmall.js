@@ -10,7 +10,6 @@ class ConnectionCardSmall extends Component {
     render() {
         let styleStr = this.props.styles.join(", ")
         let styleArr = styleStr.split("")
-        
         let styles = styleArr[0].toUpperCase() + styleArr.splice(1).join("")
         console.log(styles)
         // let styleStrNew = styleArr.join(" ")
