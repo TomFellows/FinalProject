@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import socketIO from 'socket.io-client'
+import {connect} from 'react-redux'
+import {withRouter} from 'react-router-dom'
+
+import '../CSS/Chat.css'
 
 var socket = '';
 
@@ -25,16 +29,18 @@ class Chat extends Component {
          })
 
          socket.on('message', this.getMessage);
+         socket.on('serverMessage', this.getServerMessage);
             
        
     }
 
-    createRoom = () => {
-        
+    
+    getMessage = (msg) => {
+        this.setState({messages: this.state.messages.concat({content: msg.content, userId: msg.userId})})
     }
 
-    getMessage = (msg) => {
-        this.setState({messages: this.state.messages.concat(msg)})
+    getServerMessage = (msg) => {
+        this.setState({messages: this.state.messages.concat({content: msg.content, userId: msg.userId})})
     }
 
 
@@ -54,15 +60,34 @@ class Chat extends Component {
 
     render () {
 
-        let mappedMessages = this.state.messages.map(item => (<li>{item}</li>))
+        let currentUserId = this.props.currentUser.userId
+        let otherUserId = this.props.otherUserId
+
+        let mappedMessages = this.state.messages.map(item => {
+            
+            let type;
+            let align;
+
+
+            if (item.userId === 'server') {
+                type = 'serverMessage'
+                align = 'left'
+            } else {
+                type = 'chatLine'
+
+                if (item.userId === currentUserId) {
+                    align = 'right'
+                } 
+            }
+            
+            return (<div className='listItem'><div className={align}><div className={type}>{item.content}</div></div></div>)})
 
         
         
 
-        return(<div>
-            <h2>{this.props.roomName}</h2>
+        return(<div className='chat'>
 
-            <ul>{mappedMessages}</ul>
+            <div className='list'>{mappedMessages}</div>
             <form onSubmit={this.sendMessage}>
                 <input type='text' value={this.state.inputValue} onChange={this.handleChange}/>
                 <input type='submit'/>
@@ -71,4 +96,10 @@ class Chat extends Component {
     }
 }
 
-export default Chat
+let mapStateToProps = (state) => {
+    return {currentUser: state.currentUser}
+  }
+
+  let ConnectedChat = connect(mapStateToProps)(Chat)
+  
+  export default withRouter(ConnectedChat);
