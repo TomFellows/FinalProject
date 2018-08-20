@@ -134,6 +134,9 @@ class OtherUserProfile extends Component {
                 <h1 className="name">
                     {`${this.state.user.firstName} ${this.state.user.lastName}`}
                 </h1>
+                <h10 className = "name2">
+                    {this.state.user.experience}
+                </h10>
                 <img src="/Images/shaun.jpg" className="connProfilePic2" />
                 
                 </div>
@@ -212,20 +215,7 @@ class OtherUserProfile extends Component {
                              </div>
                         </div>
                     </div>
-                    <div className="card">
-                        <div className="card-header" id="headingSixteen">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSixteen" aria-expanded="false" aria-controls="collapseSixteen">
-                                Experience
-                                </button>
-                            </h5>
-                        </div>
-                        <div id="collapseSixteen" class="collapse" aria-labelledby="headingSixteen" data-parent="#accordionExample">
-                            <div class="card-body">
-                            {this.state.user.experience}
-                             </div>
-                        </div>
-                    </div>
+                   
                 </div>
 
 
@@ -236,16 +226,16 @@ class OtherUserProfile extends Component {
                             <button className="connect2" onClick={this.popUp} value='PostReview'> Review </button>
                 </div>
 
-                <div className ="revTitle">Review</div>
+                <div className ="revTitle">Reviews</div>
                 </div>
 
 
                 
 
 
-                <Image src="Images/guy1.jpg" />
+             
                 <div className="connections">
-                    <h4>Connections</h4>
+                    <h1 className = "connetionHeader">Connections</h1>
                     <ConnectionCardSmallContainer which="connections" userId={this.state.user.userId} number="5" />
 
                 </div>

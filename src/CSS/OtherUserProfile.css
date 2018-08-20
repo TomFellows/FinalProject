@@ -5,7 +5,7 @@
     left: 15vw;
     width: 60vw;
     max-width:60vw;
-    height: 300vh;
+    height: 400vh;
 }
 
 .parent{
@@ -44,18 +44,18 @@
     margin-bottom: 5%;
      margin-left: 8%;
 
-    background: #141E30;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to left, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to left, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-   color: white;
-   font-weight: bold;
-   font-size: 14pt;   
-}
+    background-color: #141E30;  /* fallback for old browsers */
+    background-color: -webkit-linear-gradient(to left, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
+    background-color: linear-gradient(to left, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: white;
+    font-weight: bold;
+    font-size: 14pt;   
+}   
 
 .connect2{
     position: relative;
-     margin-top: 14%;
-      margin-left: 93%;
+    margin-top: 14%;
+    margin-left: 60%;
     background-color: #ffcc00;
     color:black;
     font-weight: bold;
@@ -64,18 +64,33 @@
 
 .connect:hover{
    color: black;
+   background-color: white;
+}
+.connect2:hover{
+    color: white;
+    background-color:green;
 }
 
 .twoButtons{
-    position: relative;
-   
-    
+    position: relative; 
 }
 .name{
     position: absolute;
-    margin-top: 20%;
+    margin-top: 5%;
     margin-left: 40%;
     /* color: #0066cc */
+    color: #141E30
+}
+.name2{
+    position: absolute;
+    max-width: 50%;
+    margin-top: 12%;
+    margin-left: 40%;
+    font-size: 13pt;
+    /* font-family: 'Caveat', cursive; */
+    font-family: 'Indie Flower', cursive;
+    /* font-family: 'Dancing Script', cursive; */
+    /* font-family: 'Shadows Into Light', cursive; */
     color: #141E30
 }
 
@@ -114,7 +129,7 @@
 
 .connections{
     position: absolute;
-    margin-top: 80%;
+    margin-top: 10%;
 }
 
 .connProfilePic2{
@@ -140,11 +155,12 @@
 }
 
 .card{
+    text-decoration: none;
     border-radius: 0rem;
     background: #141E30;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to left, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to left, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    
+    border-bottom-color: white;
 }
 
 .accordion2{
@@ -155,6 +171,11 @@
 
 .btn-link{
  color: white;
+ text-decoration: none;
+}
+.btn-link:hover{
+    color: #dd0000;
+    text-decoration: none;
 }
 
 .card-header{
@@ -167,8 +188,9 @@
     /* background-color: white; */
 }
 .card-body{
-    background-color: white;
-    color: black;
+    /* background-color: white; */
+    background-color: #99ccff;
+    color: white;
     padding: none;
     padding-left:3%;
     padding-right:3%;
@@ -181,8 +203,20 @@
 
 .revTitle{
     position: absolute;
-    margin-left: 32vw;
+    margin-left: 40%;
     margin-top: 12vh;
     font-size: 25pt;
     color: #141E30
+}
+
+.connetionHeader{
+    position: relative;
+    margin-bottom: 3%;
+    margin-left: 8%;
+
+    color: #141E30
+}
+
+#collapseFifteen{
+    border-bottom: solid;
 }

@@ -1,6 +1,6 @@
 .connectionCardChat {
     width: 100%;
-    font-size: 14pt;
+    font-size: 12pt;
     /* font-weight: bold; */
     height: auto;
     /* line-height: 4em; */
@@ -10,7 +10,7 @@
     padding: 0.3em;
     border-radius: 200px;
     background-color: transparent;
- 
+   
 }
 .connectionCardChat:hover {
     background-color: #eeeeee;
@@ -26,8 +26,26 @@
 
 .link{
     color: white;
+    text-decoration: none;
 }
 
 .connectionCardChat:hover .link {
     color: black;
+    text-decoration: none;
+}
+
+.chat{
+    padding: 0em;
+    margin-left: 1em;
+    background-color: transparent;
+    color: white;
+    border: none;
+}
+.connectionCardChat:hover .chat{
+    color: black;
+    font-weight: bold;
+}
+
+.chat:focus{
+    outline: none;
 }
