@@ -189,8 +189,9 @@
 }
 .card-body{
     /* background-color: white; */
-    background-color: #99ccff;
-    color: white;
+    font-family: 'Raleway', sans-serif;
+    background-color: #ccccff;
+    color:black;
     padding: none;
     padding-left:3%;
     padding-right:3%;
