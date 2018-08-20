@@ -264,7 +264,7 @@ class OtherUserProfile extends Component {
                         </div>
                     </div>
                    
-                </div>
+               
 
 
 
@@ -287,7 +287,7 @@ class OtherUserProfile extends Component {
                     <ConnectionCardSmallContainer which="connections" userId={this.state.user.userId} number="5" />
 
                 </div>
-
+                </div>
             </div>
 
 
