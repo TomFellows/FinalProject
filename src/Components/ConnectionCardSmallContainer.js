@@ -35,6 +35,12 @@ class ConnectionCardSmallContainer extends Component {
          }
     }
 
+    componentDidUpdate(prevProps){
+        if(this.props.userId !== prevProps.userId){
+            this.getOtherUserConnections()
+        }
+    }
+
     getSuggestedUsersByStyle() {
         let bod = JSON.stringify({ styles: "experimental" })
         fetch('/getUsersByCriteria', {
@@ -97,14 +103,15 @@ class ConnectionCardSmallContainer extends Component {
                     console.log("invalid userId")
                 }
             })
+            this.state.popUp = false;
         }
     
     
         
 
     getOtherUserConnections() {
-        let bod = JSON.stringify({userId: "gWfAnyUoADT0hokf23dx5Hx1eMh2"})
-        
+        // let bod = JSON.stringify({userId: "gWfAnyUoADT0hokf23dx5Hx1eMh2"})
+        let bod = JSON.stringify({userId: this.props.userId})
         fetch('/getConnectionsByUserId', {
             method: 'POST',
             credentials: 'same-origin',

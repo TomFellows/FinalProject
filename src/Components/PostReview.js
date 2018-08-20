@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import '../CSS/PopUpWindow.css'
 import '../CSS/PostReview.css'
+import { connect } from 'react-redux';
+import { POPUP } from '../ACTIONS';
 
 class PostReview extends Component {
     constructor() {
@@ -56,6 +58,7 @@ class PostReview extends Component {
                     console.log("something went wrong!!")
                 }
             })
+            this.props.dispatch({ type: "pop up", popUpType: false })
     }    
 
        
@@ -65,6 +68,7 @@ class PostReview extends Component {
             <div>
                 <h2 class="reviewTitle">Please rate this user on:</h2>
                 <form onSubmit= {this.handleSubmit}>
+                <div className="reviewRow">
                     <p>Overall experience (5 = great!):</p>
                     <label class="radio">
                         <input id="Radio1" name="overallExperience" type="radio" value="1" onChange={this.handleRadio}/><span>1</span>
@@ -81,7 +85,8 @@ class PostReview extends Component {
                     <label class="radio">
                         <input id="Radio5" name="overallExperience" type="radio" value="5" onChange={this.handleRadio}/><span>5</span>
                     </label>
-
+                </div>
+                <div className="reviewRow">    
                     <p>Skill level:</p>
                     <label class="radio">
                         <input id="Radio1" name="skillLevel" type="radio" value="beginner" onChange={this.handleRadio}/><span>beginner</span>
@@ -95,6 +100,7 @@ class PostReview extends Component {
                     <label class="radio">
                         <input id="Radio4" name="skillLevel" type="radio" value="professional" onChange={this.handleRadio}/><span>professional</span>
                     </label>
+                    </div>
 
                     <p>Reliability (low to high):</p>
                     <label class="radio">
@@ -125,4 +131,11 @@ class PostReview extends Component {
     }
 }
 
-export default PostReview;
+let mapDispatchToProps = (dispatch) => {
+    return {showPopUp: (value) => dispatch({type: POPUP, popUpType: value})  //the data property is not used in the actual reducer
+    }
+  }
+
+  let ConnectedPostReview= connect(mapDispatchToProps)(PostReview)
+
+export default ConnectedPostReview;
