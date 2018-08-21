@@ -3,7 +3,7 @@ import {withRouter} from 'react-router-dom'
 import ConnectionCardChat from './ConnectionCardChat.js'
 import ConnectionCardSmall from './ConnectionCardSmall.js'
 import '../CSS/ConnectionCardSmall.css'
-import '../CSS/ConnectionCardSmallContainer.css'
+
 
 
 class FindConnections extends Component {
@@ -35,9 +35,9 @@ class FindConnections extends Component {
            
 
         return(<div className = "smallCard2">
-            {mappedConnections}    
-                
-
+           
+              {mappedConnections}  
+            
             </div>
 
         )
