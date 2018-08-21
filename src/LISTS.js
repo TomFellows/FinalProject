@@ -1,12 +1,60 @@
 
-class Cities {
+
+class List {
 
     constructor() {
 
     this.search = this.search.bind(this)
     
+    this.list = []
+}
 
-this.cities = ["Abbotsford, Canada",
+
+search (query, number) {
+
+    let searchQuery = query.toLowerCase()
+
+    let result = this.list.filter(item => {
+
+       let searchItem  = item.toLowerCase()
+        
+
+        return searchItem.search(searchQuery) !== -1
+    })
+
+    //Returns only 'number' items
+    let trimmedResults = result.slice(0, number)
+
+    return trimmedResults;
+}
+
+}
+
+class Styles extends List {
+    constructor () {
+        super ()
+
+        this.list = ["Rock", "Country", "Alternative", "Metal", "Hip Hop", "Classical"]
+    }
+}
+
+class Instruments extends List {
+
+    constructor () {
+        super ()
+
+        this.list = ["Guitar", "Bass guitar", 
+                    "Drums", "Violin", "Flute", "Piano", 
+                    "Keyboard", "Keytar", "Kazoo", "Triangle",
+                    "Shamisen"]
+    }
+}
+
+class Cities extends List {
+    constructor () {
+        super () 
+
+        this.list = ["Abbotsford, Canada",
 "Airdrie, Canada",
 "Ajax, Canada",
 "Alma, Canada",
@@ -227,27 +275,8 @@ this.cities = ["Abbotsford, Canada",
 "West Vancouver, Canada",
 "Willowdale, Canada",
 "Lower Sacvkille, Canada"]
+    }
 }
 
 
-search (city, number) {
-
-    let searchCity = city.toLowerCase()
-
-    let result = this.cities.filter(item => {
-
-       let searchItem  = item.toLowerCase()
-        
-
-        return searchItem.search(searchCity) !== -1
-    })
-
-    //Returns only 'number' cities
-    let trimmedResults = result.slice(0, number)
-
-    return trimmedResults;
-}
-
-}
-
-export default Cities
+export {Instruments, Cities, Styles}

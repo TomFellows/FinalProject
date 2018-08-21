@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../CSS/LandingPage.css'
 import Login from './Login.js'
+import {Cities, Instruments, Styles} from '../LISTS.js'
 
 
 
@@ -11,13 +12,21 @@ class LandingPage extends Component {
             firstName: "",
             lastName: "",
             location: "",
-            instruments: [],
-            styles: [],
+            instruments: "",
+            styles: "",
             skillLevel: "",
             experience: "",
-            seeking: []
+            seeking: ""
          
         }
+
+        this.cities = new Cities;
+        this.instruments = new Instruments;
+        this.styles = new Styles;
+        this.citiesResults = []
+        this.instrumentsResults = []
+        this.stylesResults = []
+
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
         this.handleChange2 = this.handleChange2.bind(this)
@@ -25,7 +34,7 @@ class LandingPage extends Component {
         this.handleChange4 = this.handleChange4.bind(this)
         this.handleChange5 = this.handleChange5.bind(this)
         this.handleChange6 = this.handleChange6.bind(this)
-        this.handleChange7 = this.handleChange7.bind(this)
+        
         this.handleChange8 = this.handleChange8.bind(this)
     }
 
@@ -40,27 +49,46 @@ class LandingPage extends Component {
         this.setState({lastName: evt.target.value})
     }
     handleChange3(evt){
+        this.citiesResults = this.cities.search(evt.target.value, 6)
         this.setState({location: evt.target.value})
     }
     handleChange4(evt){
-      this.setState({instruments: evt.target.value.split(", ")})
+        this.instrumentsResults = this.instruments.search(evt.target.value, 6)
+        this.setState({instruments: evt.target.value})
     }
     handleChange5(evt){
-        this.setState({styles: evt.target.value.split(", ")})
+        this.stylesResults = this.styles.search(evt.target.value, 6)
+        this.setState({styles: evt.target.value})
       }
     handleChange6(evt){
         this.setState({skillLevel: evt.target.value})
     }
-    handleChange7(evt){
-        this.setState({experience: evt.target.value})
-    }
+   
     handleChange8(evt){
-        this.setState({seeking: evt.target.value.split(", ")})
+        this.setState({seeking: evt.target.value})
     }
 
     
    
     render() {
+
+
+            let citiesList = this.citiesResults.map(item => (<option value={item}/>))
+
+            citiesList = (<datalist id='citiesList'>{citiesList}</datalist>)
+
+            let instrumentsList = this.instrumentsResults.map(item => (<option value={item}/>))
+
+            instrumentsList = (<datalist id='instrumentsList'>{instrumentsList}</datalist>)
+
+            let stylesList = this.stylesResults.map(item => (<option value={item}/>))
+
+            stylesList = (<datalist id='stylesList'>{stylesList}</datalist>)
+
+
+
+        
+
         return <div className = "contain">
         <div>
             <img className="pic2" src="Images/headphones.png"></img>
@@ -71,15 +99,33 @@ class LandingPage extends Component {
         <form className = "form" onSubmit= {this.handleSubmit}>
             <input className = "input" onChange = {this.handleChange} value = {this.state.firstName} placeholder = "First Name"/>
             <input className = "input" onChange = {this.handleChange2} value = {this.state.lastName} placeholder = "Last Name"/>
-            <input className = "input" onChange = {this.handleChange3} value = {this.state.location} placeholder = "Location"/>
-            <input className = "input" onChange = {this.handleChange4} value = {this.state.instruments} placeholder = "Instruments"/>
-            <input className = "input" onChange = {this.handleChange5} value = {this.state.styles} placeholder = "Styles"/>
-            <input className = "input" onChange = {this.handleChange6} value = {this.state.skillLevel} placeholder = "Skill Level"/>
-            <input className = "input" onChange = {this.handleChange7} value = {this.state.experience} placeholder = "Experience"/>
-            <input className = "input" onChange = {this.handleChange8} value = {this.state.seeking} placeholder = "Seeking"/>
-            {/* <input className = "input2" placeholder = "Instruments"/> */}
+            <input className = "input" list='citiesList' onChange = {this.handleChange3} value = {this.state.location} placeholder = "Location"/>
+            {citiesList}
+            <input className = "input" list='instrumentsList' onChange = {this.handleChange4} value = {this.state.instruments} placeholder = "Main instrument"/>
+            {instrumentsList}
+            <input className = "input" list ='stylesList' onChange = {this.handleChange5} value = {this.state.styles} placeholder = "Style"/>
+            {stylesList}
+
+            <select className = "input" onChange = {this.handleChange6} value = {this.state.skillLevel} placeholder = "Skill Level">
+                <option style={{"display": "none"}} selected>Skill level</option>
+                <option value="Beginner">Beginner</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Advanced">Advanced</option>
+                <option value="Professional">Professional</option>
+            </select>
+            <select className = "input" onChange = {this.handleChange8} value = {this.state.seeking} placeholder = "Seeking">
+                <option style={{"display": "none"}} selected>Seeking ...</option>
+                <option value="Jam">Jam</option>
+                <option value="Gig">Gig</option>
+                <option value="Session">Session</option>
+                <option value="Start a project">Start a project</option>
+            </select>
             <div className = "login">
-            <Login createAccount={true} createdUser={this.state}/>
+            <Login createAccount={true} 
+                    createdUser={{...this.state, 
+                                instruments: this.state.instruments.split(', '),
+                                styles: this.state.styles.split(', '),
+                                seeking: this.state.seeking.split(', ')}}/>
             </div>
     
         </form>
