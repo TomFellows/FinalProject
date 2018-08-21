@@ -68,7 +68,7 @@ class Navbar extends Component {
 
     if (this.props.connected === 'connected') {
 
-    // notifications = <NotificationsList/>
+    notifications = <NotificationsList/>
 
 
       connectionStatus = (<div>Connected as {this.props.currentUser.firstName}&nbsp;
@@ -90,7 +90,7 @@ class Navbar extends Component {
             <span>Find connections</span>
             </button>
             {connectionStatus}
-            
+          
 
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -130,7 +130,7 @@ class Navbar extends Component {
             <Filters/>
           </div>
           <div class="collapse navbar-collapse" id='Notifications'>
-           
+           {notifications}
           </div>
         </nav>
         

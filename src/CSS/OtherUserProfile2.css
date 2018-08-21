@@ -1,6 +1,6 @@
 
-/*The imported CSS to OtherUserProfile has been changed to OtherUserProfile2.css, in which I commented out the
-selectors that were messing up the side columns*/
+
+/*Please rewrite the commented sections, they're messing up the side columns
 .area {
     background-color: #e9ebee;
     position: absolute;
@@ -40,7 +40,7 @@ selectors that were messing up the side columns*/
     font-size: 16pt;
     margin: 2vh;
     color: black;
-}
+} */
 
 .connect{
    position: relative;
@@ -130,10 +130,11 @@ selectors that were messing up the side columns*/
     left: 15vw;
 }
 
+/* This also messes up the side columns
 .connections{
     position: absolute;
     margin-top: 10%;
-}
+}*/
 
 .connProfilePic2{
  

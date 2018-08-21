@@ -1,14 +1,13 @@
 
 .chat {
-    padding: 0;
-    border: 1px solid white;
     
+    border: 1px solid white;
     
 }
 
 .list {
     margin: 0;
-    padding: 0.5em;
+
     max-height: 400px;
     min-height: 100px;
     overflow: auto;
@@ -17,7 +16,7 @@
 .listItem {
     display: block;
     margin: 0;
-    padding: 0 0.5em 0 0.5em;
+  
     width: 100%;
     
 }
@@ -53,10 +52,16 @@ form input.inputSubmit {
 
 
 .chatLine {
-    border: 1px solid white;
+    border: 1px solid transparent;
     border-radius: 20px;
     display: inline-block;
-    max-width: 80%
+    color: black;
+    font-family: Raleway;
+    /* Dancing Script */
+    /* Caveat; */
+    /* |Dancing+Script|Indie+Flower|Raleway|Shadows+Into+Light */
+    background-color: #ccccff;
+    max-width: 90%
 
 }
 

@@ -4,6 +4,7 @@ import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 
 
+
 class NotificationsList extends Component {
 
 constructor (props) {
@@ -19,18 +20,19 @@ render () {
 
     
 
-   /* mappedNotifications = this.state.notifications.map(item => {
+   mappedNotifications = this.state.notifications.map(item => {
 
-          return (<Notif firstName={item.firstName} lastName={item.lastName} username={item.username}/>)
+          return (<div><Notif firstName={item.firstName} lastName={item.lastName} username={item.username} 
+            type ={item.type} read={item.read} notificationId={item.notificationId}/></div>)
        
       })
 
       if (mappedNotifications.length === 0){
         mappedNotifications = ['No notification']
-      }*/
+      }
 
 
-    return {mappedNotifications}
+    return mappedNotifications
 }
 
 
@@ -41,6 +43,8 @@ let mapStateToProps = (state) => {
     return {currentUser: state.currentUser, popUp: state.popUp, connected: state.connected}
   }
 
+
+  
   
 let ConnectedNotificationsList = connect(mapStateToProps)(NotificationsList)
 

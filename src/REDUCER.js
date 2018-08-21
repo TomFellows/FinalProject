@@ -1,5 +1,5 @@
 import {createStore} from 'redux'
-import {POPUP, SETCURRENTUSER, SETCURRENTCONNECTIONS} from './ACTIONS.js'
+import {POPUP, SETCURRENTUSER, SETCURRENTCONNECTIONS, OPENCHAT} from './ACTIONS.js'
 
 function reducer (state, action) {
 
@@ -17,6 +17,11 @@ function reducer (state, action) {
       return {...state, currentConnections: action.connections}
     }
 
+    if (action.type === OPENCHAT) {
+
+      return {...state, openedChat: action.user}
+    }
+
 
     return state
   }
@@ -25,7 +30,7 @@ function reducer (state, action) {
   const store = createStore(reducer, 
     {connected: false, currentUser: { userId: '', email: '', firstName: '', lastName: '', instruments: [],
                     location: '', seeking: '', skillLevel: '', styles: [], review: [], connections: [], notifications: []}, 
-    currentConnections: [], popUp: false},
+    currentConnections: [], popUp: false, openedChat: undefined},
 
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
