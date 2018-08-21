@@ -28,9 +28,11 @@ class ConnectionCardChat extends Component {
 
         let roomInfos = this.props.roomInfos
         
+        if (this.props.socket) {
         socket = this.props.socket
 
         socket.emit('room', roomInfos);
+        }
 
     }
 
