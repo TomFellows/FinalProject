@@ -3,6 +3,7 @@ import '../CSS/PopUpWindow.css'
 import '../CSS/PostReview.css'
 import { connect } from 'react-redux';
 import { POPUP } from '../ACTIONS';
+import {withRouter} from 'react-router';
 
 class PostReview extends Component {
     constructor() {
@@ -11,11 +12,15 @@ class PostReview extends Component {
             overallExperienceRating: "",
             skillLevelRating: "",
             reliabilityRating: "",
-            comment: ""
+            comment: "",
+            showSubmit: false
         }
         this.handleRadio = this.handleRadio.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleComment = this.handleComment.bind(this)
+        this.reviewConfirmation = this.reviewConfirmation.bind(this)
+        this.confirmation =this.confirmation.bind(this)
+
     }
 
     handleRadio(evt) {
@@ -57,10 +62,21 @@ class PostReview extends Component {
                 else {
                     console.log("something went wrong!!")
                 }
-            })
-            this.props.dispatch({ type: "pop up", popUpType: false })
+            })           
+            this.reviewConfirmation()
+            setTimeout(this.confirmation, 1000)
+            // this.props.history.push('/OtherUserProfile/' + this.props.username)
+            this.props.renderUser;
     }    
 
+    confirmation(){
+        this.props.dispatch({ type: "pop up", popUpType: false })
+    }    
+
+    reviewConfirmation(){
+       this.setState({showSubmit:true})
+
+    }
        
 
     render() {
@@ -126,6 +142,7 @@ class PostReview extends Component {
                     <input type = "submit" className = "loginBtn"/>
                 {/* <button onSubmit={this.handleSubmit}>Submit Review</button> */}
                 </form>
+                <div> {this.state.showSubmit?<h2>Review Submitted!</h2>:null}</div>
             </div>
         )
     }
@@ -138,4 +155,4 @@ let mapDispatchToProps = (dispatch) => {
 
   let ConnectedPostReview= connect(mapDispatchToProps)(PostReview)
 
-export default ConnectedPostReview;
+export default withRouter(ConnectedPostReview);

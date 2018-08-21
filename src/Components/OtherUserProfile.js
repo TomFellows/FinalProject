@@ -172,7 +172,7 @@ class OtherUserProfile extends Component {
 
 
         return (<div>
-            {this.props.popUp ? <PopUpWindow><PostReview userId={this.props.currentUser.userId} revieweeId={this.state.user.userId} popUp={this.props.popUp}/></PopUpWindow> : null}
+            {this.props.popUp ? <PopUpWindow><PostReview renderUser= {this.getUserProfile()} username={this.state.user.username} userId={this.props.currentUser.userId} revieweeId={this.state.user.userId} popUp={this.props.popUp}/></PopUpWindow> : null}
             <div className="area">
                 <div className = "flex2">
                 <h1 className="name">
