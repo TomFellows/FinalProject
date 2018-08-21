@@ -82,7 +82,7 @@ class ConnectionCardChat extends Component {
         <Link className = "link" to={'/OtherUserProfile/' + this.props.user.username}>
         <img src='/Images/tom.jpg' className='contactChatPic'/>
         {this.props.user.firstName + ' ' + this.props.user.lastName}</Link>
-        <button className = "chat" onClick={this.openCloseChat}>Chat</button>
+        <div onClick={this.openCloseChat}  className='chatIcon'><img src='/Images/chatIconWhite.png'/></div>
         {nbMessages}
         </div>
         {chatRoom}

@@ -14,7 +14,8 @@ class OtherUserProfile extends Component {
         super()
         this.state = {
             user: {},
-            text: "Connect"
+            text: "Connect",
+            connect: false
         }
         this.renderList = this.renderList.bind(this)
         this.getUserProfile = this.getUserProfile.bind(this)
@@ -31,7 +32,8 @@ class OtherUserProfile extends Component {
     }
 
     getUserProfile() {
-        let bod = JSON.stringify({ username: this.props.username })
+
+      let bod = JSON.stringify({ username: this.props.username })
 
 
         fetch('/getUserByUsername', {
@@ -121,7 +123,10 @@ class OtherUserProfile extends Component {
             .then(response => {
                 let parsedResponse = JSON.parse(response)
                 console.log(parsedResponse)
+                
             })
+
+            
     }
     remConnection() {
 
@@ -135,7 +140,10 @@ class OtherUserProfile extends Component {
             .then(response => {
                 let parsedResponse = JSON.parse(response)
                 console.log(parsedResponse)
+                
             })
+
+            
     }
 
 
@@ -171,6 +179,18 @@ class OtherUserProfile extends Component {
             let skillStr = this.state.user.skillLevel
             skillLevel = skillStr[0].toUpperCase() + skillStr.slice(1)
         }
+
+        let connect = false
+        console.log("state.user is" ,this.state.user)
+        let id = this.props.currentUser.connections;
+        for(let i = 0; i < id.length; i++){
+            if(id[i].connectionUserId === this.state.user.userId && this.state.user.userId !== undefined){
+                connect = true
+            }
+        }
+        
+        
+
 
 
         return (<div>
@@ -268,12 +288,13 @@ class OtherUserProfile extends Component {
 
 
                     <div className="twoButtons">
-                        <button className="connect" onClick={this.addConnection}>Connect</button>
-                        <button className="connect" onClick={this.remConnection}>Disconnect</button>
-                        <button className="connect2" onClick={this.popUp} value='PostReview'> Review </button>
+                       {connect ? <button className="connect" onClick={this.remConnection}>Disconnect</button>: <button className="connect" onClick={this.addConnection}>Connect</button>}
+                        {/* {connect ? <button className="connect" onClick={this.remConnection}>Disconnect</button> : null}     */}
                     </div>
-
-                    <div className="revTitle">Review</div>
+                    <div className = "oneButton">
+                         <button className="connect2" onClick={this.popUp} value='PostReview'> Review </button>
+                    </div>
+                    <div className="revTitle">Reviews</div>
                 </div>
 
                 <div>{this.renderReviews()}</div>

@@ -14,8 +14,10 @@
 }
 .connectionCardChat:hover {
     background-color: #eeeeee;
-    font-weight: bold;
+    
 }
+
+
 
 .contactChatPic {
     box-sizing: border-box;
@@ -33,6 +35,8 @@
     color: black;
 }
 
+
+
 .nbMessages {
     padding: 0.5em;
     position: relative;
@@ -43,14 +47,24 @@
     border: 1px solid white;
 }
 
-.chat{
-    background-color: transparent;
-    color: white;
-    
-    border: none;
+.chatIcon{
+   
+   margin-left: 0.5em;
 }
+
+.connectionCardChat:hover .chatIcon {
+    
+    -webkit-filter: invert(100%);
+    filter: invert(100%);
+    
+}
+
 .chat:focus{
     outline: none;
+}
+
+.chatIcon img {
+    max-width: 30px;
 }
 .connectionCardChat:hover .chat {
     color: black;
