@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import '../CSS/UserProfile.css'
 import {connect} from 'react-redux'
-import {Cities} from '../LISTS.js'
+import {Cities, Instruments, Styles} from '../LISTS.js'
 import { SETCURRENTUSER } from '../ACTIONS';
 
 
@@ -16,6 +16,10 @@ class UserProfile extends Component {
 
         this.citiesResults = []
         this.cities = new Cities
+        this.instrumentsResults = []
+        this.instruments = new Instruments
+        this.stylesResults = []
+        this.styles = new Styles
 
         this.setUserAfterEdit = this.setUserAfterEdit.bind(this)
         this.modifyProfile = this.modifyProfile.bind(this)
@@ -31,10 +35,19 @@ class UserProfile extends Component {
    
 
     handleChange = (event) => {
+        event.preventDefault()
 
         //Make a cities search if we're typing in the location field
         if (this.state.editing === 'location'){
             this.citiesResults = this.cities.search(event.target.value, 6)
+        }
+
+        if (this.state.editing === 'instruments'){
+            this.instrumentsResults = this.instruments.search(event.target.value, 6)
+        }
+
+        if (this.state.editing === 'styles'){
+            this.stylesResults = this.styles.search(event.target.value, 6)
         }
 
         this.setState({inputValue: event.target.value})
@@ -58,7 +71,7 @@ class UserProfile extends Component {
             break;
 
             case 'instruments' :
-            modifiedUser = ({...this.props.currentUser, instruments: this.state.inputValue.split(', ')})
+            modifiedUser = ({...this.props.currentUser, instruments: this.props.currentUser.instruments.concat(this.state.inputValue)})
             break;
 
             case 'location' :
@@ -67,11 +80,11 @@ class UserProfile extends Component {
             break;
 
             case 'seeking' :
-            modifiedUser = ({...this.props.currentUser, seeking: this.state.inputValue.split(', ')})
+            modifiedUser = ({...this.props.currentUser, seeking: this.props.currentUser.seeking.concat(this.state.inputValue)})
             break;
 
             case 'styles' :
-            modifiedUser = ({...this.props.currentUser, lastName: this.state.styles.split(', ')})
+            modifiedUser = ({...this.props.currentUser, styles: this.props.currentUser.styles.concat(this.state.inputValue)})
             break;
 
             case 'skillLevel' :
@@ -127,6 +140,8 @@ class UserProfile extends Component {
         //This method is fired when an edit button is clicked, it catches which field is being edited
         //and puts it in the editing property of the state
         this.citiesResults = []
+        this.instrumentsResults = []
+        this.stylesResults = []
 
         let initialInput
 
@@ -134,7 +149,7 @@ class UserProfile extends Component {
 
         if (event.target.value === 'styles' || event.target.value === 'instruments' || event.target.value === 'seeking' ) {
 
-            initialInput = this.props.currentUser[event.target.value].join(', ')
+            initialInput = ''
         } else {
             initialInput = this.props.currentUser[event.target.value]
         }
@@ -148,14 +163,17 @@ class UserProfile extends Component {
         }
     }
 
-    stopEdit = () => {
+    stopEdit = (event) => {
+        event.preventDefault()
         this.setState({editing: false})
     }
 
     removeInstrument = (event) => {
+        event.preventDefault()
 
-        
-        let list = this.props.currentUser.instruments.slice(event.target.value, event.target.value + 1)
+        let list = this.props.currentUser.instruments.filter((item, index)=> {
+            return index !== parseInt(event.target.value)
+        })
 
         let modifiedUser = {...this.props.currentUser, instruments: list}
         
@@ -165,8 +183,12 @@ class UserProfile extends Component {
     }
 
     removeSeeking = (event) => {
+        event.preventDefault()
+        
 
-        let list = this.props.currentUser.seeking.slice(event.target.value, event.target.value + 1)
+        let list = this.props.currentUser.seeking.filter((item, index)=> {
+            return index !== parseInt(event.target.value)
+        })
 
         let modifiedUser = {...this.props.currentUser, seeking: list}
         
@@ -175,9 +197,11 @@ class UserProfile extends Component {
     }
 
     removeStyle = (event) => {
-
+        event.preventDefault()
        
-        let list = this.props.currentUser.styles.slice(event.target.value, event.target.value + 1)
+        let list = this.props.currentUser.styles.filter((item, index)=> {
+            return index !== parseInt(event.target.value)
+        })
 
         let modifiedUser = {...this.props.currentUser, styles: list}
         
@@ -234,22 +258,31 @@ class UserProfile extends Component {
 
         //Checks if the instruments is being edited, if yes, it displays and input field with save buttons.
         //If not being edited, it displays non editable text
+        let instrumentsEdit = ''
         if (formEditing.instruments === true) {
 
-            instruments = (<div>
-                <input type="text" class="form-control" placeholder="instruments" 
+            let list = this.instrumentsResults.map(item => (<option value={item}/>))
+
+            list = (<datalist id='instruments'>{list}</datalist>)
+
+            
+            instrumentsEdit = (<div>
+                {list}
+                <input type="text" list='instruments'class="form-control" placeholder="Instruments" 
                 value={this.state.inputValue} onChange={this.handleChange}/>
-        <button value='instruments' onClick={this.handleSubmit}>Save</button><button onClick={this.stopEdit}>Cancel edit</button> </div>)
-        } else {
-            let editButton = ''
+            <button value='instruments' onClick={this.handleSubmit}>Save</button><button onClick={this.stopEdit}>Cancel edit</button> </div>)
+        } 
+
+            let editInstrumentsButton = ''
             if (this.state.editing === false) {
-                editButton = (<button value='instruments' onClick={this.handleEdit}>Edit</button>)
+                editInstrumentsButton = (<button value='instruments' className='addButton' onClick={this.handleEdit}>Add</button>)
             }
 
-            let mappedInstruments = this.props.currentUser.instruments.map(item => (<div className='listItem'>{item}</div>))
+            let mappedInstruments = this.props.currentUser.instruments.map((item, index) => (<div className='listItem'>
+            {item}&nbsp;<button type='button' onClick={this.removeInstrument} value={index}>X</button></div>))
+          
 
-            instruments = (<div><div className='profileLabel'>{mappedInstruments}</div>{editButton}</div>)
-        }
+            instruments = (<div><div className='profileLabel'>{mappedInstruments}</div>{editInstrumentsButton}{instrumentsEdit}</div>)
 
         //Checks if the location is being edited, if yes, it displays and input field with save buttons.
         //If not being edited, it displays non editable text
@@ -276,47 +309,73 @@ class UserProfile extends Component {
 
         //Checks if the Seeking... is being edited, if yes, it displays and input field with save buttons.
         //If not being edited, it displays non editable text
+        let seekingEdit;
         if (formEditing.seeking === true) {
-            seeking = (<div>
-                <input type="text" class="form-control" placeholder="Seeking..." 
-                value={this.state.inputValue} onChange={this.handleChange}/>
-        <button value='seeking' onClick={this.handleSubmit}>Save</button><button onClick={this.stopEdit}>Cancel edit</button> </div>)
-        } else {
-            let editButton = ''
+
+            seekingEdit = (<div>
+                <select class="form-control" placeholder="Seeking..." 
+                value={this.state.inputValue} onChange={this.handleChange}>
+                <option style={{"display": "none"}} selected>Seeking ...</option>
+                <option value="Jamming">Jamming</option>
+                <option value="Gigs">Gigs</option>
+                <option value="Session Work">Session Work</option>
+                <option value="Starting a project">Starting a project</option>
+                <option value="Other">Othert</option>
+                </select>
+            <button value='seeking' onClick={this.handleSubmit}>Save</button><button onClick={this.stopEdit}>Cancel edit</button> </div>)
+        } 
+
+            let editSeekingButton = ''
             if (this.state.editing === false) {
-                editButton = (<button value='seeking' onClick={this.handleEdit}>Edit</button>)
+                editSeekingButton = (<button value='seeking' className='addButton' onClick={this.handleEdit}>Add</button>)
             }
 
             let mappedSeeking = this.props.currentUser.seeking.map((item, index) => (<div className='listItem'>
-            {item}<button onClick={this.removeSeeking}value={index}>X</button></div>))
+            {item}&nbsp;<button type='button' onClick={this.removeSeeking} value={index}>X</button></div>))
+          
 
-            seeking = (<div><div className='profileLabel'>{mappedSeeking}</div>{editButton}</div>)
-        }
+            seeking = (<div><div className='profileLabel'>{mappedSeeking}</div>{editSeekingButton}{seekingEdit}</div>)
+        
 
         //Checks if the musical styles is being edited, if yes, it displays and input field with save buttons.
         //If not being edited, it displays non editable text
+        let stylesEdit = ''
         if (formEditing.styles === true) {
-            styles = (<div>
-                <input type="text" class="form-control" placeholder="Musical styles" 
+
+            let list = this.stylesResults.map(item => (<option value={item}/>))
+
+            list = (<datalist id='styles'>{list}</datalist>)
+
+            stylesEdit = (<div>
+                {list}
+                <input type="text" list='styles' class="form-control" placeholder="Musical styles" 
                 value={this.state.inputValue} onChange={this.handleChange}/>
-        <button value='styles' onClick={this.handleSubmit}>Save</button><button onClick={this.stopEdit}>Cancel edit</button> </div>)
-        } else {
-            let editButton = ''
+            <button value='styles' onClick={this.handleSubmit}>Save</button><button onClick={this.stopEdit}>Cancel edit</button> </div>)
+        } 
+
+            let editStylesButton = ''
             if (this.state.editing === false) {
-                editButton = (<button value='styles' onClick={this.handleEdit}>Edit</button>)
+                editStylesButton = (<button value='styles' className='addButton' onClick={this.handleEdit}>Add</button>)
             }
 
-            let mappedStyles = this.props.currentUser.styles.map(item => (<div className='listItem'>{item}</div>))
+            let mappedStyles = this.props.currentUser.styles.map((item, index) => (<div className='listItem'>
+            {item}&nbsp;<button type='button' onClick={this.removeStyle} value={index}>X</button></div>))
+          
 
-            styles = (<div><div className='profileLabel'>{mappedStyles}</div>{editButton}</div>)
-        }
+            styles = (<div><div className='profileLabel'>{mappedStyles}</div>{editStylesButton}{stylesEdit}</div>)
 
         //Checks if the skill level is being edited, if yes, it displays and input field with save buttons.
         //If not being edited, it displays non editable text
         if (formEditing.skillLevel === true) {
             skillLevel = (<div>
-                <input type="text" class="form-control" placeholder="Skill level" 
-                value={this.state.inputValue} onChange={this.handleChange}/>
+                <select class="form-control" placeholder="Skill level" 
+                value={this.state.inputValue} onChange={this.handleChange}>
+                <option style={{"display": "none"}} selected>Skill level</option>
+                <option value="Beginner">Beginner</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Advanced">Advanced</option>
+                <option value="Professional">Professional</option>
+                </select>
         <button value='skillLevel' onClick={this.handleSubmit}>Save</button><button onClick={this.stopEdit}>Cancel edit</button> </div>)
         } else {
             let editButton = ''

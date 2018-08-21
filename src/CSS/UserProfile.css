@@ -11,6 +11,11 @@
     display: inline-block
 }
 
+.addButton {
+    margin: 0.5em 1em 0 1em;
+    display: block
+}
+
 .fieldLabel {
     font-size: 14pt;
     font-weight: bold;
@@ -18,13 +23,21 @@
 }
 
 .listItem {
-    display: block;
+    display: flex;
+    justify-content: space-between;
     
+}
+
+select.form-control {
+    width: 60%;
+    margin-bottom: 0.5em; 
+    margin-top: 1em;
 }
 
 input.form-control {
     width: 60%;
     margin-bottom: 0.5em; 
+    margin-top: 1em;
 }
 
 textarea.form-control {
