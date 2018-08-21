@@ -4,6 +4,7 @@ import '../CSS/PostReview.css'
 import { connect } from 'react-redux';
 import { POPUP } from '../ACTIONS';
 import { withRouter } from 'react-router';
+import AutosizeInput from 'react-input-autosize';
 
 class PostReview extends Component {
     constructor() {
@@ -35,9 +36,15 @@ class PostReview extends Component {
         }
     }
     handleComment(evt) {
+        if(evt.target.keyCode === 13) {
+            evt.preventDefault()
+        }
         this.setState({ comment: evt.target.value })
     }
     handleSubmit(evt) {
+        if(evt.target.keyCode === 13) {
+            evt.preventDefault()
+        }
         evt.preventDefault()
         let review = {}
         review.overall = this.state.overallExperienceRating
@@ -85,61 +92,68 @@ class PostReview extends Component {
                 <h2 class="reviewTitle">Rate this user on:</h2>
                 <form clasName="form" onSubmit={this.handleSubmit}>
                     <div className="reviewRow">
-                        <p>Overall experience (5 = great!):</p>
+                        <div className="reviewSubtitles">Overall experience (5 = great!):</div>
                         <label class="radio">
-                            <input id="Radio1" name="overallExperience" type="radio" value="1" onChange={this.handleRadio} /><span>1</span>
+                            <input id="Radio1" name="overallExperience" type="radio" value="1" onChange={this.handleRadio} /><span className="reviewLabels">1</span>
                         </label>
                         <label class="radio">
-                            <input id="Radio2" name="overallExperience" type="radio" value="2" onChange={this.handleRadio} /><span>2</span>
+                            <input id="Radio2" name="overallExperience" type="radio" value="2" onChange={this.handleRadio} /><span className="reviewLabels">2</span>
                         </label>
                         <label class="radio">
-                            <input id="Radio3" name="overallExperience" type="radio" value="3" onChange={this.handleRadio} /><span>3</span>
+                            <input id="Radio3" name="overallExperience" type="radio" value="3" onChange={this.handleRadio} /><span className="reviewLabels">3</span>
                         </label>
                         <label class="radio">
-                            <input id="Radio4" name="overallExperience" type="radio" value="4" onChange={this.handleRadio} /><span>4</span>
+                            <input id="Radio4" name="overallExperience" type="radio" value="4" onChange={this.handleRadio} /><span className="reviewLabels">4</span>
                         </label>
                         <label class="radio">
-                            <input id="Radio5" name="overallExperience" type="radio" value="5" onChange={this.handleRadio} /><span>5</span>
+                            <input id="Radio5" name="overallExperience" type="radio" value="5" onChange={this.handleRadio} /><span className="reviewLabels">5</span>
                         </label>
                     </div>
                     <div className="reviewRow">
-                        <p>Skill level:</p>
+                        <div className="reviewSubtitles">Skill level:</div>
                         <label class="radio">
-                            <input id="Radio1" name="skillLevel" type="radio" value="beginner" onChange={this.handleRadio} /><span>beginner</span>
+                            <input id="Radio1" name="skillLevel" type="radio" value="beginner" onChange={this.handleRadio} /><span className="reviewLabels">Beginner</span>
                         </label>
                         <label class="radio">
-                            <input id="Radio2" name="skillLevel" type="radio" value="intermediate" onChange={this.handleRadio} /><span>intermediate</span>
+                            <input id="Radio2" name="skillLevel" type="radio" value="intermediate" onChange={this.handleRadio} /><span className="reviewLabels">Intermediate</span>
                         </label>
                         <label class="radio">
-                            <input id="Radio3" name="skillLevel" type="radio" value="advanced" onChange={this.handleRadio} /><span>advanced</span>
+                            <input id="Radio3" name="skillLevel" type="radio" value="advanced" onChange={this.handleRadio} /><span className="reviewLabels">Advanced</span>
                         </label>
                         <label class="radio">
-                            <input id="Radio4" name="skillLevel" type="radio" value="professional" onChange={this.handleRadio} /><span>professional</span>
+                            <input id="Radio4" name="skillLevel" type="radio" value="professional" onChange={this.handleRadio} /><span className="reviewLabels">Professional</span>
                         </label>
                     </div>
 
                     <div className="reviewRow">
-                        <p>Reliability (low to high):</p>
+                        <div className="reviewSubtitles">Reliability (low to high):</div>
                         <label class="radio">
-                            <input id="Radio1" name="reliability" type="radio" value="1" onChange={this.handleRadio} /><span>1</span>
+                            <input id="Radio1" name="reliability" type="radio" value="1" onChange={this.handleRadio} /><span className="reviewLabels">1</span>
                         </label>
                         <label class="radio">
-                            <input id="Radio2" name="reliability" type="radio" value="2" onChange={this.handleRadio} /><span>2</span>
+                            <input id="Radio2" name="reliability" type="radio" value="2" onChange={this.handleRadio} /><span className="reviewLabels">2</span>
                         </label>
                         <label class="radio">
-                            <input id="Radio3" name="reliability" type="radio" value="3" onChange={this.handleRadio} /><span>3</span>
+                            <input id="Radio3" name="reliability" type="radio" value="3" onChange={this.handleRadio} /><span className="reviewLabels">3</span>
                         </label>
                         <label class="radio">
-                            <input id="Radio4" name="reliability" type="radio" value="4" onChange={this.handleRadio} /><span>4</span>
+                            <input id="Radio4" name="reliability" type="radio" value="4" onChange={this.handleRadio} /><span className="reviewLabels">4</span>
                         </label>
                         <label class="radio">
-                            <input id="Radio5" name="reliability" type="radio" value="5" onChange={this.handleRadio} /><span>5</span>
+                            <input id="Radio5" name="reliability" type="radio" value="5" onChange={this.handleRadio} /><span className="reviewLabels">5</span>
                         </label>
                     </div>
                     <div className="reviewRow">
                         <label>
-                            Leave a comment
-                    <input type="text" name="comment" value={this.state.comment} onChange={this.handleComment} />
+                    
+                    <div className="reviewSubtitles">Leave a comment</div>
+                    <AutosizeInput
+                        name="comment" 
+                        value={this.state.comment}
+                        style={{width: 50}}
+                        onChange={this.handleComment} 
+                        />
+                    
                         </label>
                     </div>
                     <input type="submit" className="loginBtn" />
