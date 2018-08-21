@@ -29,8 +29,10 @@ class OtherUserProfile extends Component {
         this.getUserProfile();
     }
 
-    getUserProfile() {
 
+
+    getUserProfile() {
+        console.log("1")
       let bod = JSON.stringify({ username: this.props.username })
 
 
@@ -42,10 +44,10 @@ class OtherUserProfile extends Component {
             .then(x => x.text())
             .then(responseBody => {
                 let parsedBody = JSON.parse(responseBody);
-
+                console.log("2")
                 if (parsedBody.success === true) {
                     this.setState({ user: parsedBody.user })
-                    
+                    console.log("3")
 
 
                 } else {
@@ -74,23 +76,24 @@ class OtherUserProfile extends Component {
         let reviews;
         let reviewObj;
         let presentedObj;
-
+        console.log("4")
         if (this.state.user.reviews !== undefined) {
             reviews = this.state.user.reviews.map(rev => {
+                console.log(rev)
                 return [rev.reviewer.username,  rev.review, rev.reviewer.firstName, rev.reviewer.lastName]
-                //add reviewerName
                 
         
             })
-            console.log(this.state.user.reviews)
-            console.log(reviews)
+          
+            
             if (reviews !== undefined) {
                 reviewObj = reviews.map(rev => {
+                    console.log("5")
                     return [rev[2], rev[3], rev[1].overall, rev[1].skill, rev[1].reliability, rev[1].comment]
                 })
             
             if(reviewObj !== undefined){
-                console.log(reviewObj)
+                
                 // let something
                 // for(let i = 0; i < 3; i++){
                 //    something = something + <img className = "star" src = "/Images/star.png"></img>
@@ -207,7 +210,7 @@ class OtherUserProfile extends Component {
 
 
         return (<div>
-            {this.props.popUp ? <PopUpWindow><PostReview renderUser= {this.getUserProfile} username={this.state.user.username} userId={this.props.currentUser.userId} revieweeId={this.state.user.userId} popUp={this.props.popUp}/></PopUpWindow> : null}
+            {this.props.popUp ? <PopUpWindow><PostReview getUserProfile= {this.getUserProfile} username={this.state.user.username} userId={this.props.currentUser.userId} revieweeId={this.state.user.userId} popUp={this.props.popUp}/></PopUpWindow> : null}
             <div className="area">
                 <div className = "flex2">
                 <h1 className="name">
@@ -308,7 +311,9 @@ class OtherUserProfile extends Component {
                          <button className="connect2" onClick={this.popUp} value='PostReview'> Review </button>
                     </div>
                     <div className="revTitle">Reviews
-                    <div className = "reviews">{this.renderReviews()}</div></div>
+                    <div className = "reviews">
+                    {this.renderReviews()}
+                    </div></div>
                     
                 </div>
 

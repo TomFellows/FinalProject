@@ -7,6 +7,7 @@
 
 .reviewTitle{
     font-family: 'Titillium Web', sans-serif;
+    font-size: 2rem;
 
 }
 
@@ -27,5 +28,16 @@
     font-family: 'Titillium Web', sans-serif;
     font-size: 1.15rem;
     border-radius: 2vw;
-    margin-top: 15px;
+    
+}
+
+.submission{
+    display: flex;
+    margin-top: 10px;
+}
+
+.reviewSubmission{
+    margin-left: 20px;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 1.50rem;
 }
