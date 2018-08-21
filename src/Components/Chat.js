@@ -112,8 +112,8 @@ class Chat extends Component {
 
             <div className='list' id='chatBox'>{mappedMessages}</div>
             <form onSubmit={this.sendMessage}>
-                <input className='inputText' type='text' value={this.state.inputValue} onChange={this.handleChange}/>
-                <input className='inputSubmit' value='=>' type='submit'/>
+                <input placeholder = "Type a message..." className='inputText' type='text' value={this.state.inputValue} onChange={this.handleChange}/>
+                <input className='inputSubmit' value='Send' type='submit'/>
             </form>     
         </div>)
     }
