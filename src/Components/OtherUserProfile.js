@@ -85,12 +85,11 @@ class OtherUserProfile extends Component {
                 console.log(reviewObj)
                 presentedObj=reviewObj.map(arr => {
                     return (
-                    <div>
-                        {/* <div>Name: </div> */}
-                        <div>Overall Experience: {arr[0]}</div>
-                        <div>Skill Level: {arr[1]}</div>
-                        <div>Reliability: {arr[2]}</div>
-                        <div>Comment: {arr[3]}</div>
+                    <div className = "oneRev">
+                        <div>Overall Experience: {arr[0]}, Skill Level: {arr[1]}</div>
+                        {/* <div>Skill Level: {arr[1]}</div> */}
+                        <div>Reliability: {arr[2]}, Comment: {arr[3]}</div>
+                        {/* <div>Comment: {arr[3]}</div> */}
                     </div>
                     )
                 })
@@ -294,10 +293,12 @@ class OtherUserProfile extends Component {
                     <div className = "oneButton">
                          <button className="connect2" onClick={this.popUp} value='PostReview'> Review </button>
                     </div>
-                    <div className="revTitle">Reviews</div>
+                    <div className="revTitle">Reviews
+                    <div className = "reviews">{this.renderReviews()}</div></div>
+                    
                 </div>
 
-                <div>{this.renderReviews()}</div>
+                
                 
 
 
@@ -306,7 +307,6 @@ class OtherUserProfile extends Component {
                 <div className="connections">
                     <h1 className = "connetionHeader">Connections</h1>
                     <ConnectionCardSmallContainer which="connections" userId={this.state.user.userId} number="5" />
-
                 </div>
                 </div>
             </div>
