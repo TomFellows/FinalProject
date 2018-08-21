@@ -1,13 +1,15 @@
 .notification {
     display: block;
+    background-color: inherit;
+
 }
 
-.notification .readNotification {
+.readNotification {
     background-color: inherit;
     font-weight: normal
 }
 
-.notification .unreadNotification {
+.unreadNotification {
     background-color: dodgerblue;
     font-weight: bold;
 

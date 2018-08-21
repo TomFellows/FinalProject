@@ -19,18 +19,19 @@ render () {
 
     
 
-   /* mappedNotifications = this.state.notifications.map(item => {
+   mappedNotifications = this.state.notifications.map(item => {
 
-          return (<Notif firstName={item.firstName} lastName={item.lastName} username={item.username}/>)
+          return (<div><Notif firstName={item.firstName} lastName={item.lastName} username={item.username} 
+            type ={item.type} read={item.read} notificationId={item.notificationId}/></div>)
        
       })
 
       if (mappedNotifications.length === 0){
         mappedNotifications = ['No notification']
-      }*/
+      }
 
 
-    return {mappedNotifications}
+    return mappedNotifications
 }
 
 

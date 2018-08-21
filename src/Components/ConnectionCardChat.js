@@ -14,7 +14,12 @@ class ConnectionCardChat extends Component {
 
         super (props)
         
-        this.state = {chatIsOpen: false}
+        if (this.props.openedChat === this.props.user.username) {
+            this.state = {chatIsOpen: true}
+        } else {
+            this.state = {chatIsOpen: false}
+        }
+        
     }
 
     componentDidMount = () => {
@@ -82,7 +87,7 @@ class ConnectionCardChat extends Component {
 }
 
 let mapStateToProps = (state) => {
-    return {currentUser: state.currentUser}
+    return {currentUser: state.currentUser, openedChat: state.openedChat}
   }
 
   let ConnectedConnectionCardChat = connect(mapStateToProps)(ConnectionCardChat)
