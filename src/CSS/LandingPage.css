@@ -17,8 +17,8 @@
 .pic2{
     position: absolute;
     width: 3vw;
-    margin-top: 12%;
-    margin-left: 132%;
+    margin-top: 5.5%;
+    margin-left: 55%;
     transform: rotate(-45deg)
     
 }
@@ -43,7 +43,7 @@
 }
 
 .login{
-    margin-left:28%;
+    margin-left:19%;
     margin-top: 3%
 }
 
@@ -61,7 +61,7 @@
 .heading{
     font-family: 'Lobster', cursive;
     position: absolute;
-    margin-left: 108%;
-    margin-top: 11%;
+    margin-left: 44%;
+    margin-top: 5%;
     font-size:35pt;
 }

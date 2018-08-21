@@ -2,13 +2,14 @@
 .chat {
     
     border: 1px solid white;
-
+    background-color: #e9ebee;
     margin-bottom: 1em;
+    border-radius: 1em;
     
 }
 
 .list {
-    margin: 0;
+    margin: 0em;
 
     max-height: 400px;
     min-height: 100px;
@@ -24,15 +25,37 @@
 }
 
 form {
-    margin-top: 0.5em;
+    margin: 0.8em;
 }
 
 form input.inputText {
-    width: 80%;
+    border-radius: 1em;
+    width: 75%;
+    background-color: #141E30;
+    padding: 0.3em;
+    color: white;
+    border-top-style: solid;
 }
 
 form input.inputSubmit {
-    width: 20%;
+    background-color: #141E30;
+    padding: 0.3em;
+    color: white;
+    width: 22%;
+    border-radius: 1em;
+    margin-left: 0.2em
+}
+
+form input.inputSubmit:hover {
+    font-weight: bold;
+}
+
+.inputText:focus{
+    outline: none;
+}
+
+.inputSubmit:focus{
+    outline: none;
 }
 
 .listItem div {
@@ -55,7 +78,7 @@ form input.inputSubmit {
 
 .right .chatLine {
     border: 1px solid transparent;
-    border-radius: 20px;
+    border-radius: 13px;
     display: inline-block;
     color: white;
     font-family: Raleway;
@@ -69,7 +92,7 @@ form input.inputSubmit {
 
 .left .chatLine {
     border: 1px solid transparent;
-    border-radius: 20px;
+    border-radius: 13px;
     display: inline-block;
     color: black;
     font-family: Raleway;

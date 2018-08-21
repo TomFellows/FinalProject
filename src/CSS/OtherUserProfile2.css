@@ -1,15 +1,16 @@
 
 
-/*Please rewrite the commented sections, they're messing up the side columns
+/* Please rewrite the commented sections, they're messing up the side columns */
 .area {
     background-color: #e9ebee;
-    position: absolute;
+}
+    /* position: absolute;
     margin-top: 0em;
     left: 15vw;
     width: 60vw;
     max-width:60vw;
     height: 400vh;
-}
+
 
 .parent{
    position: absolute;
@@ -18,12 +19,10 @@
    text-align: left;
    margin-top: 25vh;
    width: 50vw;
-   height: 38vh;
-    
+   height: 38vh;   
 }
 
-.profileInfo{
-   
+.profileInfo{   
     position: relative;
     top: 2vh;
     left: 15vw;
@@ -44,9 +43,9 @@
 
 .connect{
    position: relative;
+   width: 8em;
     margin-bottom: 5%;
      margin-left: 8%;
-
     background-color: #141E30;  /* fallback for old browsers */
     background-color: -webkit-linear-gradient(to left, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
     background-color: linear-gradient(to left, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -57,8 +56,8 @@
 
 .connect2{
     position: relative;
-    margin-top: 14%;
-    margin-left: 60%;
+    margin-top: 4.7em;
+    margin-left: 1em;
     background-color: #ffcc00;
     color:black;
     font-weight: bold;
@@ -79,16 +78,16 @@
 }
 .name{
     position: absolute;
-    margin-top: 5%;
-    margin-left: 40%;
+    margin-top: 3%;
+    margin-left: 24%;
     /* color: #0066cc */
     color: #141E30
 }
 .name2{
     position: absolute;
-    max-width: 50%;
-    margin-top: 11%;
-    margin-left: 40%;
+    max-width: 35%;
+    margin-top:7%;
+    margin-left: 24%;
     font-size: 15pt;
     /* font-family: 'Caveat', cursive; */
     font-family: 'Indie Flower', cursive;
@@ -208,7 +207,7 @@
 
 .revTitle{
     position: absolute;
-    margin-left: 40%;
+    margin-left: 24%;
     margin-top: 12vh;
     font-size: 25pt;
     color: #141E30
