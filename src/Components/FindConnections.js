@@ -25,6 +25,7 @@ class FindConnections extends Component {
                         styles ={item.styles}
                         connections = {item.connections.length}
                         username = {item.username}
+                        rating = {item.userRating}
                     />
                   )
                 })
