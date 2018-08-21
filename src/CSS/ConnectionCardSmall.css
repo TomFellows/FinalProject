@@ -156,3 +156,8 @@
     opacity: 1;
 
 }
+
+.smallCard2{
+    margin-top: 5em;
+    display: flex;
+}
