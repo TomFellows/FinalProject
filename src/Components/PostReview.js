@@ -36,9 +36,15 @@ class PostReview extends Component {
         }
     }
     handleComment(evt) {
+        if(evt.target.keyCode === 13) {
+            evt.preventDefault()
+        }
         this.setState({ comment: evt.target.value })
     }
     handleSubmit(evt) {
+        if(evt.target.keyCode === 13) {
+            evt.preventDefault()
+        }
         evt.preventDefault()
         let review = {}
         review.overall = this.state.overallExperienceRating
@@ -143,7 +149,8 @@ class PostReview extends Component {
                     <div className="reviewSubtitles">Leave a comment</div>
                     <AutosizeInput
                         name="comment" 
-                        value={this.state.comment} 
+                        value={this.state.comment}
+                        style={{width: 50}}
                         onChange={this.handleComment} 
                         />
                     

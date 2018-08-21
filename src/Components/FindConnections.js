@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import {withRouter} from 'react-router-dom'
 import ConnectionCardChat from './ConnectionCardChat.js'
+import ConnectionCardSmall from './ConnectionCardSmall.js'
+
 
 
 class FindConnections extends Component {
@@ -12,11 +14,17 @@ class FindConnections extends Component {
     render () {
 
         let mappedConnections = []
-
-
                 if (this.props.location.users) {
                 mappedConnections = this.props.location.users.map(item => {
-                    return (<ConnectionCardChat user={item}/>)
+
+                    return (<ConnectionCardSmall
+                        name={item.firstName + " " + item.lastName}
+                        location={item.location}
+                        styles ={item.styles}
+                        connections = {item.connections.length}
+                        username = {item.username}
+                    />
+                  )
                 })
                 }
 
