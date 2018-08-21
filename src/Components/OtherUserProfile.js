@@ -22,9 +22,7 @@ class OtherUserProfile extends Component {
         this.addConnection = this.addConnection.bind(this)
         this.remConnection = this.remConnection.bind(this)
         this.renderReviews = this.renderReviews.bind(this)
-
-
-
+        this.renderStars = this.renderStars.bind(this)
     }
 
     componentDidMount() {
@@ -56,6 +54,14 @@ class OtherUserProfile extends Component {
             })
     }
 
+    renderStars(num){
+        let stars = [];
+        for(let i = 0; i < num; i++){
+            stars = stars.concat("⭐")
+        }
+        return stars
+    }
+
     popUp = (event) => {
         this.props.dispatch({ type: "pop up", popUpType: true })
     }
@@ -85,13 +91,19 @@ class OtherUserProfile extends Component {
             
             if(reviewObj !== undefined){
                 console.log(reviewObj)
+                // let something
+                // for(let i = 0; i < 3; i++){
+                //    something = something + <img className = "star" src = "/Images/star.png"></img>
+                // }
+                // return something
                 presentedObj=reviewObj.map(arr => {
                     return (
-                    <div className = "oneRev">
-                        <div>Overall Experience: {arr[0]}, Skill Level: {arr[1]}</div>
-                        {/* <div>Skill Level: {arr[1]}</div> */}
-                        <div>Reliability: {arr[2]}, Comment: {arr[3]}</div>
-                        {/* <div>Comment: {arr[3]}</div> */}
+                        <div className="oneRev">
+                        <div>Reviewed by: {`${arr[0]} ${arr[1]}`} | Overall Experience: {this.renderStars(arr[2])}</div>
+                       
+                        <div>Skill Level: {arr[3]} | Reliability: {this.renderStars(arr[4])}</div>
+                        {/* <div>Reliability: {arr[4]}</div> */}
+                        <div>Comment: {arr[5]}</div>
                     </div>
                     )
                 })
