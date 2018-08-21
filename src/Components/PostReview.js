@@ -46,7 +46,7 @@ class PostReview extends Component {
         review.reliability = this.state.reliabilityRating
         review.comment = this.state.comment
         let bod = JSON.stringify({ userId: this.props.userId, revieweeId: this.props.revieweeId, review })
-        console.log(bod)
+
         fetch('/reviewUser', {
             method: 'POST',
             credentials: 'same-origin',
@@ -54,19 +54,21 @@ class PostReview extends Component {
         })
             .then(x => x.text())
             .then(responseBody => {
-                console.log(responseBody)
+                
                 let parsedBody = JSON.parse(responseBody)
-                console.log(parsedBody)
+                
                 if (parsedBody.success === true) {
+                    this.reviewConfirmation()
+                    setTimeout(this.confirmation, 1000)
+                    this.props.getUserProfile();
                     console.log("review posted")
                 }
                 else {
                     console.log("something went wrong!!")
                 }
             })
-        this.reviewConfirmation()
-        setTimeout(this.confirmation, 1000)
-        this.props.renderUser();
+   
+        
     }
 
     confirmation() {
