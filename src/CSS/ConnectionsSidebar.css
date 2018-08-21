@@ -12,17 +12,17 @@
     width: 100%;
     
     
+
     padding: 1em;
     
+    padding-bottom: 3em;
 
     position: fixed;
     right: 0;
     width: 25%;
-    height: 90vh;
+    height: 100%;
 
     overflow: auto;
-
-    border-bottom: 1px solid black;
 
 }
 

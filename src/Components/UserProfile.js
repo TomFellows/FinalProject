@@ -124,6 +124,8 @@ class UserProfile extends Component {
 
         let initialInput
 
+        
+
         if (event.target.value === 'styles' || event.target.value === 'instruments' || event.target.value === 'seeking' ) {
 
             initialInput = this.props.currentUser[event.target.value].join(', ')
@@ -132,6 +134,12 @@ class UserProfile extends Component {
         }
 
         this.setState({editing: event.target.value, inputValue: initialInput})
+
+        if (event.target.value === 'experience') {
+            let form = document.getElementsByTagName('body')
+
+            form.scrollTop = form.scrollHeight
+        }
     }
 
     stopEdit = () => {
@@ -187,6 +195,7 @@ class UserProfile extends Component {
         //Checks if the instruments is being edited, if yes, it displays and input field with save buttons.
         //If not being edited, it displays non editable text
         if (formEditing.instruments === true) {
+
             instruments = (<div>
                 <input type="text" class="form-control" placeholder="instruments" 
                 value={this.state.inputValue} onChange={this.handleChange}/>
@@ -196,7 +205,10 @@ class UserProfile extends Component {
             if (this.state.editing === false) {
                 editButton = (<button value='instruments' onClick={this.handleEdit}>Edit</button>)
             }
-            instruments = (<div><div className='profileLabel'>{this.props.currentUser.instruments.join(', ')}</div>{editButton}</div>)
+
+            let mappedInstruments = this.props.currentUser.instruments.map(item => (<div className='listItem'>{item}</div>))
+
+            instruments = (<div><div className='profileLabel'>{mappedInstruments}</div>{editButton}</div>)
         }
 
         //Checks if the location is being edited, if yes, it displays and input field with save buttons.
@@ -234,7 +246,10 @@ class UserProfile extends Component {
             if (this.state.editing === false) {
                 editButton = (<button value='seeking' onClick={this.handleEdit}>Edit</button>)
             }
-            seeking = (<div><div className='profileLabel'>{this.props.currentUser.seeking.join(', ')}</div>{editButton}</div>)
+
+            let mappedSeeking = this.props.currentUser.seeking.map(item => (<div className='listItem'>{item}</div>))
+
+            seeking = (<div><div className='profileLabel'>{mappedSeeking}</div>{editButton}</div>)
         }
 
         //Checks if the musical styles is being edited, if yes, it displays and input field with save buttons.
@@ -249,7 +264,10 @@ class UserProfile extends Component {
             if (this.state.editing === false) {
                 editButton = (<button value='styles' onClick={this.handleEdit}>Edit</button>)
             }
-            styles = (<div><div className='profileLabel'>{this.props.currentUser.styles.join(', ')}</div>{editButton}</div>)
+
+            let mappedStyles = this.props.currentUser.styles.map(item => (<div className='listItem'>{item}</div>))
+
+            styles = (<div><div className='profileLabel'>{mappedStyles}</div>{editButton}</div>)
         }
 
         //Checks if the skill level is being edited, if yes, it displays and input field with save buttons.

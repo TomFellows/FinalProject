@@ -72,6 +72,7 @@ class OtherUserProfile extends Component {
         if (this.state.user.reviews !== undefined) {
             reviews = this.state.user.reviews.map(rev => {
                 return [rev.reviewerId, rev.review]
+                //add reviewerName
         
             })
             console.log(reviews)
@@ -85,6 +86,7 @@ class OtherUserProfile extends Component {
                 presentedObj=reviewObj.map(arr => {
                     return (
                     <div>
+                        {/* <div>Name: </div> */}
                         <div>Overall Experience: {arr[0]}</div>
                         <div>Skill Level: {arr[1]}</div>
                         <div>Reliability: {arr[2]}</div>
@@ -192,7 +194,7 @@ class OtherUserProfile extends Component {
 
 
         return (<div>
-            {this.props.popUp ? <PopUpWindow><PostReview renderUser= {this.getUserProfile()} username={this.state.user.username} userId={this.props.currentUser.userId} revieweeId={this.state.user.userId} popUp={this.props.popUp}/></PopUpWindow> : null}
+            {this.props.popUp ? <PopUpWindow><PostReview renderUser= {this.getUserProfile} username={this.state.user.username} userId={this.props.currentUser.userId} revieweeId={this.state.user.userId} popUp={this.props.popUp}/></PopUpWindow> : null}
             <div className="area">
                 <div className = "flex2">
                 <h1 className="name">

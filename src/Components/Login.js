@@ -26,16 +26,22 @@ class Login extends Component {
 
     this.loginGoogle = this.loginGoogle.bind(this)
     this.setUserAfterLogin = this.setUserAfterLogin.bind(this)
+    this.createUser = this.createUser.bind(this)
+    this.setupNewUser = this.setupNewUser.bind(this)
 
   }
 
   loginGoogle () {
 
     let setUser = this.setUserAfterLogin
+    let createNewUser = this.createUser
+    let setupNewUser = this.setupNewUser
+    
 
     firebase.auth().signInWithPopup(provider).then(function(result) {
       // This gives you a Google Access Token. You can use it to access the Google API.
       //var token = result.credential.accessToken;
+
       
       // The signed-in user info.
       var user = result.user;
@@ -47,16 +53,31 @@ class Login extends Component {
           credentials: 'same-origin'
 
       }).then(response=>response.text())
+        .then(createNewUser)
         .then(setUser)
+        .then(setupNewUser)
+        
+        
       })
       
 
     })
-      
+  }
 
+  createUser () {
+   
+      if (this.props.createAccount === true) {
+
+
+        fetch('/createAccount', {
+          credentials: 'same-origin'
+      })
+
+      }
   }
     
   setUserAfterLogin () {
+
     fetch('/getCurrentUser', {
       credentials: 'same-origin'
     }).then(response => response.text())
@@ -73,7 +94,8 @@ class Login extends Component {
         this.props.setCurrentUser({}, 'landingPage')
       }
 
-      }).catch((err) => {
+      })
+      .catch((err) => {
 
         let currentUser =  {
             firstName: 'Unavailable', lastName: 'Unavailable', instruments: 'Unavailable',
@@ -85,12 +107,31 @@ class Login extends Component {
   
   }
 
+  setupNewUser () {
+
+    if (this.props.createAccount === true) {
+
+    let newUser = this.props.createdUser
+
+    fetch('/modifyProfile', {
+      method: 'POST',
+      body: JSON.stringify(newUser),
+      credentials: 'same-origin'
+  })
+
+    }
+  }
+
 
 
 
   render() {
 
-    return (<button className = "google" onClick={this.loginGoogle}>Login with Google</button>)
+      let buttonLabel = 'Login with Google'
+    if (this.props.createAccount === true) {
+      buttonLabel = 'Create account with Google'
+    }
+    return (<button className = "google" onClick={this.loginGoogle}>{buttonLabel}</button>)
 
   }
 }

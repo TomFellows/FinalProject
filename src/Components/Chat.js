@@ -96,6 +96,7 @@ class Chat extends Component {
                 align = 'left'
             } else {
                 type = 'chatLine'
+                align = 'left'
 
                 if (item.userId === currentUserId) {
                     align = 'right'
