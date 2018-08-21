@@ -36,15 +36,10 @@ class PostReview extends Component {
         }
     }
     handleComment(evt) {
-        if(evt.target.keyCode === 13) {
-            evt.preventDefault()
-        }
         this.setState({ comment: evt.target.value })
     }
     handleSubmit(evt) {
-        if(evt.target.keyCode === 13) {
-            evt.preventDefault()
-        }
+        
         evt.preventDefault()
         let review = {}
         review.overall = this.state.overallExperienceRating
@@ -88,11 +83,11 @@ class PostReview extends Component {
 
     render() {
         return (
-            <div>
+            <div className="reviewForm">
                 <h2 class="reviewTitle">Rate this user on:</h2>
                 <form clasName="form" onSubmit={this.handleSubmit}>
                     <div className="reviewRow">
-                        <div className="reviewSubtitles">Overall experience (5 = great!):</div>
+                        <div className="reviewSubtitles">Overall experience:</div>
                         <label class="radio">
                             <input id="Radio1" name="overallExperience" type="radio" value="1" onChange={this.handleRadio} /><span className="reviewLabels">1</span>
                         </label>
@@ -145,18 +140,18 @@ class PostReview extends Component {
                     </div>
                     <div className="reviewRow">
                         <label>
-                    
-                    <div className="reviewSubtitles">Leave a comment</div>
                     <AutosizeInput
+                        
                         name="comment" 
                         value={this.state.comment}
-                        style={{width: 50}}
+                        style={{ fontSize: 20 }}
+                        placeholder="Leave a comment...      "
                         onChange={this.handleComment} 
                         />
                     
                         </label>
                     </div>
-                    <input type="submit" className="loginBtn" />
+                    <input type="submit" className="submitBtn" />
                     {/* <button onSubmit={this.handleSubmit}>Submit Review</button> */}
                 </form>
                 <div> {this.state.showSubmit ? <h2>Review Submitted!</h2> : null}</div>

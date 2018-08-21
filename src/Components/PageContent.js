@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom'
 
-
+import '../CSS/PageContent.css'
 import FindConnections from './FindConnections.js'
 import Homepage from './Homepage.js'
 import UserProfile from './UserProfile.js'
@@ -50,7 +50,7 @@ class PageContent extends Component {
     }
 
     render () {
-        return(<div>
+        return(<div className ="height"> 
         <Route exact={true} path='/' render={this.renderHomePage} />
         <Route exact={true} path='/Profile' render={this.renderUserProfile} />
         <Route exact={true} path='/FindConnections' render={this.renderFindConnections} />

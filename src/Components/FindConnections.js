@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {withRouter} from 'react-router-dom'
 import ConnectionCardChat from './ConnectionCardChat.js'
 import ConnectionCardSmall from './ConnectionCardSmall.js'
+import '../CSS/ConnectionCardSmall.css'
 
 
 
@@ -33,10 +34,10 @@ class FindConnections extends Component {
 
            
 
-        return(<div>
-            {mappedConnections}    
-                
-
+        return(<div className = "smallCard2">
+           
+              {mappedConnections}  
+            
             </div>
 
         )
