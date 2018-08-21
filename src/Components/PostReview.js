@@ -39,7 +39,6 @@ class PostReview extends Component {
         this.setState({ comment: evt.target.value })
     }
     handleSubmit(evt) {
-        
         evt.preventDefault()
         let review = {}
         review.overall = this.state.overallExperienceRating
@@ -47,7 +46,7 @@ class PostReview extends Component {
         review.reliability = this.state.reliabilityRating
         review.comment = this.state.comment
         let bod = JSON.stringify({ userId: this.props.userId, revieweeId: this.props.revieweeId, review })
-        console.log(bod)
+
         fetch('/reviewUser', {
             method: 'POST',
             credentials: 'same-origin',
@@ -55,20 +54,21 @@ class PostReview extends Component {
         })
             .then(x => x.text())
             .then(responseBody => {
-                console.log(responseBody)
+                
                 let parsedBody = JSON.parse(responseBody)
-                console.log(parsedBody)
+                
                 if (parsedBody.success === true) {
+                    this.reviewConfirmation()
+                    setTimeout(this.confirmation, 1000)
+                    this.props.getUserProfile();
                     console.log("review posted")
                 }
                 else {
                     console.log("something went wrong!!")
                 }
             })
-        this.reviewConfirmation()
-        setTimeout(this.confirmation, 1000)
-        // this.props.history.push('/OtherUserProfile/' + this.props.username)
-        this.props.renderUser();
+   
+        
     }
 
     confirmation() {
@@ -84,7 +84,7 @@ class PostReview extends Component {
     render() {
         return (
             <div className="reviewForm">
-                <h2 class="reviewTitle">Rate this user on:</h2>
+                <div class="reviewTitle">Rate this user on:</div>
                 <form clasName="form" onSubmit={this.handleSubmit}>
                     <div className="reviewRow">
                         <div className="reviewSubtitles">Overall experience:</div>
@@ -140,21 +140,24 @@ class PostReview extends Component {
                     </div>
                     <div className="reviewRow">
                         <label>
-                    <AutosizeInput
-                        
-                        name="comment" 
-                        value={this.state.comment}
-                        style={{ fontSize: 20 }}
-                        placeholder="Leave a comment...      "
-                        onChange={this.handleComment} 
-                        />
-                    
+                            <AutosizeInput
+
+                                name="comment"
+                                value={this.state.comment}
+                                style={{ fontSize: 20 }}
+                                placeholder="Leave a comment...      "
+                                onChange={this.handleComment}
+                            />
+
                         </label>
                     </div>
-                    <input type="submit" className="submitBtn" />
-                    {/* <button onSubmit={this.handleSubmit}>Submit Review</button> */}
+                    <div className="submission">
+                        <input type="submit" className="submitBtn" />
+                        {/* <button onSubmit={this.handleSubmit}>Submit Review</button> */}
+                        <div className="reviewSubmission"> {this.state.showSubmit ? <div>Review Submitted!</div>: null }</div>
+                    </div>
                 </form>
-                <div> {this.state.showSubmit ? <h2>Review Submitted!</h2> : null}</div>
+
             </div>
         )
     }

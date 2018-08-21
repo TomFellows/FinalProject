@@ -22,17 +22,17 @@ class OtherUserProfile extends Component {
         this.addConnection = this.addConnection.bind(this)
         this.remConnection = this.remConnection.bind(this)
         this.renderReviews = this.renderReviews.bind(this)
-
-
-
+        this.renderStars = this.renderStars.bind(this)
     }
 
     componentDidMount() {
         this.getUserProfile();
     }
 
-    getUserProfile() {
 
+
+    getUserProfile() {
+        console.log("1")
       let bod = JSON.stringify({ username: this.props.username })
 
 
@@ -44,16 +44,24 @@ class OtherUserProfile extends Component {
             .then(x => x.text())
             .then(responseBody => {
                 let parsedBody = JSON.parse(responseBody);
-
+                console.log("2")
                 if (parsedBody.success === true) {
                     this.setState({ user: parsedBody.user })
-                    
+                    console.log("3")
 
 
                 } else {
                     console.log("invalid userId")
                 }
             })
+    }
+
+    renderStars(num){
+        let stars = [];
+        for(let i = 0; i < num; i++){
+            stars = stars.concat("⭐")
+        }
+        return stars
     }
 
     popUp = (event) => {
@@ -68,30 +76,36 @@ class OtherUserProfile extends Component {
         let reviews;
         let reviewObj;
         let presentedObj;
-
+        console.log("4")
         if (this.state.user.reviews !== undefined) {
             reviews = this.state.user.reviews.map(rev => {
+                console.log(rev)
                 return [rev.reviewer.username,  rev.review, rev.reviewer.firstName, rev.reviewer.lastName]
-                //add reviewerName
                 
         
             })
-            console.log(this.state.user.reviews)
-            console.log(reviews)
+          
+            
             if (reviews !== undefined) {
                 reviewObj = reviews.map(rev => {
+                    console.log("5")
                     return [rev[2], rev[3], rev[1].overall, rev[1].skill, rev[1].reliability, rev[1].comment]
                 })
             
             if(reviewObj !== undefined){
-                console.log(reviewObj)
+                
+                // let something
+                // for(let i = 0; i < 3; i++){
+                //    something = something + <img className = "star" src = "/Images/star.png"></img>
+                // }
+                // return something
                 presentedObj=reviewObj.map(arr => {
                     return (
-                    <div className="oneRev">
-                        <div>Reviewed by: {`${arr[0]} ${arr[1]}`} </div>
-                        <div>Overall Experience: {arr[2]}</div>
-                        <div>Skill Level: {arr[3]}</div>
-                        <div>Reliability: {arr[4]}</div>
+                        <div className="oneRev">
+                        <div>Reviewed by: {`${arr[0]} ${arr[1]}`} | Overall Experience: {this.renderStars(arr[2])}</div>
+                       
+                        <div>Skill Level: {arr[3]} | Reliability: {this.renderStars(arr[4])}</div>
+                        {/* <div>Reliability: {arr[4]}</div> */}
                         <div>Comment: {arr[5]}</div>
                     </div>
                     )
@@ -196,7 +210,7 @@ class OtherUserProfile extends Component {
 
 
         return (<div>
-            {this.props.popUp ? <PopUpWindow><PostReview renderUser= {this.getUserProfile} username={this.state.user.username} userId={this.props.currentUser.userId} revieweeId={this.state.user.userId} popUp={this.props.popUp}/></PopUpWindow> : null}
+            {this.props.popUp ? <PopUpWindow><PostReview getUserProfile= {this.getUserProfile} username={this.state.user.username} userId={this.props.currentUser.userId} revieweeId={this.state.user.userId} popUp={this.props.popUp}/></PopUpWindow> : null}
             <div className="area">
                 <div className = "flex2">
                 <h1 className="name">
@@ -219,7 +233,7 @@ class OtherUserProfile extends Component {
                                  </button>
                                 </h5>
                             </div>
-                            <div id="collapseEleven" class="collapse" aria-labelledby="headingEleven" data-parent="#accordionExample">
+                            <div id="collapseEleven" class="collapse-open" aria-labelledby="headingEleven" data-parent="#accordionExample">
                                 <div class="card-body">
                                     {this.state.user.location}
                                 </div>
@@ -233,7 +247,7 @@ class OtherUserProfile extends Component {
                                 </button>
                                 </h5>
                             </div>
-                            <div id="collapseTwelve" class="collapse" aria-labelledby="headingTwelve" data-parent="#accordionExample">
+                            <div id="collapseTwelve" class="collapse-open" aria-labelledby="headingTwelve" data-parent="#accordionExample">
                                 <div class="card-body">
                                     {styles}
                                 </div>
@@ -249,7 +263,7 @@ class OtherUserProfile extends Component {
                                 </h5>
                             </div>
 
-                            <div id="collapseThirteen" class="collapse" aria-labelledby="headingThirteen" data-parent="#accordionExample">
+                            <div id="collapseThirteen" class="collapse-open" aria-labelledby="headingThirteen" data-parent="#accordionExample">
                                 <div class="card-body">
                                     {instruments}
                                 </div>
@@ -296,10 +310,14 @@ class OtherUserProfile extends Component {
                     <div className = "oneButton">
                          <button className="connect2" onClick={this.popUp} value='PostReview'> Review </button>
                     </div>
-                    <div className="revTitle">Reviews</div>
+                    <div className="revTitle">Reviews
+                    <div className = "reviews">
+                    {this.renderReviews()}
+                    </div></div>
+                    
                 </div>
 
-                <div>{this.renderReviews()}</div>
+                
                 
 
 
@@ -308,7 +326,6 @@ class OtherUserProfile extends Component {
                 <div className="connections">
                     <h1 className = "connetionHeader">Connections</h1>
                     <ConnectionCardSmallContainer which="connections" userId={this.state.user.userId} number="5" />
-
                 </div>
                 </div>
             </div>
