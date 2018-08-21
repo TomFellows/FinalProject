@@ -9,7 +9,7 @@
 }
 
 .list {
-    margin: 0em;
+    margin: 1em 0 0 0;
 
     max-height: 400px;
     min-height: 100px;
@@ -48,7 +48,7 @@ form input.inputSubmit {
 
 form input.inputSubmit:hover {
     font-weight: bold;
-}
+} 
 
 .inputText:focus{
     outline: none;
@@ -73,20 +73,20 @@ form input.inputSubmit:hover {
 .left {
     display: flex;
     justify-content: flex-start;
-    
 }
 
 .right .chatLine {
     border: 1px solid transparent;
     border-radius: 13px;
-    display: inline-block;
+    
     color: white;
     font-family: Raleway;
     /* Dancing Script */
     /* Caveat; */
     /* |Dancing+Script|Indie+Flower|Raleway|Shadows+Into+Light */
     background-color: #070716;
-    max-width: 90%
+    max-width: 90%;
+
 }
 
 

@@ -72,8 +72,10 @@ class Chat extends Component {
 
     sendMessage = (event) => {
         event.preventDefault()
+        if (this.state.inputValue.length > 0) {
         socket.emit('message', {roomName: this.props.roomInfos.name, content: this.state.inputValue})
         this.setState({inputValue: ''})
+        }
 
     }
 
