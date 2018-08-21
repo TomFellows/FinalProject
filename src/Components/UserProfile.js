@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import '../CSS/UserProfile.css'
 import {connect} from 'react-redux'
-import Cities from '../CITIES.js'
+import {Cities} from '../LISTS.js'
 import { SETCURRENTUSER } from '../ACTIONS';
 
 
