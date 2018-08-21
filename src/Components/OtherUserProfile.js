@@ -87,7 +87,7 @@ class OtherUserProfile extends Component {
                 console.log(reviewObj)
                 presentedObj=reviewObj.map(arr => {
                     return (
-                    <div>
+                    <div className="oneRev">
                         <div>Reviewed by: {`${arr[0]} ${arr[1]}`} </div>
                         <div>Overall Experience: {arr[2]}</div>
                         <div>Skill Level: {arr[3]}</div>
