@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {withRouter} from 'react-router-dom'
 import ConnectionCardChat from './ConnectionCardChat.js'
 import ConnectionCardSmall from './ConnectionCardSmall.js'
+import '../CSS/ConnectionCardSmall.css'
 
 
 
@@ -15,6 +16,7 @@ class FindConnections extends Component {
 
         let mappedConnections = []
                 if (this.props.location.users) {
+                    console.log("location.users",this.props.location.users)
                 mappedConnections = this.props.location.users.map(item => {
 
                     return (<ConnectionCardSmall
@@ -32,10 +34,10 @@ class FindConnections extends Component {
 
            
 
-        return(<div>
-            {mappedConnections}    
-                
-
+        return(<div className = "smallCard2">
+           
+              {mappedConnections}  
+            
             </div>
 
         )

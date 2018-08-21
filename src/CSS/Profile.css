@@ -1,4 +1,7 @@
-
+.profileName{
+   font-size: 16pt;
+   padding-bottom: 20px;
+}
 .profilePic{
     margin-top: 15%;
     margin-left:15%;
