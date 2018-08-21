@@ -4,6 +4,7 @@ import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 
 
+
 class NotificationsList extends Component {
 
 constructor (props) {
@@ -42,6 +43,8 @@ let mapStateToProps = (state) => {
     return {currentUser: state.currentUser, popUp: state.popUp, connected: state.connected}
   }
 
+
+  
   
 let ConnectedNotificationsList = connect(mapStateToProps)(NotificationsList)
 

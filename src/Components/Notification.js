@@ -44,7 +44,7 @@ class Notif extends Component {
 
         if (this.props.type === "message") {notificationMessage = ' sent you a message.'}
         if (this.props.type === 'contact') {notificationMessage = ' added you as a contact.'}
-        if (this.props.type === 'review') {notificationMessage = ' added a review about you.'}
+        if (this.props.type === 'review') {notificationMessage = ' added a review about ' }
 
         if (this.state.read === true) {notificationState = 'readNotification'}
         else {notificationState = 'unreadNotification'}
@@ -53,6 +53,12 @@ class Notif extends Component {
             return (<div className='notification'><div className={notificationState} onClick={this.read}>
         <Link to={'/chat:' + this.props.username} onClick={this.openChat}>{this.props.firstName + ' ' + this.props.lastName}</Link> 
         {notificationMessage}</div></div>)
+        }
+
+        if (this.props.type === 'review') {
+        return (<div className='notification'><div className={notificationState} onClick={this.read}>
+        <Link to={'/OtherUserProfile/' + this.props.username}>{this.props.firstName + ' ' + this.props.lastName}</Link> 
+        {notificationMessage}<Link to={'/OtherUserProfile/' + this.props.currentUser.username}>you</Link>.</div></div>)
         }
 
 

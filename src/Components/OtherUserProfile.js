@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import '../CSS/OtherUserProfile.css'
+import '../CSS/OtherUserProfile2.css'
 import '../CSS/ConnectionCardSmall.css'
 import Image from './Image'
 import PopUpWindow from './PopUpWindow.js'
