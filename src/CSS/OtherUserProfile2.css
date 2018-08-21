@@ -134,7 +134,10 @@
     position: absolute;
     margin-top: 10%;
 }*/
-
+.connections{
+    position: relative;
+    margin-top: 40%;
+}
 .connProfilePic2{
  
     width: 26.7%;
@@ -224,3 +227,31 @@
 #collapseFifteen{
     border-bottom: solid;
 }
+
+.reviews{
+       position: relative;
+       margin-top: 3%;
+        margin-left: 0%;
+        font-size: 10pt;
+        color: #141E30
+}
+.oneRev{
+    margin: 0%;
+    text-align: center;
+    width: 100%;
+    padding: 2%;
+    border-style: solid;
+    color: white;
+    background: #141E30;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border-radius: 10px;
+}
+
+.star{
+    position: relative;
+    width: 3vw;
+    color: #ffcc00;
+    
+}
+

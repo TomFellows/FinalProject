@@ -22,9 +22,7 @@ class OtherUserProfile extends Component {
         this.addConnection = this.addConnection.bind(this)
         this.remConnection = this.remConnection.bind(this)
         this.renderReviews = this.renderReviews.bind(this)
-
-
-
+        this.renderStars = this.renderStars.bind(this)
     }
 
     componentDidMount() {
@@ -56,6 +54,14 @@ class OtherUserProfile extends Component {
             })
     }
 
+    renderStars(num){
+        let stars = [];
+        for(let i = 0; i < num; i++){
+            stars = stars.concat("⭐")
+        }
+        return stars
+    }
+
     popUp = (event) => {
         this.props.dispatch({ type: "pop up", popUpType: true })
     }
@@ -85,13 +91,18 @@ class OtherUserProfile extends Component {
             
             if(reviewObj !== undefined){
                 console.log(reviewObj)
+                // let something
+                // for(let i = 0; i < 3; i++){
+                //    something = something + <img className = "star" src = "/Images/star.png"></img>
+                // }
+                // return something
                 presentedObj=reviewObj.map(arr => {
                     return (
-                    <div className="oneRev">
-                        <div>Reviewed by: {`${arr[0]} ${arr[1]}`} </div>
-                        <div>Overall Experience: {arr[2]}</div>
-                        <div>Skill Level: {arr[3]}</div>
-                        <div>Reliability: {arr[4]}</div>
+                        <div className="oneRev">
+                        <div>Reviewed by: {`${arr[0]} ${arr[1]}`} | Overall Experience: {this.renderStars(arr[2])}</div>
+                       
+                        <div>Skill Level: {arr[3]} | Reliability: {this.renderStars(arr[4])}</div>
+                        {/* <div>Reliability: {arr[4]}</div> */}
                         <div>Comment: {arr[5]}</div>
                     </div>
                     )
@@ -296,10 +307,12 @@ class OtherUserProfile extends Component {
                     <div className = "oneButton">
                          <button className="connect2" onClick={this.popUp} value='PostReview'> Review </button>
                     </div>
-                    <div className="revTitle">Reviews</div>
+                    <div className="revTitle">Reviews
+                    <div className = "reviews">{this.renderReviews()}</div></div>
+                    
                 </div>
 
-                <div>{this.renderReviews()}</div>
+                
                 
 
 
@@ -308,7 +321,6 @@ class OtherUserProfile extends Component {
                 <div className="connections">
                     <h1 className = "connetionHeader">Connections</h1>
                     <ConnectionCardSmallContainer which="connections" userId={this.state.user.userId} number="5" />
-
                 </div>
                 </div>
             </div>
