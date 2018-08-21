@@ -33,19 +33,20 @@ class Profile extends Component {
     <div class="accordion" id="accordionExample">
 
 
-     <div className = "info">
+     {/* <div className = "info">
         <button className = "btn"  type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
           Bio
         </button>
-      </div>
+      </div> */}
  
 
-    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-      <div className="card-body">
-    
+    {/* <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div className="card-body"> */}
+      <h1 className = "profileName">
        {this.props.currentUser.firstName}&nbsp;{this.props.currentUser.lastName}
-      </div>
-    </div>
+       </h1>
+      {/* </div>
+    </div> */}
   
 
     <div className = "info">
