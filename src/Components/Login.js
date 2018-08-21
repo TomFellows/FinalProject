@@ -113,11 +113,14 @@ class Login extends Component {
 
     let newUser = this.props.createdUser
 
+
     fetch('/modifyProfile', {
       method: 'POST',
       body: JSON.stringify(newUser),
       credentials: 'same-origin'
-  })
+    }).then(()=>{
+      this.props.history.push('/Profile')
+    })
 
     }
   }
