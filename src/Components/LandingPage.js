@@ -28,37 +28,11 @@ class LandingPage extends Component {
         this.handleChange7 = this.handleChange7.bind(this)
         this.handleChange8 = this.handleChange8.bind(this)
     }
-    handleSubmit(evt){
-        evt.preventDefault()
-        let instruments = this.state.instruments
-        let instArr = instruments.split(", ");
-        
-        let styles = this.state.styles
-        let styleArr = styles.split(", ");
-    
-        let seeking = this.state.seeking
-        let seekingArr = seeking.split(", ");
-      // Users contains all the info to send to the server
-        let users = this.state;
-        users.instruments = instArr;
-        users.styles = styleArr;
-        users.seeking = seekingArr;
-        console.log(users)
-        this.setState({
-            firstName: "",
-            lastName: "",
-            location: "",
-            instruments: [],
-            styles: [],
-            skillLevel: "",
-            experience: "",
-            seeking: []
-        })
-        fetch("/modifyProfile", {
-            method: "POST",
-            body: users
-        })
+
+    handleSubmit (evt) {
+        evt.preventDefault(0)
     }
+    
     handleChange(evt){
      this.setState({firstName: evt.target.value})
     }
@@ -69,10 +43,10 @@ class LandingPage extends Component {
         this.setState({location: evt.target.value})
     }
     handleChange4(evt){
-      this.setState({instruments: evt.target.value})
+      this.setState({instruments: evt.target.value.split(", ")})
     }
     handleChange5(evt){
-        this.setState({styles: evt.target.value})
+        this.setState({styles: evt.target.value.split(", ")})
       }
     handleChange6(evt){
         this.setState({skillLevel: evt.target.value})
@@ -81,7 +55,7 @@ class LandingPage extends Component {
         this.setState({experience: evt.target.value})
     }
     handleChange8(evt){
-        this.setState({seeking: evt.target.value})
+        this.setState({seeking: evt.target.value.split(", ")})
     }
 
     
@@ -105,10 +79,11 @@ class LandingPage extends Component {
             <input className = "input" onChange = {this.handleChange8} value = {this.state.seeking} placeholder = "Seeking"/>
             {/* <input className = "input2" placeholder = "Instruments"/> */}
             <div className = "login">
-            <input type = "submit" className = "loginBtn"/>
+            <Login createAccount={true} createdUser={this.state}/>
             </div>
-        </form>
     
+        </form>
+            
         </div>
 
   }
