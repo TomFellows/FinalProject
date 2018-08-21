@@ -47,7 +47,7 @@ class OtherUserProfile extends Component {
 
                 if (parsedBody.success === true) {
                     this.setState({ user: parsedBody.user })
-
+                    
 
 
                 } else {
@@ -71,14 +71,16 @@ class OtherUserProfile extends Component {
 
         if (this.state.user.reviews !== undefined) {
             reviews = this.state.user.reviews.map(rev => {
-                return [rev.reviewerId, rev.review]
+                return [rev.reviewer.username,  rev.review, rev.reviewer.firstName, rev.reviewer.lastName]
                 //add reviewerName
+                
         
             })
+            console.log(this.state.user.reviews)
             console.log(reviews)
             if (reviews !== undefined) {
                 reviewObj = reviews.map(rev => {
-                    return [rev[1].overall, rev[1].skill, rev[1].reliability, rev[1].comment]
+                    return [rev[2], rev[3], rev[1].overall, rev[1].skill, rev[1].reliability, rev[1].comment]
                 })
             
             if(reviewObj !== undefined){
