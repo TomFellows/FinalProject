@@ -73,7 +73,6 @@ form input.inputSubmit:hover {
 .left {
     display: flex;
     justify-content: flex-start;
-    
 }
 
 .right .chatLine {
@@ -86,7 +85,8 @@ form input.inputSubmit:hover {
     /* Caveat; */
     /* |Dancing+Script|Indie+Flower|Raleway|Shadows+Into+Light */
     background-color: #070716;
-    max-width: 90%
+    max-width: 90%;
+
 }
 
 
