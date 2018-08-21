@@ -1,0 +1,38 @@
+.logo{
+    width: 3vw;
+    margin-left: 5%;
+    transform: rotate(-45deg)
+}
+
+.git:hover{
+ /* font-weight: bold; */
+ text-decoration: none;
+ color: red;
+
+}
+
+.findCon{
+ color: black;
+}
+.findCon:hover{
+    color: navy;
+   
+}
+
+.navbar-toggler{
+    border: none;
+    background-color: transparent;
+   color: black !important;
+}
+
+.navbar-toggler:focus{
+    outline: none;
+}
+.navbar-toggler:hover{
+   color: navy !important;
+}
+
+.links:hover{
+ text-decoration: none;
+ color: red;
+}

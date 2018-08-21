@@ -72,10 +72,10 @@ class Navbar extends Component {
 
 
       connectionStatus = (<div>Connected as {this.props.currentUser.firstName}&nbsp;
-        | &nbsp;<Link to='/Profile'>My profile</Link>&nbsp; 
+        | &nbsp;<Link to='/Profile' className = "links">My profile</Link>&nbsp; 
         | &nbsp;<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Notifications" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         Notifications</button>&nbsp;
-        | &nbsp;<Link to='/logout' onClick={this.logout}>Log out</Link></div>)
+        | &nbsp;<Link to='/logout' onClick={this.logout} className = "links">Log out</Link></div>)
     } else {
       connectionStatus = (<Login/>)
     }
@@ -84,10 +84,11 @@ class Navbar extends Component {
       <div >
         <nav className = "Navbar" class="navbar fixed-top  navbar-light bg-light">
         {/* <nav className="Navbar" class="navbar navbar-expand-lg navbar-light bg-light"> */}
-          <a class="navbar-brand" href="#"><Link to='/'>GigHub</Link></a>
+          <a class="navbar-brand" href="#"><Link className = "git" to='/'>GigHub
+          <img className="logo" src="Images/headphones.png"></img></Link></a>
       
            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Filters" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span>Find connections</span>
+            <span className = "findCon">Find connections</span>
             </button>
             {connectionStatus}
           

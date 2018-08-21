@@ -35,7 +35,6 @@ class FindConnections extends Component {
            
 
         return(<div className = "smallCard2">
-           
               {mappedConnections}  
             
             </div>
