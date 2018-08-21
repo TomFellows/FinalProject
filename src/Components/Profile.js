@@ -34,7 +34,7 @@ class Profile extends Component {
       let skillLevel = skillStr[0].toUpperCase() + skillStr.slice(1)
 
         return <div className = "profile">
-          <img src={this.props.src} className="profilePic"/>
+          <img src={this.props.currentUser.image} className="profilePic"/>
                 <br/>
                 <br/>
 

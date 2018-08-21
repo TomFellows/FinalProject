@@ -28,6 +28,18 @@
     
 }
 
+.pictureSelection {
+    display: inline-block;
+    padding: 1em;
+    font-size: 10pt;
+    background-color: lightblue;
+}
+
+.pictureSelection button {
+    display: block;
+    margin-top: 0.5em;
+}
+
 select.form-control {
     width: 60%;
     margin-bottom: 0.5em; 
@@ -47,16 +59,10 @@ textarea.form-control {
 
 .userProfilePic{
     
-    
+    padding: 1em;
     border-radius: 200px;
-    width: 100%;
+    max-height: 200px;
+    display: block;
 
     
 }
-
-.picBackground{
-    background-color: lightgray;
-    max-width: 25%;
- 
-}
-
