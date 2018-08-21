@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {withRouter} from 'react-router-dom'
-import ConnectionCardChat from './ConnectionCardChat.js'
+import ConnectionCardChat from './ConnectionCardChat'
 
 
 class FindConnections extends Component {

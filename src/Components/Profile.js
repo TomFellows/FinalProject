@@ -9,18 +9,26 @@ class Profile extends Component {
 
     render() {
 
+      let seeking, instruments, styles
+
+      if (this.props.currentUser.instruments.length > 0) {
       let instStr = this.props.currentUser.instruments.join(", ")
       let instArr = instStr.split("")
-      let instruments = instArr[0].toUpperCase() + instArr.splice(1).join("")
+      instruments = instArr[0].toUpperCase() + instArr.splice(1).join("")
+      }
 
+      if (this.props.currentUser.styles.length > 0) {
       let styleStr = this.props.currentUser.styles.join(", ")
       let styleArr = styleStr.split("")
-      let styles = styleArr[0].toUpperCase() + styleArr.splice(1).join("")
+      styles = styleArr[0].toUpperCase() + styleArr.splice(1).join("")
+      }
 
+      if (this.props.currentUser.seeking.length > 1) {
       let seekingStr = this.props.currentUser.seeking.join(", ")
       let seekingArr = seekingStr.split("")
-      let seeking = seekingArr[0].toUpperCase() + seekingArr.splice(1).join("")
-
+      seeking = seekingArr[0].toUpperCase() + seekingArr.splice(1).join("")
+      }
+    
       let skillStr = this.props.currentUser.skillLevel
  
       let skillLevel = skillStr[0].toUpperCase() + skillStr.slice(1)

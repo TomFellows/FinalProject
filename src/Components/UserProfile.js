@@ -18,6 +18,7 @@ class UserProfile extends Component {
         this.cities = new Cities
 
         this.setUserAfterEdit = this.setUserAfterEdit.bind(this)
+        this.modifyProfile = this.modifyProfile.bind(this)
         
         this.state = {editing: false, inputValue: ''}
 
@@ -66,7 +67,7 @@ class UserProfile extends Component {
             break;
 
             case 'seeking' :
-            modifiedUser = ({...this.props.currentUser, seeking: this.state.inputValue})
+            modifiedUser = ({...this.props.currentUser, seeking: this.state.inputValue.split(', ')})
             break;
 
             case 'styles' :
@@ -84,18 +85,23 @@ class UserProfile extends Component {
 
         this.setState({editing: false, inputValue:''})
 
+       this.modifyProfile(modifiedUser)
+
+    }
+
+    modifyProfile (user) {
+
         let setUser = this.setUserAfterEdit
         
         fetch('/modifyProfile', {
             method: 'POST',
-            body: JSON.stringify(modifiedUser)
+            body: JSON.stringify(user)
         }).then(response => response.text())
         .then(response => {
 
             let parsedResponse = JSON.parse(response)
             console.log('Success: ' + parsedResponse.success + ' Reason: ' + parsedResponse.reason)
         }).then(setUser)
-
     }
 
     setUserAfterEdit () {
@@ -144,6 +150,40 @@ class UserProfile extends Component {
 
     stopEdit = () => {
         this.setState({editing: false})
+    }
+
+    removeInstrument = (event) => {
+
+        
+        let list = this.props.currentUser.instruments.slice(event.target.value, event.target.value + 1)
+
+        let modifiedUser = {...this.props.currentUser, instruments: list}
+        
+       this.modifyProfile(modifiedUser)
+
+
+    }
+
+    removeSeeking = (event) => {
+
+        let list = this.props.currentUser.seeking.slice(event.target.value, event.target.value + 1)
+
+        let modifiedUser = {...this.props.currentUser, seeking: list}
+        
+       this.modifyProfile(modifiedUser)
+
+    }
+
+    removeStyle = (event) => {
+
+       
+        let list = this.props.currentUser.styles.slice(event.target.value, event.target.value + 1)
+
+        let modifiedUser = {...this.props.currentUser, styles: list}
+        
+       this.modifyProfile(modifiedUser)
+
+
     }
 
 
@@ -247,7 +287,8 @@ class UserProfile extends Component {
                 editButton = (<button value='seeking' onClick={this.handleEdit}>Edit</button>)
             }
 
-            let mappedSeeking = this.props.currentUser.seeking.map(item => (<div className='listItem'>{item}</div>))
+            let mappedSeeking = this.props.currentUser.seeking.map((item, index) => (<div className='listItem'>
+            {item}<button onClick={this.removeSeeking}value={index}>X</button></div>))
 
             seeking = (<div><div className='profileLabel'>{mappedSeeking}</div>{editButton}</div>)
         }
