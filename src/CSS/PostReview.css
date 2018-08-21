@@ -1,14 +1,31 @@
 .reviewRow{
     margin-top:15px;
     line-height: 20px;
+    font-family: 'Titillium Web', sans-serif;
+    
 } 
 
+.reviewTitle{
+    font-family: 'Titillium Web', sans-serif;
+
+}
+
 .reviewSubtitles{
-   font-size: 20px; 
+   font-size: 1.30rem; 
+   margin-bottom:5px;
 }
 
 .reviewLabels{
     padding-right: 20px;
     padding-left: 5px;
-    font-size: 16px;
+    font-size: 1.25rem;
+}
+
+.submitBtn{
+    color: white;
+    background-color: #ff0033;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 1.15rem;
+    border-radius: 2vw;
+    margin-top: 15px;
 }

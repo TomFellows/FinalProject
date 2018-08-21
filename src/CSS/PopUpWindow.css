@@ -20,7 +20,11 @@
 
     position: absolute;
 
-    background-color: white;
+    background: #4e54c8;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #a7bfe8, #ccccff);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #a7bfe8, #ccccff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+    /* background-color: white; */
     border: 1px solid black;
     height: 400px;
     width: 600px;
