@@ -134,9 +134,6 @@ class OtherUserProfile extends Component {
                 let parsedResponse = JSON.parse(response)
                 console.log(parsedResponse)
             })
-
-
-
     }
 
 
@@ -175,7 +172,7 @@ class OtherUserProfile extends Component {
 
 
         return (<div>
-            {this.props.popUp ? <PopUpWindow><PostReview userId={this.props.currentUser.userId} revieweeId={this.state.user.userId} /></PopUpWindow> : null}
+            {this.props.popUp ? <PopUpWindow><PostReview userId={this.props.currentUser.userId} revieweeId={this.state.user.userId} popUp={this.props.popUp}/></PopUpWindow> : null}
             <div className="area">
                 <div className = "flex2">
                 <h1 className="name">
@@ -277,7 +274,8 @@ class OtherUserProfile extends Component {
                     <div className="revTitle">Review</div>
                 </div>
 
-                <div className="review">{this.renderReviews()}</div>
+                <div>{this.renderReviews()}</div>
+                
 
 
 

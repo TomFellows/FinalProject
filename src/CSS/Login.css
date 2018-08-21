@@ -1,5 +1,7 @@
 .google{
     color: white;
     background-color: #ff0033;
-   border-radius: 2vw;
+}
+.google:hover{
+    box-shadow: 2px 2px black
 }
