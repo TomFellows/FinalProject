@@ -57,7 +57,7 @@ selectors that were messing up the side columns*/
 
 .connect2{
     position: relative;
-    margin-top: 14%;
+    margin-top: 8%;
     margin-left: 60%;
     background-color: #ffcc00;
     color:black;
@@ -224,3 +224,4 @@ selectors that were messing up the side columns*/
 #collapseFifteen{
     border-bottom: solid;
 }
+

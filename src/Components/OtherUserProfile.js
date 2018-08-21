@@ -230,7 +230,7 @@ class OtherUserProfile extends Component {
                                  </button>
                                 </h5>
                             </div>
-                            <div id="collapseEleven" class="collapse" aria-labelledby="headingEleven" data-parent="#accordionExample">
+                            <div id="collapseEleven" class="collapse-open" aria-labelledby="headingEleven" data-parent="#accordionExample">
                                 <div class="card-body">
                                     {this.state.user.location}
                                 </div>
@@ -244,7 +244,7 @@ class OtherUserProfile extends Component {
                                 </button>
                                 </h5>
                             </div>
-                            <div id="collapseTwelve" class="collapse" aria-labelledby="headingTwelve" data-parent="#accordionExample">
+                            <div id="collapseTwelve" class="collapse-open" aria-labelledby="headingTwelve" data-parent="#accordionExample">
                                 <div class="card-body">
                                     {styles}
                                 </div>
@@ -260,7 +260,7 @@ class OtherUserProfile extends Component {
                                 </h5>
                             </div>
 
-                            <div id="collapseThirteen" class="collapse" aria-labelledby="headingThirteen" data-parent="#accordionExample">
+                            <div id="collapseThirteen" class="collapse-open" aria-labelledby="headingThirteen" data-parent="#accordionExample">
                                 <div class="card-body">
                                     {instruments}
                                 </div>
