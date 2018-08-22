@@ -5,6 +5,12 @@
     
 } 
 
+.inputBox{
+    resize: horizontal;
+    max-height: 50px;
+    background-color:  white;
+}
+
 .reviewTitle{
     font-family: 'Titillium Web', sans-serif;
     font-size: 2rem;
