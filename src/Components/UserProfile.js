@@ -24,15 +24,11 @@ class UserProfile extends Component {
         this.setUserAfterEdit = this.setUserAfterEdit.bind(this)
         this.modifyProfile = this.modifyProfile.bind(this)
         
-        this.state = {editing: false, inputValue: ''}
+        this.state = {editing: false, inputValue: '', picture: false}
 
 
     }
 
-
-
-    
-   
 
     handleChange = (event) => {
         event.preventDefault()
@@ -208,6 +204,30 @@ class UserProfile extends Component {
        this.modifyProfile(modifiedUser)
 
 
+    }
+
+    handlePictureSelection = (event) => {
+        if (event.target.value && event.target.value !== '') {
+
+        this.setState({picture: true})
+        }
+    }
+
+    handleSubmitPicture = (event) => {
+        event.preventDefault()
+        const image = document.getElementById('pictureInput')
+        const formData = new FormData()
+
+        formData.append('myImage', image.files[0])
+
+       fetch('/upload', {
+            method: 'POST',
+            credentials: 'same-origin',
+            body: formData
+        })
+        .then(response => response.text())
+        .then(this.setUserAfterEdit)
+        
     }
 
 
@@ -399,13 +419,25 @@ class UserProfile extends Component {
             }
             experience = (<div><div className='profileLabel'>{this.props.currentUser.experience}</div>{editButton}</div>)
         }
-        
+
+        let pictureConfirmButton = ''
+
+        if (this.state.picture === true) {
+            pictureConfirmButton = (<button onClick={this.handleSubmitPicture}>Confirm</button>)
+        }
+
+
         return (<div className='userProfile'>
             
+            <img src={this.props.currentUser.image} className='userProfilePic'/>
+            <div className='pictureSelection'>
+            <div>Change picture:</div>
+            <input type='file' id='pictureInput' name="myImage" onChange={this.handlePictureSelection}/>
+            {pictureConfirmButton}</div>
+                
             
-            <div className='picBackground'><img src='/Images/Eminem.jpg' className='userProfilePic'/></div>
-                        
-            <form className="editForm">
+         
+            <form>
                 
                     <div className='fieldLabel'>First name:</div> {firstName}
                     <div className='fieldLabel'>Last name:</div> {lastName}
