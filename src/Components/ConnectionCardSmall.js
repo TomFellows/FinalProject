@@ -5,19 +5,38 @@ import {Link} from 'react-router-dom'
 
 
 class ConnectionCardSmall extends Component {
-
+    
     
     render() {
         let styleStr = this.props.styles.join(", ")
         let styleArr = styleStr.split("")
         let styles = styleArr[0].toUpperCase() + styleArr.splice(1).join("")
+        let bg
         console.log(styles)
+        if (Math.ceil(Math.random()*10) <= 2) {
+              bg = "/Images/userBackground2.jpg"  
+        }
+        else if (Math.ceil(Math.random()*10) <= 4) {
+            bg = "/Images/userBackground.jpg"  
+        }
+        else if (Math.ceil(Math.random()*10) <= 6) {
+            bg = "/Images/userBackground3.jpg"  
+        }
+        else if (Math.ceil(Math.random()*10) <= 8) {
+            bg = "/Images/userBackground4.jpg"  
+        }
+        else{
+            bg = "/Images/audience.jpg"
+        }
+
         // let styleStrNew = styleArr.join(" ")
         // console.log(styleStrNew)
-       
+        
         return (
             <div className="individualMiniProfile">
-                 <img src = "/Images/audience.jpg"  className = "connBackgroundPic"/>
+
+                 {/* <img src = "/Images/audience.jpg"  className = "connBackgroundPic"/> */}
+                 <img src = {bg}  className = "connBackgroundPic"/>
                  <img src ={this.props.image} className = "connProfilePic"/>
                  <div className = "infoCont">
                   {console.log("This is the username",this.props.connections)}

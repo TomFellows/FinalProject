@@ -26,6 +26,7 @@ class FindConnections extends Component {
                         connections = {item.connections.length}
                         username = {item.username}
                         rating = {item.userRating}
+                        image = {item.image}
                     />
                   )
                 })
