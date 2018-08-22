@@ -91,10 +91,10 @@ class LandingPage extends Component {
 
         return <div className = "contain">
         <div>
-            <img className="pic2" src="Images/headphones.png"></img>
+            <img className="pic2" src="Images/headphonesOrangeRed.png"></img>
             <h1 className = "heading">GigHub</h1>
         </div>
-            <img className="pic" src="Images/bg3.jpg"></img>
+            <img className="pic" src="Images/basscloseup.jpg"></img>
             
         <form className = "form" onSubmit= {this.handleSubmit}>
             <input className = "input" onChange = {this.handleChange} value = {this.state.firstName} placeholder = "First Name"/>

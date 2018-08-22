@@ -4,6 +4,12 @@
     transform: rotate(-45deg)
 }
 
+/* Matching logo color on landing page and navbar */
+.git{
+    color: #ff4500;
+    font-family:lobster,cursive;
+}
+
 .git:hover{
  /* font-weight: bold; */
  text-decoration: none;
@@ -12,11 +18,17 @@
 }
 
 .findCon{
- color: black;
+ color:#ff4500;
 }
 .findCon:hover{
     color: navy;
    
+}
+
+/* This is to change the color of the navbar */
+.bg-light{
+    background-color: black !important;
+    opacity: 0.90 !important;
 }
 
 .navbar-toggler{

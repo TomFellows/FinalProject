@@ -28,7 +28,8 @@
     border-radius: 5vw;
     text-align: center;
     /* background-color: #222222 */
-    background-color: transparent;
+    /* background-color: transparent; */
+    background-color: ghostwhite;
     outline: none;
   
 }
@@ -64,4 +65,5 @@
     margin-left: 44%;
     margin-top: 5%;
     font-size:35pt;
+    color: #ff4500;
 }
