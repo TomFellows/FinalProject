@@ -91,7 +91,7 @@ class LandingPage extends Component {
 
         return <div className = "contain">
         <div>
-            <img className="pic2" src="Images/headphonesOrangeRed.png"></img>
+            <img className="pic2" src="Images/headphone.png"></img>
             <h1 className = "heading">GigHub</h1>
         </div>
             <img className="pic" src="Images/basscloseup.jpg"></img>

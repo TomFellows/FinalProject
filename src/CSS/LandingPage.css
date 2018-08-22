@@ -50,7 +50,7 @@
 
 .loginBtn{
     color: white;
-    background-color: #ff0033;
+    background-color:  #ffcc00;
    border-radius: 2vw;
 }
 .loginBtn:hover{
@@ -65,5 +65,6 @@
     margin-left: 44%;
     margin-top: 5%;
     font-size:35pt;
-    color: #ff4500;
+    color:  #ffcc00;
+    text-shadow: 2px 2px #ff0000;
 }
