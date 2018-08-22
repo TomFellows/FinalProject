@@ -47,7 +47,7 @@ class OtherUserProfile extends Component {
                 console.log("2")
                 if (parsedBody.success === true) {
                     this.setState({ user: parsedBody.user })
-                    console.log(this.state.user.image)
+                    console.log("3")
 
 
                 } else {
