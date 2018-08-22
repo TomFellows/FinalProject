@@ -35,7 +35,10 @@
     border: none;
     color:white;
     outline: none;
-    
+}
+
+.btn:hover{
+    color: #ffcc00;
 }
 
 .btn:focus{
@@ -52,13 +55,13 @@
  border-color: white;
  border-width: 1px;
 }
-
-
 .info:hover{
-background-color: #000033;
-
+    border-color:  #ffcc00!important;
 }
+
+
+
 .info:hover .btn {
     font-weight: bold;
-
+    color:  #ffcc00;
 }
