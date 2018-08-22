@@ -156,23 +156,27 @@
     background: #141E30;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to left, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to left, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    
-    /* background-color: white; */
+    /* border-bottom-style: solid;
+    border-bottom-width: 3px;
+    border-color: white; */
+ 
 }
-.card-body{
+.card-body-2{
+    padding: 20px;
     /* background-color: white; */
     font-family: 'Raleway', sans-serif;
-    background: #757F9A;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to left, #D7DDE8, rgb(154, 160, 175));  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to left, #D7DDE8, rgb(154, 160, 175)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    /* background: transparent; */
+    background: #757F9A;  
+    background: -webkit-linear-gradient(to left, #D7DDE8, rgb(154, 160, 175));  
+    background: linear-gradient(to left, #D7DDE8, rgb(154, 160, 175)); 
 
     /* background: #ED213A;  
     background: -webkit-linear-gradient(to right, #93291E, #ED213A); 
     background: linear-gradient(to right, #93291E, #ED213A);  */
-    color:black;
+    color: black;
     font-weight: bold;
-    /* color:white; */
-    padding: none;
+   
+
     padding-left:3%;
     padding-right:3%;
     text-align: center;

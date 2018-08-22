@@ -237,7 +237,7 @@ class OtherUserProfile extends Component {
                                 </h5>
                             </div>
                             <div id="collapseEleven" class="collapse-open" aria-labelledby="headingEleven" data-parent="#accordionExample">
-                                <div class="card-body">
+                                <div class="card-body-2">
                                     {this.state.user.location}
                                 </div>
                             </div>
@@ -251,7 +251,7 @@ class OtherUserProfile extends Component {
                                 </h5>
                             </div>
                             <div id="collapseTwelve" class="collapse-open" aria-labelledby="headingTwelve" data-parent="#accordionExample">
-                                <div class="card-body">
+                                <div class="card-body-2">
                                     {styles}
                                 </div>
                             </div>
@@ -267,7 +267,7 @@ class OtherUserProfile extends Component {
                             </div>
 
                             <div id="collapseThirteen" class="collapse-open" aria-labelledby="headingThirteen" data-parent="#accordionExample">
-                                <div class="card-body">
+                                <div class="card-body-2">
                                     {instruments}
                                 </div>
                             </div>
@@ -281,7 +281,7 @@ class OtherUserProfile extends Component {
                                 </h5>
                             </div>
                             <div id="collapseFourteen" class="collapse" aria-labelledby="headingFourteen" data-parent="#accordionExample">
-                                <div class="card-body">
+                                <div class="card-body-2">
                                     {seeking}
                                 </div>
                             </div>
@@ -295,7 +295,7 @@ class OtherUserProfile extends Component {
                                 </h5>
                             </div>
                             <div id="collapseFifteen" class="collapse" aria-labelledby="headingFifteen" data-parent="#accordionExample">
-                                <div class="card-body">
+                                <div class="card-body-2">
                                     {skillLevel}
                                 </div>
                             </div>
