@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import {withRouter} from 'react-router-dom'
-import ConnectionCardChat from './ConnectionCardChat.js'
 import ConnectionCardSmall from './ConnectionCardSmall.js'
 import '../CSS/ConnectionCardSmall.css'
+import '../CSS/FindConnections.css'
 
 
 
@@ -36,10 +36,14 @@ class FindConnections extends Component {
 
            
 
-        return(<div className = "smallCard2">
+        return(<div className='findConnections'>
+        <div className='title'>Results</div>
+            
+            <div className = "smallCard2">
+            
               {mappedConnections}  
             
-            </div>
+            </div></div>
 
         )
 

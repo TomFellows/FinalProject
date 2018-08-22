@@ -33,7 +33,7 @@ class Filters extends Component{
     }
 
     handleSubmit = (event) => {
-        event.preventDefault()
+       
         
         fetch('/getUsersByCriteria', {
             method: 'POST',
@@ -57,7 +57,7 @@ class Filters extends Component{
     render () {
 
         return (<div class='filters'>
-            <form onSubmit={this.handleSubmit}>
+            <form>
                 <div class="row">
                     <div class="col-md-4">
                         <input type="text" class="form-control" placeholder="Instrument played" 
@@ -92,7 +92,9 @@ class Filters extends Component{
                     <br/>
                 <div class="row">
                     <div class="col-md-4">
-                        <input type='submit' value='Submit' class='btn-primary'/>
+                    <button onClick={this.handleSubmit} class="navbar-toggler submitFilters" type="button" data-toggle="collapse" data-target="#Filters" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    Submit
+                    </button>
                     </div>
                 </div>
                 
