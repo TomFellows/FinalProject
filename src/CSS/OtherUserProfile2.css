@@ -20,8 +20,8 @@
 
 .connect2{
     position: relative;
-    margin-top: 3.0em;
-    margin-left: 1em;
+    margin-top: 2.6em;
+    margin-left: 9em;
     background-color: #ffcc00;
     color:black;
     font-weight: bold;
@@ -45,7 +45,7 @@
     position: absolute;
     margin-top: 3%;
     margin-left: 24%;
-    /* color: #0066cc */
+    font-size: 25pt;
     color: #141E30
 }
 .name2{
@@ -185,7 +185,7 @@
     position: absolute;
     margin-left: 24%;
     margin-top: 7vh;
-    font-size: 25pt;
+    font-size: 20pt;
     color: #141E30
 }
 
@@ -212,7 +212,8 @@
 .oneRev{
     margin: 0%;
     text-align: center;
-    width: 100%;
+    /* width: 100%; */
+    width: 35em;
     padding: 2%;
     border-style: solid;
     color: white;
@@ -228,4 +229,6 @@
     color: #ffcc00;
     
 }
+
+
 

@@ -213,9 +213,12 @@ class OtherUserProfile extends Component {
             {this.props.popUp ? <PopUpWindow><PostReview getUserProfile= {this.getUserProfile} username={this.state.user.username} userId={this.props.currentUser.userId} revieweeId={this.state.user.userId} popUp={this.props.popUp}/></PopUpWindow> : null}
             <div className="area">
                 <div className = "flex2">
+                
                 <h1 className="name">
-                    {`${this.state.user.firstName} ${this.state.user.lastName}`}
+                    {`${this.state.user.firstName} ${this.state.user.lastName} `} 
                 </h1>
+            
+               
                 <h10 className = "name2">
                     {this.state.user.experience}
                 </h10>
@@ -310,7 +313,7 @@ class OtherUserProfile extends Component {
                     <div className = "oneButton">
                          <button className="connect2" onClick={this.popUp} value='PostReview'> Review </button>
                     </div>
-                    <div className="revTitle">Reviews
+                    <div className="revTitle">Reviews | Rating: {this.state.user.userRating}⭐
                     <div className = "reviews">
                     {this.renderReviews()}
                     </div></div>
