@@ -41,7 +41,7 @@ class PostReview extends Component {
     handleSubmit(evt) {
         evt.preventDefault()
         let review = {}
-        review.overall = this.state.overallExperienceRating
+        review.overall ? review.overall = this.state.overallExperienceRating : null
         review.skill = this.state.skillLevelRating
         review.reliability = this.state.reliabilityRating
         review.comment = this.state.comment

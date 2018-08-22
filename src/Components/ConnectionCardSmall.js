@@ -28,10 +28,10 @@ class ConnectionCardSmall extends Component {
                 
                 <div className="info3">Styles: {styles}</div>
                 <div className="info3">Location: {this.props.location}</div>
-                <button className = "connectButton">FOLLOW</button>
+                {/* <button className = "connectButton">FOLLOW</button> */}
                 <div className = "bottom">
                     <div className = "info4">{this.props.connections}<br/><div className ="info14">Connections</div></div>
-                    <div className = "info5">4.3<br/><div className ="info15">Rating</div></div>
+                    <div className = "info5">{this.props.rating}<br/><div className ="info15">Rating</div></div>
                 </div>
                
                 </div>

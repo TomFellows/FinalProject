@@ -149,6 +149,7 @@ class ConnectionCardSmallContainer extends Component {
 
     renderByConnectedUsers() {
     let user;
+        // if(this.state.connectedUsers !== undefined){
         return this.state.randomizerSuggested.map(ran => {
             user = this.state.connectedUsers[ran]
             console.log(user)
@@ -160,8 +161,10 @@ class ConnectionCardSmallContainer extends Component {
                 styles ={user.styles}
                 connections = {user.connections.length}
                 username = {user.username}
+                rating = {user.userRating}
             />)})
-        }
+        } 
+    
     
     renderByStyle(){
         let user;
@@ -176,6 +179,7 @@ class ConnectionCardSmallContainer extends Component {
                     styles ={user.styles}
                     connections = {user.connections.length}
                     username = {user.username}
+                    rating = {user.userRating}
                 />
               
             )})
@@ -185,7 +189,6 @@ class ConnectionCardSmallContainer extends Component {
         let user;
         return this.state.randomizerCriteria.map(ran => {
                user = this.state.usersByLocation[ran]
-              console.log("hello")  
                
             return (
                     <ConnectionCardSmall
@@ -194,6 +197,7 @@ class ConnectionCardSmallContainer extends Component {
                         styles ={user.styles}
                         connections = {user.connections.length}
                         username = {user.username}
+                        rating = {user.userRating}
                     />
                   
                 )})
