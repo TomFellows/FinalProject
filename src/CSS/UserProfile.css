@@ -7,32 +7,93 @@
 
 .profileLabel {
     font-size: 14pt;
-    margin: 0 1em 0 1em;
-    display: inline-block
+    margin: 0.5em 0.5em 0 0.5em;
+    display: inline-block;
+    -webkit-text-fill-color:black !important;
+}
+
+.editButtons{
+    margin-right:3em;
+    position: relative;
+    /* background-color: #243b55; */
+      
+    background-color: #ffcc00;
+    color:black;
+    font-weight: bold;
+    font-size: 11pt;   
+    z-index: +1;
 }
 
 .addButton {
-    margin: 0.5em 1em 0 1em;
-    display: block
+    margin: 0.5em 0.5em 0 1em;
+    display: block;
+    margin-right:3em;
+    position: relative;
+    /* background-color: #243b55; */
+      
+    background-color: #ffcc00;
+    color:black;
+    font-weight: bold;
+    font-size: 11pt;   
+    z-index: +1;
+}
+
+.X{
+    margin: 0.5em 0.5em 0 1em;
+    display: block;
+    margin-right:3em;
+    position: relative;
+    /* background-color: #243b55; */
+      
+    background-color: red;
+    color:black;
+    -webkit-text-fill-color: white;
+    font-weight: bold;
+    font-size: 8pt;   
+    z-index: +1;
 }
 
 .fieldLabel {
+    display:flex;
+    padding:0.25em;
     font-size: 14pt;
     font-weight: bold;
     margin-top: 1em;
+    background-color:white;
+    margin-left:1em;
+    border-radius:10px;
 }
 
+.fieldLabel2 {
+    display:flex;
+    width: 835px;
+    padding:0.25em;
+    font-size: 14pt;
+    font-weight: bold;
+    margin-top: 1em;
+    background-color:white;
+    margin-left:0.35em;
+    border-radius:10px;
+}
 .listItem {
     display: flex;
     justify-content: space-between;
     
 }
 
+#pictureInput:focus{
+outline: none;
+border: none;
+box-shadow: none;
+}
+
 .pictureSelection {
     display: inline-block;
+    width:210px;
     padding: 1em;
     font-size: 10pt;
     background-color: lightblue;
+    border-radius:10px;
 }
 
 .pictureSelection button {
@@ -65,4 +126,22 @@ textarea.form-control {
     display: block;
 
     
+}
+
+.userName{
+    display:flex;
+    margin-top:200px
+}
+
+.section1{
+    display:flex;
+    margin-left:2em;
+}
+
+.section2{
+    display: flex;
+    flex-flow: column wrap;
+    max-height: 600px;
+    
+
 }

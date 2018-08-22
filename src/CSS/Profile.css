@@ -1,6 +1,7 @@
 .profileName{
    font-size: 16pt;
    padding-bottom: 20px;
+   text-align: center;
    text-shadow: 2px 2px black;
 }
 .profilePic{
