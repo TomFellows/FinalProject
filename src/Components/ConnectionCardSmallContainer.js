@@ -162,6 +162,7 @@ class ConnectionCardSmallContainer extends Component {
                 connections = {user.connections.length}
                 username = {user.username}
                 rating = {user.userRating}
+                image = {user.image}
             />)})
         } 
     
@@ -180,6 +181,7 @@ class ConnectionCardSmallContainer extends Component {
                     connections = {user.connections.length}
                     username = {user.username}
                     rating = {user.userRating}
+                    image = {user.image}
                 />
               
             )})
@@ -198,6 +200,7 @@ class ConnectionCardSmallContainer extends Component {
                         connections = {user.connections.length}
                         username = {user.username}
                         rating = {user.userRating}
+                        image = {user.image}
                     />
                   
                 )})
