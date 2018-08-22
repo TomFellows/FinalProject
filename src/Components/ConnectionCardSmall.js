@@ -17,8 +17,8 @@ class ConnectionCardSmall extends Component {
        
         return (
             <div className="individualMiniProfile">
-                 <img src = "/Images/profbg.jpg"  className = "connBackgroundPic"/>
-                 <img src = "/Images/shaun.jpg" className = "connProfilePic"/>
+                 <img src = "/Images/audience.jpg"  className = "connBackgroundPic"/>
+                 <img src ={this.props.image} className = "connProfilePic"/>
                  <div className = "infoCont">
                   {console.log("This is the username",this.props.connections)}
                 <Link className = "link" to={'/OtherUserProfile/' + this.props.username}>
