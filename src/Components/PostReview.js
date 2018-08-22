@@ -140,14 +140,15 @@ class PostReview extends Component {
                     </div>
                     <div className="reviewRow">
                         <label>
-                            <AutosizeInput
+                            <textarea type="text" className="inputBox" value={this.state.comment} placeHolder="Leave a comment..." onChange={this.handleComment}/>
+                            {/* <AutosizeInput
 
                                 name="comment"
                                 value={this.state.comment}
                                 style={{ fontSize: 20 }}
                                 placeholder="Leave a comment...      "
                                 onChange={this.handleComment}
-                            />
+                            /> */}
 
                         </label>
                     </div>
