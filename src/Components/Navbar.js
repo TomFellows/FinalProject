@@ -11,9 +11,21 @@ import NotificationsList from './NotificationsList';
 
 
 class Navbar extends Component {
-  constructor(){
-    super()
-    this.state = {connected: false}
+  
+
+  constructor (props) {
+    super(props)
+
+
+    
+
+
+
+    this.state = {inputSearchValue: '', readNotifications: undefined}
+
+    this.handleSearchChange = this.handleSearchChange.bind(this)
+    this.handleSearchSubmit = this.handleSearchSubmit.bind(this)
+    this.readNotification = this.readNotification.bind(this)
   }
 
   componentDidMount = () => {
@@ -27,10 +39,10 @@ class Navbar extends Component {
 
         if (parsedResponse.user) {
         let currentUser = parsedResponse.user
-        this.setState({connected: true})
+      
         this.props.setCurrentUser(JSON.parse(JSON.stringify(currentUser)), 'connected')
       } else {
-        this.setState({connected: false})
+      
         this.props.setCurrentUser({}, 'landingPage')
       }
 
@@ -43,6 +55,8 @@ class Navbar extends Component {
 
         this.props.setCurrentUser(currentUser, 'landingPage')
       })
+
+      
     
   }
 
@@ -57,86 +71,106 @@ class Navbar extends Component {
     })
   }
  
+  handleSearchChange(event) {
+    this.setState({inputSearchValue: event.target.value})
+  }
+
+  handleSearchSubmit(event) {
+    event.preventDefault()
+
+    fetch('/globalSearch', {
+      method: 'POST',
+      body: JSON.stringify({keyword: this.setState.inputSearchValue})
+    })
+    .then(response => response.text())
+    .then(response => {
+      let parsedResponse = JSON.parse(response)
+
+      let results = parsedResponse.users
+
+      this.props.history.push({
+          pathname: '/FindConnections',
+          users: results})
+    })
+
+  }
+
+  readNotification () {
+    this.setState({readNotifications: true})
+  }
 
   
 
 
   render() {
 
-    let connectionStatus;
-
+    let profileLogout;
+    let connectedAsNotifications;
     let notifications = (<div></div>)
-
+    let searchItems;
 
 
     if (this.props.connected === 'connected') {
 
+
+    let notifWarning
+    let nbNotifications = this.props.currentUser.notifications.some((item, index) => {
+      
+      return index > this.props.currentUser.notifications.length - 1 -10 && !item.read
+    })
+
+    if (nbNotifications === true && !this.state.readNotifications) {
+    notifWarning = (<div onClick={this.readNotification} className='nbNotifications' data-toggle="collapse" data-target="#Notifications" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">&nbsp;!&nbsp;</div>)  
+    }
     notifications = <NotificationsList/>
 
+      searchItems = (<div className='searchItems'>
+        <form class="form-inline" onSubmit={this.handleSearchSubmit}>
+              <input class="form-control" value={this.state.inputSearchValue} 
+              onChange={this.handleSearchChange}type="search" placeholder="Quick search..." aria-label="Search" />
+            </form>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Filters" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span className = "findCon">Find connections</span>
+      </button>
+      </div>)
 
-      connectionStatus = (<div className = "links">Connected as {this.props.currentUser.firstName}&nbsp;
-        | &nbsp;<Link to='/Profile' className = "links">Edit profile</Link>&nbsp; 
-        | &nbsp;<button className = "links" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Notifications" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        Notifications</button>&nbsp;
+      connectedAsNotifications = (<div>
+        <div className = "text"> 
+        Connected as <Link to='/Profile' className = "links">{this.props.currentUser.firstName}</Link>&nbsp;</div>&nbsp;
+        | &nbsp;<button onClick={this.readNotification} class="navbar-toggler links" type="button" data-toggle="collapse" data-target="#Notifications" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        Notifications</button>{notifWarning}&nbsp;
+        </div>)
+
+
+      profileLogout = (<div>
+       &nbsp;<Link to='/Profile' className = "links">Edit profile</Link>&nbsp; 
         | &nbsp;<Link to='/logout' onClick={this.logout} className = "links">Log out</Link></div>)
     } else {
-      connectionStatus = (<Login/>)
+      profileLogout = (<Login/>)
     }
 
     return (
-      <div >
-        <nav className = "Navbar" class="navbar fixed-top  navbar-light bg-light">
-        {/* <nav className="Navbar" class="navbar navbar-expand-lg navbar-light bg-light"> */}
-          <a class="navbar-brand" href="#"><Link className = "git" to='/'>GigHub
+      <div>
+        <nav class="navbar fixed-top  navbar-light bg-light">
+          <div><a class="navbar-brand" href="#"><Link className = "git" to='/'>GigHub
           <img className="logo" src="/Images/headphone.png"></img></Link></a>
-      
-           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Filters" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span className = "findCon">Find connections</span>
-            </button>
-            {connectionStatus}
-          
-
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-
-          
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Dropdown
-              </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled</a>
-              </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+          {searchItems}
           </div>
+      
+        
+          {connectedAsNotifications}
+          
+           
+          {profileLogout}
+
+          
 
 
           <div class="collapse navbar-collapse" id='Filters'>
             <Filters/>
           </div>
           <div class="collapse navbar-collapse" id='Notifications'>
-           {notifications}
+           <div className='notificationsList'>{notifications}</div>
           </div>
         </nav>
         

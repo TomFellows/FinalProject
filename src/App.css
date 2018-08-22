@@ -6,7 +6,9 @@ html, body {
 
 .navbar {
   min-height: 3em;
-  
+  display: flex;
+  justify-content: space-between;
+ 
 }
 
 
@@ -41,21 +43,25 @@ html, body {
 
 }
 
-.cont ::-webkit-scrollbar {
+.cont ::-webkit-scrollbar, 
+.navbar ::-webkit-scrollbar {
   width: 10px;
 }
 
 /* Track */
-.cont ::-webkit-scrollbar-track {
+.cont ::-webkit-scrollbar-track,
+.navbar ::-webkit-scrollbar-track{
   background: #f1f1f1; 
 }
 
 /* Handle */
-.cont ::-webkit-scrollbar-thumb {
+.cont ::-webkit-scrollbar-thumb,
+.navbar ::-webkit-scrollbar-thumb{
   background: #888; 
 }
 
 /* Handle on hover */
-.cont ::-webkit-scrollbar-thumb:hover {
+.cont ::-webkit-scrollbar-thumb:hover,
+.navbar ::-webkit-scrollbar-thumb:hover{
   background: #555; 
 }

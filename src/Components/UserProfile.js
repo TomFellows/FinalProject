@@ -256,7 +256,7 @@ class UserProfile extends Component {
             let editButton = ''
              //Only one field can be edited at a time. If another field is being edited, the Edit button will not show.
             if (this.state.editing === false) {
-                editButton = (<button value='firstName' onClick={this.handleEdit}>Edit</button>)
+                editButton = (<button className="editButtons" value='firstName' onClick={this.handleEdit}>Edit</button>)
             }
             firstName = (<div><div className='profileLabel'>{this.props.currentUser.firstName}</div>{editButton}</div>)
         }
@@ -271,7 +271,7 @@ class UserProfile extends Component {
         } else {
             let editButton = ''
             if (this.state.editing === false) {
-                editButton = (<button value='lastName' onClick={this.handleEdit}>Edit</button>)
+                editButton = (<button className="editButtons" value='lastName' onClick={this.handleEdit}>Edit</button>)
             }
             lastName = (<div><div className='profileLabel'>{this.props.currentUser.lastName}</div>{editButton}</div>)
         }
@@ -290,16 +290,16 @@ class UserProfile extends Component {
                 {list}
                 <input type="text" list='instruments'class="form-control" placeholder="Instruments" 
                 value={this.state.inputValue} onChange={this.handleChange}/>
-            <button value='instruments' onClick={this.handleSubmit}>Save</button><button onClick={this.stopEdit}>Cancel edit</button> </div>)
+            <button className="editButtons" value='instruments' onClick={this.handleSubmit}>Save</button><button className="editButtons" onClick={this.stopEdit}>Cancel edit</button> </div>)
         } 
 
             let editInstrumentsButton = ''
             if (this.state.editing === false) {
-                editInstrumentsButton = (<button value='instruments' className='addButton' onClick={this.handleEdit}>Add</button>)
+                editInstrumentsButton = (<button className="editButtons" value='instruments' className='addButton' onClick={this.handleEdit}>Add</button>)
             }
 
             let mappedInstruments = this.props.currentUser.instruments.map((item, index) => (<div className='listItem'>
-            {item}&nbsp;<button type='button' onClick={this.removeInstrument} value={index}>X</button></div>))
+            {item}&nbsp;<button className="X" type='button' onClick={this.removeInstrument} value={index}>X</button></div>))
           
 
             instruments = (<div><div className='profileLabel'>{mappedInstruments}</div>{editInstrumentsButton}{instrumentsEdit}</div>)
@@ -322,7 +322,7 @@ class UserProfile extends Component {
         } else {
             let editButton = ''
             if (this.state.editing === false) {
-                editButton = (<button value='location' onClick={this.handleEdit}>Edit</button>)
+                editButton = (<button className="editButtons" value='location' onClick={this.handleEdit}>Edit</button>)
             }
             location = (<div><div className='profileLabel'>{this.props.currentUser.location}</div>{editButton}</div>)
         }
@@ -347,11 +347,11 @@ class UserProfile extends Component {
 
             let editSeekingButton = ''
             if (this.state.editing === false) {
-                editSeekingButton = (<button value='seeking' className='addButton' onClick={this.handleEdit}>Add</button>)
+                editSeekingButton = (<button className="editButtons" value='seeking' className='addButton' onClick={this.handleEdit}>Add</button>)
             }
 
             let mappedSeeking = this.props.currentUser.seeking.map((item, index) => (<div className='listItem'>
-            {item}&nbsp;<button type='button' onClick={this.removeSeeking} value={index}>X</button></div>))
+            {item}&nbsp;<button className="X" type='button' onClick={this.removeSeeking} value={index}>X</button></div>))
           
 
             seeking = (<div><div className='profileLabel'>{mappedSeeking}</div>{editSeekingButton}{seekingEdit}</div>)
@@ -375,11 +375,11 @@ class UserProfile extends Component {
 
             let editStylesButton = ''
             if (this.state.editing === false) {
-                editStylesButton = (<button value='styles' className='addButton' onClick={this.handleEdit}>Add</button>)
+                editStylesButton = (<button className="editButtons" value='styles' className='addButton' onClick={this.handleEdit}>Add</button>)
             }
 
             let mappedStyles = this.props.currentUser.styles.map((item, index) => (<div className='listItem'>
-            {item}&nbsp;<button type='button' onClick={this.removeStyle} value={index}>X</button></div>))
+            {item}&nbsp;<button className="X" type='button' onClick={this.removeStyle} value={index}>X</button></div>))
           
 
             styles = (<div><div className='profileLabel'>{mappedStyles}</div>{editStylesButton}{stylesEdit}</div>)
@@ -400,7 +400,7 @@ class UserProfile extends Component {
         } else {
             let editButton = ''
             if (this.state.editing === false) {
-                editButton = (<button value='skillLevel' onClick={this.handleEdit}>Edit</button>)
+                editButton = (<button className="editButtons" value='skillLevel' onClick={this.handleEdit}>Edit</button>)
             }
             skillLevel = (<div><div className='profileLabel'>{this.props.currentUser.skillLevel}</div>{editButton}</div>)
         }
@@ -415,7 +415,7 @@ class UserProfile extends Component {
         } else {
             let editButton = ''
             if (this.state.editing === false) {
-                editButton = (<button value='experience' onClick={this.handleEdit}>Edit</button>)
+                editButton = (<button className="editButtons" value='experience' onClick={this.handleEdit}>Edit</button>)
             }
             experience = (<div><div className='profileLabel'>{this.props.currentUser.experience}</div>{editButton}</div>)
         }
@@ -428,33 +428,38 @@ class UserProfile extends Component {
 
 
         return (<div className='userProfile'>
-            
-            <img src={this.props.currentUser.image} className='userProfilePic'/>
+            <div className="section1">
+            <div>            <img src={this.props.currentUser.image} className='userProfilePic'/>
             <div className='pictureSelection'>
             <div>Change picture:</div>
             <input type='file' id='pictureInput' name="myImage" onChange={this.handlePictureSelection}/>
             {pictureConfirmButton}</div>
-                
+            </div>
+
+            <div className="userName">
+                    <div className='fieldLabel'>First name: {firstName}</div> 
+                    <div className='fieldLabel'>Last name: {lastName}</div> 
+                </div>
+
+           
+            </div>    
             
          
             <form>
+                <form><div className='fieldLabel2'>About me: {experience}</div> </form>
                 
-                    <div className='fieldLabel'>First name:</div> {firstName}
-                    <div className='fieldLabel'>Last name:</div> {lastName}
-                
-                
-                    <div className='fieldLabel'>Instruments:</div> {instruments}
-                    <div className='fieldLabel'>Location :</div>{location}
+                <div className="section2">
+                    <div className='fieldLabel'>Instruments :  {instruments}</div>
+                    <div className='fieldLabel'>Musical styles : {styles}</div> 
+
+                    <div className='fieldLabel'>Location : {location}</div>
               
-                    <div className='fieldLabel'>Seeking :</div> {seeking}
-                    <div className='fieldLabel'>Musical styles :</div> {styles}
+                    <div className='fieldLabel'>Seeking :{seeking}</div> 
 
-                    <div className='fieldLabel'>Skill level:</div> {skillLevel}
+                    <div className='fieldLabel'>Skill level: {skillLevel}</div> 
 
-                    <div className='fieldLabel'>About me:</div> {experience}
-               
-                
-                
+                </div>    
+                               
             </form>
         
         </div>)

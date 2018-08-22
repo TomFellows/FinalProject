@@ -1,0 +1,13 @@
+.title {
+    color: #141E30;  /* fallback for old browsers */
+    color: -webkit-linear-gradient(to left, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
+    color: linear-gradient(to left, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+    font-size: 30pt;
+    font-weight: bold;
+}
+
+.findConnections {
+    padding: 1em;
+    background-color: #e9ebee;
+}
