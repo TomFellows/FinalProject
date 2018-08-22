@@ -15,7 +15,7 @@
 .connBackgroundPic{
     position: relative;
     left: 0vw;
-    opacity: 0.85;
+    opacity:1;
     border-top-left-radius: 2vw;
     border-top-right-radius: 2vw;
     width: 100%; 
@@ -144,11 +144,11 @@
     font-size: 9pt;
 }
 .individualMiniProfile:hover .info4 {
-    color:red;
+    color: #ffcc00;
     
 }
 .individualMiniProfile:hover .info5 {
-    color:red;
+    color: #ffcc00;
 
 }
 .individualMiniProfile:hover .info14 {
