@@ -219,7 +219,7 @@ class OtherUserProfile extends Component {
                 <h10 className = "name2">
                     {this.state.user.experience}
                 </h10>
-                <img src="/Images/shaun.jpg" className="connProfilePic2" />
+                <img src={this.state.user.image} className="connProfilePic2" />
                 
                 </div>
                 <div className="flex">
