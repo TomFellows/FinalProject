@@ -38,6 +38,21 @@
     z-index: +1;
 }
 
+.cancelEdit{
+    margin: 0.5em 0.5em 0 1em;
+    display: block;
+    margin-right:3em;
+    position: relative;
+    /* background-color: #243b55; */
+      
+    background-color: red;
+    color:black;
+    -webkit-text-fill-color: white;
+    font-weight: bold;
+    font-size: 11pt;   
+    z-index: +1;
+}
+
 .X{
     margin: 0.5em 0.5em 0 1em;
     display: block;

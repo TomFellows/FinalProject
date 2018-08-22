@@ -236,7 +236,7 @@ class OtherUserProfile extends Component {
                                  </button>
                                 </h5>
                             </div>
-                            <div id="collapseEleven" class="collapse-open" aria-labelledby="headingEleven" data-parent="#accordionExample">
+                            <div id="collapseEleven" class="collapse-open collapse show" aria-labelledby="headingEleven" data-parent="#accordionExample">
                                 <div class="card-body-2">
                                     {this.state.user.location}
                                 </div>

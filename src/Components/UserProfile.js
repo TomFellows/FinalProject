@@ -250,7 +250,7 @@ class UserProfile extends Component {
             firstName = (<div>
                 <input type="text" class="form-control" placeholder="First name" 
                 value={this.state.inputValue} onChange={this.handleChange}/>
-        <button value='firstName' onClick={this.handleSubmit}>Save</button><button onClick={this.stopEdit}>Cancel edit</button> </div>)
+        <button  className="editButtons" value='firstName' onClick={this.handleSubmit}>Save</button><button className="cancelEdit" onClick={this.stopEdit}>Cancel edit</button> </div>)
         } else {  
             
             let editButton = ''
@@ -267,7 +267,7 @@ class UserProfile extends Component {
             lastName = (<div>
                 <input type="text" class="form-control" placeholder="Last name" 
                 value={this.state.inputValue} onChange={this.handleChange}/>
-        <button value='lastName' onClick={this.handleSubmit}>Save</button><button onClick={this.stopEdit}>Cancel edit</button> </div>)
+        <button className="editButtons" value='lastName' onClick={this.handleSubmit}>Save</button><button className="cancelEdit" onClick={this.stopEdit}>Cancel edit</button> </div>)
         } else {
             let editButton = ''
             if (this.state.editing === false) {
@@ -290,7 +290,7 @@ class UserProfile extends Component {
                 {list}
                 <input type="text" list='instruments'class="form-control" placeholder="Instruments" 
                 value={this.state.inputValue} onChange={this.handleChange}/>
-            <button className="editButtons" value='instruments' onClick={this.handleSubmit}>Save</button><button className="editButtons" onClick={this.stopEdit}>Cancel edit</button> </div>)
+            <button className="editButtons" value='instruments' onClick={this.handleSubmit}>Save</button><button className="cancelEdit" onClick={this.stopEdit}>Cancel edit</button> </div>)
         } 
 
             let editInstrumentsButton = ''
@@ -318,7 +318,7 @@ class UserProfile extends Component {
                 {list}
                 <input type="text" list='cities' class="form-control" id='autocomplete' placeholder="location" 
                 value={this.state.inputValue} onChange={this.handleChange}/>
-        <button value='location' onClick={this.handleSubmit}>Save</button><button onClick={this.stopEdit}>Cancel edit</button> </div>)
+        <button  className="editButtons" value='location' onClick={this.handleSubmit}>Save</button><button className="cancelEdit" onClick={this.stopEdit}>Cancel edit</button> </div>)
         } else {
             let editButton = ''
             if (this.state.editing === false) {
@@ -342,7 +342,7 @@ class UserProfile extends Component {
                 <option value="Starting a project">Starting a project</option>
                 <option value="Other">Othert</option>
                 </select>
-            <button value='seeking' onClick={this.handleSubmit}>Save</button><button onClick={this.stopEdit}>Cancel edit</button> </div>)
+            <button className="editButtons" value='seeking' onClick={this.handleSubmit}>Save</button><button className="cancelEdit" onClick={this.stopEdit}>Cancel edit</button> </div>)
         } 
 
             let editSeekingButton = ''
@@ -370,7 +370,7 @@ class UserProfile extends Component {
                 {list}
                 <input type="text" list='styles' class="form-control" placeholder="Musical styles" 
                 value={this.state.inputValue} onChange={this.handleChange}/>
-            <button value='styles' onClick={this.handleSubmit}>Save</button><button onClick={this.stopEdit}>Cancel edit</button> </div>)
+            <button className="editButtons" value='styles' onClick={this.handleSubmit}>Save</button><button className="cancelEdit" onClick={this.stopEdit}>Cancel edit</button> </div>)
         } 
 
             let editStylesButton = ''
@@ -396,7 +396,7 @@ class UserProfile extends Component {
                 <option value="Advanced">Advanced</option>
                 <option value="Professional">Professional</option>
                 </select>
-        <button value='skillLevel' onClick={this.handleSubmit}>Save</button><button onClick={this.stopEdit}>Cancel edit</button> </div>)
+        <button className="editButtons" value='skillLevel' onClick={this.handleSubmit}>Save</button><button className="cancelEdit"onClick={this.stopEdit}>Cancel edit</button> </div>)
         } else {
             let editButton = ''
             if (this.state.editing === false) {
@@ -411,7 +411,7 @@ class UserProfile extends Component {
             experience = (<div>
                 <textarea class="form-control" placeholder="About me..." rows='5'
                 value={this.state.inputValue} onChange={this.handleChange}/>
-        <button value='experience' onClick={this.handleSubmit}>Save</button><button onClick={this.stopEdit}>Cancel edit</button> </div>)
+        <button className="editButtons" value='experience' onClick={this.handleSubmit}>Save</button><button className="cancelEdit" onClick={this.stopEdit}>Cancel edit</button> </div>)
         } else {
             let editButton = ''
             if (this.state.editing === false) {
