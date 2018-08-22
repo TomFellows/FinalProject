@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 
 
 class ConnectionCardSmall extends Component {
-
+    
     
     render() {
         let styleStr = this.props.styles.join(", ")
@@ -14,10 +14,12 @@ class ConnectionCardSmall extends Component {
         console.log(styles)
         // let styleStrNew = styleArr.join(" ")
         // console.log(styleStrNew)
-       
+        
         return (
             <div className="individualMiniProfile">
-                 <img src = "/Images/audience.jpg"  className = "connBackgroundPic"/>
+
+                 {/* <img src = "/Images/audience.jpg"  className = "connBackgroundPic"/> */}
+                 <img src = "/Images/userBackground2.jpg"  className = "connBackgroundPic"/>
                  <img src ={this.props.image} className = "connProfilePic"/>
                  <div className = "infoCont">
                   {console.log("This is the username",this.props.connections)}
