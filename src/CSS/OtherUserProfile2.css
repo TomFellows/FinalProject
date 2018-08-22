@@ -4,42 +4,6 @@
 .area {
     background-color: #e9ebee;
 }
-    /* position: absolute;
-    margin-top: 0em;
-    left: 15vw;
-    width: 60vw;
-    max-width:60vw;
-    height: 400vh;
-
-
-.parent{
-   position: absolute;
-   background-color: white;
-   margin-left: 5vw;
-   text-align: left;
-   margin-top: 25vh;
-   width: 50vw;
-   height: 38vh;   
-}
-
-.profileInfo{   
-    position: relative;
-    top: 2vh;
-    left: 15vw;
-    font-size: 16pt;
-    color: black;
-}
-.profileInfo2{
-    
-    position: relative;
-    top: 3vh;
-    left: 15vw;
-    font-weight: bold;
-    text-decoration: underline;
-    font-size: 16pt;
-    margin: 2vh;
-    color: black;
-} */
 
 .connect{
    position: relative;
@@ -71,7 +35,7 @@
 }
 .connect2:hover{
     color: white;
-    background-color:green;
+    background-color:red;
 }
 
 .twoButtons{
@@ -181,7 +145,7 @@
  text-decoration: none;
 }
 .btn-link:hover{
-    color: #dd0000;
+    color: #ff4450;
     text-decoration: none;
 }
 
@@ -197,8 +161,16 @@
 .card-body{
     /* background-color: white; */
     font-family: 'Raleway', sans-serif;
-    background-color: #ccccff;
+    background: #757F9A;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #D7DDE8, rgb(154, 160, 175));  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #D7DDE8, rgb(154, 160, 175)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    /* background: #ED213A;  
+    background: -webkit-linear-gradient(to right, #93291E, #ED213A); 
+    background: linear-gradient(to right, #93291E, #ED213A);  */
     color:black;
+    font-weight: bold;
+    /* color:white; */
     padding: none;
     padding-left:3%;
     padding-right:3%;

@@ -70,9 +70,9 @@ class Navbar extends Component {
     notifications = <NotificationsList/>
 
 
-      connectionStatus = (<div>Connected as {this.props.currentUser.firstName}&nbsp;
+      connectionStatus = (<div className = "links">Connected as {this.props.currentUser.firstName}&nbsp;
         | &nbsp;<Link to='/Profile' className = "links">My profile</Link>&nbsp; 
-        | &nbsp;<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Notifications" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        | &nbsp;<button className = "links" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Notifications" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         Notifications</button>&nbsp;
         | &nbsp;<Link to='/logout' onClick={this.logout} className = "links">Log out</Link></div>)
     } else {
@@ -84,7 +84,7 @@ class Navbar extends Component {
         <nav className = "Navbar" class="navbar fixed-top  navbar-light bg-light">
         {/* <nav className="Navbar" class="navbar navbar-expand-lg navbar-light bg-light"> */}
           <a class="navbar-brand" href="#"><Link className = "git" to='/'>GigHub
-          <img className="logo" src="/Images/headphonesOrangeRed.png"></img></Link></a>
+          <img className="logo" src="/Images/headphone.png"></img></Link></a>
       
            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Filters" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className = "findCon">Find connections</span>
