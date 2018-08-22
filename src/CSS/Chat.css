@@ -2,10 +2,14 @@
 .chat {
     
     border: 1px solid white;
-    background-color: #e9ebee;
+    background: white; 
     margin-bottom: 1em;
     border-radius: 1em;
     
+}
+
+.inputBox{
+    background-color: grey;
 }
 
 .list {
@@ -31,7 +35,7 @@ form {
 form input.inputText {
     border-radius: 1em;
     width: 75%;
-    background-color: #141E30;
+    background-color: white;
     padding: 0.3em;
     color: white;
     border-top-style: solid;
@@ -99,7 +103,7 @@ form input.inputSubmit:hover {
     /* Dancing Script */
     /* Caveat; */
     /* |Dancing+Script|Indie+Flower|Raleway|Shadows+Into+Light */
-    background-color: #ccccff;
+    background-color: white;
     max-width: 90%
 }
 

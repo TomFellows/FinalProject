@@ -23,12 +23,15 @@
 }
 
 .submitBtn{
-    color: white;
-    background-color: #ff0033;
-    font-family: 'Titillium Web', sans-serif;
-    font-size: 1.15rem;
-    border-radius: 2vw;
     
+        position: relative;
+        margin-left: 1em;
+        background-color: #ffcc00;
+        color:black;
+        font-weight: bold;
+        font-size: 14pt;   
+        z-index: +1;
+     
 }
 
 .submission{
