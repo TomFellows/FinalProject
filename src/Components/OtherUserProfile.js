@@ -213,9 +213,12 @@ class OtherUserProfile extends Component {
             {this.props.popUp ? <PopUpWindow><PostReview getUserProfile= {this.getUserProfile} username={this.state.user.username} userId={this.props.currentUser.userId} revieweeId={this.state.user.userId} popUp={this.props.popUp}/></PopUpWindow> : null}
             <div className="area">
                 <div className = "flex2">
+                
                 <h1 className="name">
-                    {`${this.state.user.firstName} ${this.state.user.lastName}`}
+                    {`${this.state.user.firstName} ${this.state.user.lastName} `} 
                 </h1>
+            
+               
                 <h10 className = "name2">
                     {this.state.user.experience}
                 </h10>
@@ -234,7 +237,7 @@ class OtherUserProfile extends Component {
                                 </h5>
                             </div>
                             <div id="collapseEleven" class="collapse-open" aria-labelledby="headingEleven" data-parent="#accordionExample">
-                                <div class="card-body">
+                                <div class="card-body-2">
                                     {this.state.user.location}
                                 </div>
                             </div>
@@ -248,7 +251,7 @@ class OtherUserProfile extends Component {
                                 </h5>
                             </div>
                             <div id="collapseTwelve" class="collapse-open" aria-labelledby="headingTwelve" data-parent="#accordionExample">
-                                <div class="card-body">
+                                <div class="card-body-2">
                                     {styles}
                                 </div>
                             </div>
@@ -264,7 +267,7 @@ class OtherUserProfile extends Component {
                             </div>
 
                             <div id="collapseThirteen" class="collapse-open" aria-labelledby="headingThirteen" data-parent="#accordionExample">
-                                <div class="card-body">
+                                <div class="card-body-2">
                                     {instruments}
                                 </div>
                             </div>
@@ -278,7 +281,7 @@ class OtherUserProfile extends Component {
                                 </h5>
                             </div>
                             <div id="collapseFourteen" class="collapse" aria-labelledby="headingFourteen" data-parent="#accordionExample">
-                                <div class="card-body">
+                                <div class="card-body-2">
                                     {seeking}
                                 </div>
                             </div>
@@ -292,7 +295,7 @@ class OtherUserProfile extends Component {
                                 </h5>
                             </div>
                             <div id="collapseFifteen" class="collapse" aria-labelledby="headingFifteen" data-parent="#accordionExample">
-                                <div class="card-body">
+                                <div class="card-body-2">
                                     {skillLevel}
                                 </div>
                             </div>
@@ -310,7 +313,7 @@ class OtherUserProfile extends Component {
                     <div className = "oneButton">
                          <button className="connect2" onClick={this.popUp} value='PostReview'> Review </button>
                     </div>
-                    <div className="revTitle">Reviews
+                    <div className="revTitle">Reviews | Rating: {this.state.user.userRating}⭐
                     <div className = "reviews">
                     {this.renderReviews()}
                     </div></div>

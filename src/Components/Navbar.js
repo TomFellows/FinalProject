@@ -11,6 +11,10 @@ import NotificationsList from './NotificationsList';
 
 
 class Navbar extends Component {
+  constructor(){
+    super()
+    this.state = {connected: false}
+  }
 
   constructor () {
     super()
@@ -32,10 +36,10 @@ class Navbar extends Component {
 
         if (parsedResponse.user) {
         let currentUser = parsedResponse.user
-
+        this.setState({connected: true})
         this.props.setCurrentUser(JSON.parse(JSON.stringify(currentUser)), 'connected')
       } else {
-
+        this.setState({connected: false})
         this.props.setCurrentUser({}, 'landingPage')
       }
 

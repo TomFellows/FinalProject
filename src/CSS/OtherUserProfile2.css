@@ -20,8 +20,8 @@
 
 .connect2{
     position: relative;
-    margin-top: 3.0em;
-    margin-left: 1em;
+    margin-top: 2.6em;
+    margin-left: 9em;
     background-color: #ffcc00;
     color:black;
     font-weight: bold;
@@ -45,7 +45,7 @@
     position: absolute;
     margin-top: 3%;
     margin-left: 24%;
-    /* color: #0066cc */
+    font-size: 25pt;
     color: #141E30
 }
 .name2{
@@ -54,6 +54,7 @@
     margin-top:7%;
     margin-left: 24%;
     font-size: 15pt;
+    font-weight: bold;
     /* font-family: 'Caveat', cursive; */
     font-family: 'Indie Flower', cursive;
     /* font-family: 'Dancing Script', cursive; */
@@ -155,23 +156,27 @@
     background: #141E30;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to left, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to left, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    
-    /* background-color: white; */
+    /* border-bottom-style: solid;
+    border-bottom-width: 3px;
+    border-color: white; */
+ 
 }
-.card-body{
+.card-body-2{
+    padding: 20px;
     /* background-color: white; */
     font-family: 'Raleway', sans-serif;
-    background: #757F9A;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to left, #D7DDE8, rgb(154, 160, 175));  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to left, #D7DDE8, rgb(154, 160, 175)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    /* background: transparent; */
+    background: #757F9A;  
+    background: -webkit-linear-gradient(to left, #D7DDE8, rgb(154, 160, 175));  
+    background: linear-gradient(to left, #D7DDE8, rgb(154, 160, 175)); 
 
     /* background: #ED213A;  
     background: -webkit-linear-gradient(to right, #93291E, #ED213A); 
     background: linear-gradient(to right, #93291E, #ED213A);  */
-    color:black;
+    color: black;
     font-weight: bold;
-    /* color:white; */
-    padding: none;
+   
+
     padding-left:3%;
     padding-right:3%;
     text-align: center;
@@ -185,7 +190,7 @@
     position: absolute;
     margin-left: 24%;
     margin-top: 7vh;
-    font-size: 25pt;
+    font-size: 20pt;
     color: #141E30
 }
 
@@ -212,7 +217,8 @@
 .oneRev{
     margin: 0%;
     text-align: center;
-    width: 100%;
+    /* width: 100%; */
+    width: 35em;
     padding: 2%;
     border-style: solid;
     color: white;
@@ -228,4 +234,6 @@
     color: #ffcc00;
     
 }
+
+
 
