@@ -12,6 +12,7 @@ class Homepage extends Component {
        return (
             <div className='homepage'>
             {/* <Link to='/Profile'>My profile</Link> */}
+            
             <div className = "title">Suggested Connections</div>
             {/* <div className = "spaceOut"><ConnectionCardSmallContainer which="specific" number='4'/></div> */}
 
