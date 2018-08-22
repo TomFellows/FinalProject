@@ -7,3 +7,12 @@
     
     
 }
+
+.submitFilters{
+    color: #ffcc00 !important;
+    font-size: 16pt !important;
+    padding: 0;
+   }
+   .submitFilters:hover{
+       color: yellow !important; 
+   }

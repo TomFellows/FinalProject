@@ -20,6 +20,9 @@
 
 .findCon{
  color: #ffcc00;
+ font-size: 16pt;
+ display: inline;
+ vertical-align: text-bottom;
 }
 .findCon:hover{
     color: yellow; 
@@ -39,21 +42,56 @@
 
 .navbar-toggler:focus{
     outline: none;
+    
 }
 
+.searchItems {
+    display: inline;
+    font-size: 12pt 
+}
+
+.btn {
+    display: inline;
+    font-size: 12pt !important;
+}
+
+.form-inline {
+    display: inline;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.form-control {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.text {
+    color:  #ffcc00;
+    font-size: 12pt;
+    display: inline;
+}
 
 .links{
     color:  #ffcc00;
     font-size: 12pt;
+    display: inline;
+    padding: 0;
     
 }
 .links:hover{
     text-decoration: none;
-  color: #ffcc00 !important;
+    color: yellow !important;
 
 }
 
 .navbar-toggler{
     font-size: 12pt !important;
     color:  #ffcc00 !important;
+}
+
+.notificationsList {
+    max-height: 300px;
+    overflow: auto;
+    margin-top: 1em;
 }

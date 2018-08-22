@@ -8,9 +8,14 @@ class ConnectionCardSmall extends Component {
     
     
     render() {
+        let styles
+        if (this.props.styles.length > 0) {
         let styleStr = this.props.styles.join(", ")
         let styleArr = styleStr.split("")
-        let styles = styleArr[0].toUpperCase() + styleArr.splice(1).join("")
+        styles = styleArr[0].toUpperCase() + styleArr.splice(1).join("")}
+        else {
+            styles = 'none'
+        }
         let bg
         console.log(styles)
         if (Math.ceil(Math.random()*10) <= 2) {
