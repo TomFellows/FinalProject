@@ -2,7 +2,7 @@
 .chat {
     
     border: 1px solid white;
-    background: white; 
+    
     margin-bottom: 1em;
     border-radius: 1em;
     
@@ -65,18 +65,19 @@ form input.inputSubmit:hover {
 .listItem div {
    
     padding: 0.5em;
+    margin: 0.5em;
     width: auto;
     
 }
 
 .right {
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-end !important
 }
 
 .left {
     display: flex;
-    justify-content: flex-start;
+    justify-content: flex-start !important
 }
 
 .right .chatLine {
