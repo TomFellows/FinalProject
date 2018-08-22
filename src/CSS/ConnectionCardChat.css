@@ -4,6 +4,7 @@
     /* font-weight: bold; */
     height: auto;
     /* line-height: 4em; */
+    line-height: 1;
     white-space: nowrap;
     display: flex;
     margin: 1em 0 1em 0;
@@ -38,14 +39,22 @@
 
 
 .nbMessages {
-    padding: 0.4em;
+    padding: 0.3em;
+    
     position: relative;
-    font-size: 10pt;
+    right: 1em;
+    bottom: 1em;
+    display: inline;
     background-color: red;
+    font-size: 10pt;
+    border-radius: 8px;
     font-weight: bold;
     color: white;
     border: 1px solid white;
+    cursor: default;
 }
+
+
 
 .chatIcon{
    

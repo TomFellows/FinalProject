@@ -72,7 +72,7 @@ class ConnectionCardChat extends Component {
 
             if (this.props.nbMessages > 0) {
                 nbMessages = <div className='nbMessages' onClick={this.openCloseChat}>
-                {this.props.nbMessages}</div>
+                &nbsp;{this.props.nbMessages}&nbsp;</div>
             }
         }
 
@@ -84,7 +84,7 @@ class ConnectionCardChat extends Component {
         {console.log(this.props.user.image)}
         {this.props.user.firstName + ' ' + this.props.user.lastName}</Link>
         <div onClick={this.openCloseChat}  className='chatIcon'><img src='/Images/chatIconWhite.png'/></div>
-        {nbMessages}
+        <div style={{'display':'inline'}}>{nbMessages}</div>
         </div>
         {chatRoom}
         </div>)

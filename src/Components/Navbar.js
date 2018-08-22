@@ -11,18 +11,21 @@ import NotificationsList from './NotificationsList';
 
 
 class Navbar extends Component {
-  constructor(){
-    super()
-    this.state = {connected: false}
-  }
+  
 
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
 
-    this.state = {inputSearchValue: ''}
+
+    
+
+
+
+    this.state = {inputSearchValue: '', readNotifications: undefined}
 
     this.handleSearchChange = this.handleSearchChange.bind(this)
     this.handleSearchSubmit = this.handleSearchSubmit.bind(this)
+    this.readNotification = this.readNotification.bind(this)
   }
 
   componentDidMount = () => {
@@ -36,10 +39,10 @@ class Navbar extends Component {
 
         if (parsedResponse.user) {
         let currentUser = parsedResponse.user
-        this.setState({connected: true})
+      
         this.props.setCurrentUser(JSON.parse(JSON.stringify(currentUser)), 'connected')
       } else {
-        this.setState({connected: false})
+      
         this.props.setCurrentUser({}, 'landingPage')
       }
 
@@ -52,6 +55,8 @@ class Navbar extends Component {
 
         this.props.setCurrentUser(currentUser, 'landingPage')
       })
+
+      
     
   }
 
@@ -90,6 +95,10 @@ class Navbar extends Component {
 
   }
 
+  readNotification () {
+    this.setState({readNotifications: true})
+  }
+
   
 
 
@@ -103,6 +112,16 @@ class Navbar extends Component {
 
     if (this.props.connected === 'connected') {
 
+
+    let notifWarning
+    let nbNotifications = this.props.currentUser.notifications.some((item, index) => {
+      
+      return index > this.props.currentUser.notifications.length - 1 -10 && !item.read
+    })
+
+    if (nbNotifications === true && !this.state.readNotifications) {
+    notifWarning = (<div onClick={this.readNotification} className='nbNotifications' data-toggle="collapse" data-target="#Notifications" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">&nbsp;!&nbsp;</div>)  
+    }
     notifications = <NotificationsList/>
 
       searchItems = (<div className='searchItems'>
@@ -118,8 +137,8 @@ class Navbar extends Component {
       connectedAsNotifications = (<div>
         <div className = "text"> 
         Connected as <Link to='/Profile' className = "links">{this.props.currentUser.firstName}</Link>&nbsp;</div>&nbsp;
-        | &nbsp;<button class="navbar-toggler links" type="button" data-toggle="collapse" data-target="#Notifications" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        Notifications</button>&nbsp;
+        | &nbsp;<button onClick={this.readNotification} class="navbar-toggler links" type="button" data-toggle="collapse" data-target="#Notifications" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        Notifications</button>{notifWarning}&nbsp;
         </div>)
 
 

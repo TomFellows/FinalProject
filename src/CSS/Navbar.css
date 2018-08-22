@@ -95,3 +95,19 @@
     overflow: auto;
     margin-top: 1em;
 }
+
+.nbNotifications {
+    padding: 0.3em;
+    margin-left: 0.2em;
+    position: relative;
+    bottom: 1em;
+    
+    display: inline;
+    font-size: 8pt;
+    border-radius: 4px;
+    background-color: red;
+    font-weight: bold;
+    color: white;
+    border: 1px solid white;
+    cursor: default;
+}

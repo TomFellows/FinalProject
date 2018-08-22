@@ -27,6 +27,8 @@ render () {
        
       })
 
+      mappedNotifications = mappedNotifications.reverse()      
+
       if (mappedNotifications.length === 0){
         mappedNotifications = ['No notification']
       }
