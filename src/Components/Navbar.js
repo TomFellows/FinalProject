@@ -109,6 +109,8 @@ class Navbar extends Component {
     let notifications = (<div></div>)
     let searchItems;
 
+    let connected = this.props.connected
+
 
     if (this.props.connected === 'connected') {
 
@@ -120,7 +122,7 @@ class Navbar extends Component {
     })
 
     if (nbNotifications === true && !this.state.readNotifications) {
-    notifWarning = (<div onClick={this.readNotification} className='nbNotifications' data-toggle="collapse" data-target="#Notifications" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">&nbsp;!&nbsp;</div>)  
+    notifWarning = (<div onClick={this.readNotification} className='nbNotifications' data-toggle="collapse" data-target="#AllNotifications" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">&nbsp;!&nbsp;</div>)  
     }
     notifications = <NotificationsList/>
 
@@ -137,16 +139,19 @@ class Navbar extends Component {
       connectedAsNotifications = (<div>
         <div className = "text"> 
         Connected as <Link to='/Profile' className = "links">{this.props.currentUser.firstName}</Link>&nbsp;</div>&nbsp;
-        | &nbsp;<button onClick={this.readNotification} class="navbar-toggler links" type="button" data-toggle="collapse" data-target="#Notifications" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        | &nbsp;<button onClick={this.readNotification} class="navbar-toggler links" type="button" data-toggle="collapse" data-target='#AllNotifications' aria-expanded="false" aria-label="Toggle navigation">
         Notifications</button>{notifWarning}&nbsp;
+        <div class="collapse notificationsBackground" id='AllNotifications'>
+           <div className='notificationsList'>{notifications}</div>
+          </div>
         </div>)
 
-
+        
       profileLogout = (<div>
        &nbsp;<Link to='/Profile' className = "links">Edit profile</Link>&nbsp; 
         | &nbsp;<Link to='/logout' onClick={this.logout} className = "links">Log out</Link></div>)
     } else {
-      profileLogout = (<Login/>)
+      profileLogout = (<div>{connected ? <Login/> : null}</div>)
     }
 
     return (
@@ -156,7 +161,7 @@ class Navbar extends Component {
           <img className="logo" src="/Images/headphone.png"></img></Link></a>
           {searchItems}
           </div>
-      
+
         
           {connectedAsNotifications}
           
@@ -169,9 +174,7 @@ class Navbar extends Component {
           <div class="collapse navbar-collapse" id='Filters'>
             <Filters/>
           </div>
-          <div class="collapse navbar-collapse" id='Notifications'>
-           <div className='notificationsList'>{notifications}</div>
-          </div>
+         
         </nav>
         
       </div>

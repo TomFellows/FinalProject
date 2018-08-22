@@ -11,6 +11,7 @@
     font-family:lobster,cursive;
 }
 
+
 .git:hover{
  /* font-weight: bold; */
  text-decoration: none;
@@ -93,7 +94,16 @@
 .notificationsList {
     max-height: 300px;
     overflow: auto;
-    margin-top: 1em;
+    color: white;
+    padding: 1em;
+  
+}
+
+.notificationsBackground {
+    position: absolute;
+    top: 3.5em;
+    background-color: black;
+
 }
 
 .nbNotifications {
