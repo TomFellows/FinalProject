@@ -74,8 +74,8 @@
 }
 
 .individualMiniProfile:hover {
-    /* background-color: black; */
-    background: #141E30;  /* fallback for old browsers */
+    /* background: #bb0000; */
+    background: #141E30;  
     color: white;  
 }
 

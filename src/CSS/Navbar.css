@@ -6,45 +6,53 @@
 
 /* Matching logo color on landing page and navbar */
 .git{
-    color: #ff4500;
+    color:  #ffcc00;
     font-family:lobster,cursive;
 }
 
 .git:hover{
  /* font-weight: bold; */
  text-decoration: none;
- color: red;
+ color:  yellow;
 
 }
 
 .findCon{
- color:#ff4500;
+ color: #ffcc00;
 }
 .findCon:hover{
-    color: navy;
-   
+    color: yellow; 
 }
 
 /* This is to change the color of the navbar */
 .bg-light{
     background-color: black !important;
-    opacity: 0.90 !important;
+    /* opacity: 0.90 !important; */
 }
 
 .navbar-toggler{
     border: none;
     background-color: transparent;
-   color: black !important;
+  
 }
 
 .navbar-toggler:focus{
     outline: none;
 }
-.navbar-toggler:hover{
-   color: navy !important;
+
+
+.links{
+    color:  #ffcc00;
+    font-size: 12pt;
+    
+}
+.links:hover{
+    text-decoration: none;
+  color: #ffcc00 !important;
+
 }
 
-.links:hover{
- text-decoration: none;
- color: red;
+.navbar-toggler{
+    font-size: 12pt !important;
+    color:  #ffcc00 !important;
 }
