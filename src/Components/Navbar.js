@@ -71,7 +71,7 @@ class Navbar extends Component {
 
 
       connectionStatus = (<div className = "links">Connected as {this.props.currentUser.firstName}&nbsp;
-        | &nbsp;<Link to='/Profile' className = "links">My profile</Link>&nbsp; 
+        | &nbsp;<Link to='/Profile' className = "links">Edit profile</Link>&nbsp; 
         | &nbsp;<button className = "links" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Notifications" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         Notifications</button>&nbsp;
         | &nbsp;<Link to='/logout' onClick={this.logout} className = "links">Log out</Link></div>)
