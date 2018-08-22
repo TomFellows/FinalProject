@@ -105,7 +105,7 @@ class Chat extends Component {
                 } 
             }
             
-            return (<div className='listItem'><div className={align}><div className={type}>{item.content}</div></div></div>)})
+            return (<div className={'listItem ' + align}><div className={type}>{item.content}</div></div>)})
 
         
         
