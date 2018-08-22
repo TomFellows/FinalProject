@@ -85,7 +85,7 @@ class Navbar extends Component {
         <nav className = "Navbar" class="navbar fixed-top  navbar-light bg-light">
         {/* <nav className="Navbar" class="navbar navbar-expand-lg navbar-light bg-light"> */}
           <a class="navbar-brand" href="#"><Link className = "git" to='/'>GigHub
-          <img className="logo" src="/Images/headphones.png"></img></Link></a>
+          <img className="logo" src="/Images/headphonesOrangeRed.png"></img></Link></a>
       
            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Filters" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className = "findCon">Find connections</span>
