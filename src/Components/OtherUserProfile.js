@@ -265,9 +265,19 @@ class OtherUserProfile extends Component {
         }
 
         let editLink;
+        let otherUsersConnect = (<div className="twoButtons">
+        {connect ? <button className="connect" onClick={this.remConnection}>Disconnect</button>: <button className="connect" onClick={this.addConnection}>Connect</button>}
+                </div>
+           )
 
+        let otherUsersReview = ( <div className="oneButton">
+        <button className="connect2" onClick={this.popUp} value='PostReview'> Review </button>
+        </div>)
         if (this.state.user.username === this.props.currentUser.username) {
             editLink = <div ><br/>&nbsp;<Link className='editLink' to='/Profile'>Edit profile</Link></div>
+           
+            otherUsersConnect = ''
+            otherUsersReview=''
         }
         
 
@@ -367,27 +377,16 @@ class OtherUserProfile extends Component {
                         </div>
                     </div>
                    
-               
 
+                    {otherUsersConnect}
+                    {otherUsersReview}
 
-
-                    <div className="twoButtons">
-                       {connect ? <button className="connect" onClick={this.remConnection}>Disconnect</button>: <button className="connect" onClick={this.addConnection}>Connect</button>}
-                        {/* {connect ? <button className="connect" onClick={this.remConnection}>Disconnect</button> : null}     */}
-                    </div>
-                    <div className = "oneButton">
-                         <button className="connect2" onClick={this.popUp} value='PostReview'> Review </button>
-                    </div>
                     <div className="revTitle">Reviews | Rating: {this.state.user.userRating}⭐
                     <div className = "reviews">
                     {this.renderReviews()}
                     </div></div>
                     
                 </div>
-
-                
-                
-
 
 
              
@@ -397,12 +396,6 @@ class OtherUserProfile extends Component {
                 </div>
                 </div>
             </div>
-
-
-
-    
-
-
 
 
         );
