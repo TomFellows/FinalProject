@@ -22,9 +22,9 @@ class Homepage extends Component {
             <br/>
             <ConnectionCardLarge src="Images/guy1.jpg"/> */}
 
-            <h4>Suggestions by style</h4>
+            <div className="connectionsTitle">..based on a shared style</div>
             <div className = "spaceOut"><ConnectionCardSmallContainer which="style" spec="experimental" number='4'/></div>
-            <h4>Suggestions by location</h4>
+            <div className="connectionsTitle">..based on a shared location</div>
             <div className = "spaceOut"><ConnectionCardSmallContainer which="location" spec="gig" number='4'/></div>          
             </div>
        );
