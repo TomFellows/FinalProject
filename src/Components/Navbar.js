@@ -138,7 +138,7 @@ class Navbar extends Component {
 
       connectedAsNotifications = (<div>
         <div className = "text"> 
-        Connected as <Link to='/Profile' className = "links">{this.props.currentUser.firstName}</Link>&nbsp;</div>&nbsp;
+        Connected as <Link to={'/OtherUserProfile/' + this.props.currentUser.username} className = "links">{this.props.currentUser.firstName}</Link>&nbsp;</div>&nbsp;
         | &nbsp;<button onClick={this.readNotification} class="navbar-toggler links" type="button" data-toggle="collapse" data-target='#AllNotifications' aria-expanded="false" aria-label="Toggle navigation">
         Notifications</button>{notifWarning}&nbsp;
         <div class="collapse notificationsBackground" id='AllNotifications'>
