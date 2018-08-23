@@ -10,4 +10,5 @@
 .findConnections {
     padding: 1em;
     background-color: #e9ebee;
+    min-height:800px;
 }
