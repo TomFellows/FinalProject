@@ -107,18 +107,19 @@ class LandingPage extends Component {
             {stylesList}
 
             <select className = "input" onChange = {this.handleChange6} value = {this.state.skillLevel} placeholder = "Skill Level">
-                <option style={{"display": "none"}} selected>Skill level</option>
-                <option value="Beginner">Beginner</option>
-                <option value="Intermediate">Intermediate</option>
-                <option value="Advanced">Advanced</option>
-                <option value="Professional">Professional</option>
+                <option style={{"display": "none"}} selected>&nbsp;Skill level</option>
+                <option value="Beginner">&nbsp;Beginner</option>
+                <option value="Intermediate">&nbsp;Intermediate</option>
+                <option value="Advanced">&nbsp;Advanced</option>
+                <option value="Professional">&nbsp;Professional</option>
             </select>
             <select className = "input" onChange = {this.handleChange8} value = {this.state.seeking} placeholder = "Seeking">
-                <option style={{"display": "none"}} selected>Seeking ...</option>
-                <option value="Jam">Jam</option>
-                <option value="Gig">Gig</option>
-                <option value="Session">Session</option>
-                <option value="Start a project">Start a project</option>
+                <option style={{"display": "none"}} selected>&nbsp;Seeking ...</option>
+                <option value="Jamming">&nbsp;Jamming</option>
+                <option value="Gigs">&nbsp;Gigs</option>
+                <option value="Session Work">&nbsp;Session Work</option>
+                <option value="Starting a project">&nbsp;Starting a project</option>
+                <option value="Other">&nbsp;Other</option>
             </select>
             <div className = "login">
             <Login createAccount={true} 
