@@ -80,7 +80,7 @@ class Navbar extends Component {
 
     fetch('/globalSearch', {
       method: 'POST',
-      body: JSON.stringify({keyword: this.setState.inputSearchValue})
+      body: JSON.stringify({keyword: this.state.inputSearchValue})
     })
     .then(response => response.text())
     .then(response => {
