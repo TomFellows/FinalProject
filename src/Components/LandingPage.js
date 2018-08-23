@@ -99,7 +99,7 @@ class LandingPage extends Component {
         <form className = "form" onSubmit= {this.handleSubmit}>
             <input className = "input" onChange = {this.handleChange} value = {this.state.firstName} placeholder = "First Name"/>
             <input className = "input" onChange = {this.handleChange2} value = {this.state.lastName} placeholder = "Last Name"/>
-            <input className = "input" list='citiesList' onChange = {this.handleChange3} value = {this.state.location} placeholder = "Location"/>
+            <input className = "input" type='text' list='citiesList' onChange = {this.handleChange3} value = {this.state.location} placeholder = "Location"/>
             {citiesList}
             <input className = "input" list='instrumentsList' onChange = {this.handleChange4} value = {this.state.instruments} placeholder = "Main instrument"/>
             {instrumentsList}

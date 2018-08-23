@@ -8,7 +8,7 @@ import PageContent from './PageContent.js'
 
 import {withRouter} from 'react-router-dom'
 
-import LandingPage from './LandingPage';
+import LandingPage from './LandingPage.js';
 
 class GlobalContainer extends Component {
     
