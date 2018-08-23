@@ -340,7 +340,7 @@ class UserProfile extends Component {
                 <option value="Gigs">Gigs</option>
                 <option value="Session Work">Session Work</option>
                 <option value="Starting a project">Starting a project</option>
-                <option value="Other">Othert</option>
+                <option value="Other">Other</option>
                 </select>
             <button value='seeking' onClick={this.handleSubmit}>Save</button><button onClick={this.stopEdit}>Cancel edit</button> </div>)
         } 
