@@ -20,10 +20,12 @@ class Filters extends Component{
     }
 
     handleInstrumentChange = (event) => {
+        this.instrumentsResults = this.instruments.search(event.target.value, 6)
         this.setState({instruments: event.target.value})
     }
 
     handleAreaChange = (event) => {
+        this.citiesResults = this.cities.search(event.target.value, 6)
         this.setState({location: event.target.value})
     }
 
@@ -32,6 +34,7 @@ class Filters extends Component{
     }
 
     handleMusicalStyleChange = (event) => {
+        this.stylesResults = this.styles.search(event.target.value, 6)
         this.setState({styles: event.target.value})
     }
 
@@ -66,15 +69,15 @@ class Filters extends Component{
 
             let citiesList = this.citiesResults.map(item => (<option value={item}/>))
 
-            citiesList = (<datalist id='citiesList'>{citiesList}</datalist>)
+            citiesList = (<datalist id='filtersCitiesList'>{citiesList}</datalist>)
 
             let instrumentsList = this.instrumentsResults.map(item => (<option value={item}/>))
 
-            instrumentsList = (<datalist id='instrumentsList'>{instrumentsList}</datalist>)
+            instrumentsList = (<datalist id='filtersInstrumentsList'>{instrumentsList}</datalist>)
 
             let stylesList = this.stylesResults.map(item => (<option value={item}/>))
 
-            stylesList = (<datalist id='stylesList'>{stylesList}</datalist>)
+            stylesList = (<datalist id='filtersStylesList'>{stylesList}</datalist>)
 
 
 
@@ -82,12 +85,12 @@ class Filters extends Component{
             <form>
                 <div class="row">
                     <div class="col-md-4">
-                        <input type="text" class="form-control" list='instrumentsList' placeholder="Instrument played" 
+                        <input type="text" class="form-control" list='filtersInstrumentsList' placeholder="Instrument played" 
                         value={this.state.instrument} onChange={this.handleInstrumentChange}/>
                         {instrumentsList}
                     </div>
                     <div class="col-md-4">
-                        <input type="text" class="form-control" list='citiesList' placeholder="Location" 
+                        <input type="text" class="form-control" list='filtersCitiesList' placeholder="Location" 
                         value={this.state.area} onChange={this.handleAreaChange}/>
                         {citiesList}
                     </div>
@@ -105,7 +108,7 @@ class Filters extends Component{
                         </select>
                     </div>
                     <div class="col-md-4">
-                        <input type="text" class="form-control" list='stylesList' placeholder="Musical style" 
+                        <input type="text" class="form-control" list='filtersStylesList' placeholder="Musical style" 
                         value={this.state.musicalStyle} onChange={this.handleMusicalStyleChange}/>
                         {stylesList}
                     </div>

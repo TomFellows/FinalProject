@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import '../CSS/Navbar.css'
 import '../CSS/Login.css'
 import key from '../firebaselogin.js'
+import {withRouter} from 'react-router-dom'
 import { SETCURRENTUSER } from '../ACTIONS';
 
 var firebase = require('firebase');
@@ -150,4 +151,4 @@ let mapDispatchToProps = (dispatch) => {
 
 let ConnectedLogin = connect(mapStateToProps,mapDispatchToProps)(Login)
 
-export default ConnectedLogin
+export default withRouter(ConnectedLogin)
