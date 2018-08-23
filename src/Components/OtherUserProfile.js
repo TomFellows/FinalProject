@@ -8,6 +8,7 @@ import PostReview from './PostReview.js'
 import '../CSS/PopUpWindow.css'
 import { connect } from 'react-redux'
 import ConnectionCardSmallContainer from './ConnectionCardSmallContainer';
+import { SETCURRENTUSER, SETCURRENTCONNECTIONS } from '../ACTIONS';
 
 class OtherUserProfile extends Component {
     constructor() {
@@ -15,7 +16,7 @@ class OtherUserProfile extends Component {
         this.state = {
             user: {},
             text: "Connect",
-            connect: false
+            
         }
         this.renderList = this.renderList.bind(this)
         this.getUserProfile = this.getUserProfile.bind(this)
@@ -23,6 +24,8 @@ class OtherUserProfile extends Component {
         this.remConnection = this.remConnection.bind(this)
         this.renderReviews = this.renderReviews.bind(this)
         this.renderStars = this.renderStars.bind(this)
+        this.setUserAfterUpdate = this.setUserAfterUpdate.bind(this)
+        this.setConnectionsAfterUpdate = this.setConnectionsAfterUpdate.bind(this)
     }
 
     componentDidMount() {
@@ -138,9 +141,13 @@ class OtherUserProfile extends Component {
             .then(response => response.text())
             .then(response => {
                 let parsedResponse = JSON.parse(response)
+                
                 console.log(parsedResponse)
                 
             })
+            .then(this.setUserAfterUpdate)
+            .then(this.setConnectionsAfterUpdate)
+            
 
             
     }
@@ -155,12 +162,64 @@ class OtherUserProfile extends Component {
             .then(response => response.text())
             .then(response => {
                 let parsedResponse = JSON.parse(response)
+                
                 console.log(parsedResponse)
                 
             })
-
+            .then(this.setUserAfterUpdate)
+            .then(this.setConnectionsAfterUpdate)
             
     }
+
+    setUserAfterUpdate () {
+
+        fetch('/getCurrentUser', {
+          credentials: 'same-origin'
+        }).then(response => response.text())
+          .then((response) => {
+    
+            let parsedResponse = JSON.parse(response)
+    
+            if (parsedResponse.user) {
+              let currentUser = parsedResponse.user
+    
+              this.props.setCurrentUser(JSON.parse(JSON.stringify(currentUser)), 'connected')
+          } else {
+    
+            this.props.setCurrentUser({}, 'landingPage')
+          }
+    
+          })
+          .catch((err) => {
+    
+            let currentUser =  {
+                firstName: 'Unavailable', lastName: 'Unavailable', instruments: 'Unavailable',
+                location: 'Unavailable', seeking: 'Unavailable', skillLevel: 'Unavailable', musicalStyles: 'Unavailable'
+            }
+    
+            this.props.setCurrentUser(currentUser, 'landingPage')
+          })
+      
+      }
+
+      
+      setConnectionsAfterUpdate () {
+
+        fetch('/getAllConnections', {
+            credentials: 'same-origin'
+        }).then(response => response.text())
+            .then(response => {
+
+                let parsedResponse = JSON.parse(response)
+
+                if (parsedResponse.connectedUsers) {
+                
+                let connections = parsedResponse.connectedUsers
+
+                this.props.setCurrentConnections(connections)
+                }
+        })
+      }
 
 
 
@@ -204,6 +263,7 @@ class OtherUserProfile extends Component {
                 connect = true
             }
         }
+
         
         
 
@@ -347,32 +407,22 @@ class OtherUserProfile extends Component {
 let mapStateToProps = (state) => {
     return {
         popUp: state.popUp,
-        currentUser: state.currentUser
-    }
+        currentUser: state.currentUser, currentUserConnections : state.currentUserConnections    }
 }
-let ConnectedOtherUserProfile = connect(mapStateToProps)(OtherUserProfile)
+
+let mapDispatchToProps = (dispatch) => {
+    return {setCurrentUser: (user, connected) => dispatch({type: SETCURRENTUSER, user: user, connected: connected}),
+        setCurrentConnections: (connections) => dispatch({type: SETCURRENTCONNECTIONS, connections: connections})
+    }
+  }
+
+let ConnectedOtherUserProfile = connect(mapStateToProps, mapDispatchToProps)(OtherUserProfile)
 export default ConnectedOtherUserProfile;
 
 
 
 
 
-
-
-{/* <div className="individualMiniProfile2">
-                    
-                    <img src="/Images/shaun.jpg" className="connProfilePic2" />
-                    <div className="infoCont2">
-                        <div className="info2">{this.state.user.firstName} {this.state.user.lastName}</div>
-                        <div className="info3">Location: {this.state.user.location}</div>
-                        <div className="info3">Styles: {styles}</div>
-                        <div className="info3">Instruments: {instruments}</div>
-                        <div className="info3">Seeking: {seeking}</div>
-                        <div className="info3">Skill Level: {this.state.user.skillLevel}</div>
-                        <div className="info3">Experience: {this.state.user.experience}</div>
-                        <button className="connectButton" onClick={this.addConnection}>Connect</button>
-                    </div>
-        </div> */}
 
 
 
