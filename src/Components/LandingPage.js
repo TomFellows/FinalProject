@@ -106,7 +106,7 @@ class LandingPage extends Component {
             <input className = "input" list ='stylesList' onChange = {this.handleChange5} value = {this.state.styles} placeholder = "Style"/>
             {stylesList}
 
-            <select className = "input" onChange = {this.handleChange6} value = {this.state.skillLevel} placeholder = "Skill Level">
+            <select className = "input" onChange = {this.handleChange6} inputStyle={{ textAlign: 'center' }} value = {this.state.skillLevel} placeholder = "Skill Level">
                 <option style={{"display": "none"}} selected>&nbsp;Skill level</option>
                 <option value="Beginner">&nbsp;Beginner</option>
                 <option value="Intermediate">&nbsp;Intermediate</option>
