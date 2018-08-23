@@ -31,8 +31,13 @@ class FindConnections extends Component {
                   )
                 })
                 }
-
             
+            
+            if (mappedConnections.length < 1) {
+                mappedConnections = <div>Sorry, no user matches your criterias.</div>
+            }
+
+        
 
            
 
