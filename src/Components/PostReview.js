@@ -4,7 +4,7 @@ import '../CSS/PostReview.css'
 import { connect } from 'react-redux';
 import { POPUP } from '../ACTIONS';
 import { withRouter } from 'react-router';
-import AutosizeInput from 'react-input-autosize';
+
 
 class PostReview extends Component {
     constructor() {
