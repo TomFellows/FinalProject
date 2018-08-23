@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import '../CSS/Profile.css'
+import {Link, withRouter} from 'react-router-dom'
 
 
 
@@ -34,7 +35,8 @@ class Profile extends Component {
       let skillLevel = skillStr[0].toUpperCase() + skillStr.slice(1)
 
         return <div className = "profile">
-          <img src={this.props.currentUser.image} className="profilePic"/>
+          <Link to={'/OtherUserProfile/' + this.props.currentUser.username}>
+          <img src={this.props.currentUser.image} className="profilePic"/></Link>
                 <br/>
                 <br/>
 
@@ -149,4 +151,4 @@ class Profile extends Component {
   
   let ConnectedProfile = connect(mapStateToProps)(Profile)
   
-  export default ConnectedProfile;
+  export default withRouter(ConnectedProfile);

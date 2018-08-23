@@ -1,6 +1,12 @@
 
 
 /* Please rewrite the commented sections, they're messing up the side columns */
+.editLink {
+    margin: 1em;
+    font-size: 16pt;
+}
+
+
 .area {
     background-color: #e9ebee;
 }

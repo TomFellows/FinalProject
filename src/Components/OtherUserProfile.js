@@ -8,7 +8,7 @@ import PostReview from './PostReview.js'
 import '../CSS/PopUpWindow.css'
 import { connect } from 'react-redux'
 import ConnectionCardSmallContainer from './ConnectionCardSmallContainer';
-import { SETCURRENTUSER, SETCURRENTCONNECTIONS } from '../ACTIONS';
+import { SETCURRENTUSER, SETCURRENTCONNECTIONS, POPUP } from '../ACTIONS';
 
 class OtherUserProfile extends Component {
     constructor() {
@@ -68,7 +68,7 @@ class OtherUserProfile extends Component {
     }
 
     popUp = (event) => {
-        this.props.dispatch({ type: "pop up", popUpType: true })
+        this.props.showPopUp(event.target.value)
     }
 
     renderList(x) {
@@ -264,7 +264,11 @@ class OtherUserProfile extends Component {
             }
         }
 
-        
+        let editLink;
+
+        if (this.state.user.username === this.props.currentUser.username) {
+            editLink = <div ><br/>&nbsp;<Link className='editLink' to='/Profile'>Edit profile</Link></div>
+        }
         
 
 
@@ -272,6 +276,7 @@ class OtherUserProfile extends Component {
         return (<div>
             {this.props.popUp ? <PopUpWindow><PostReview getUserProfile= {this.getUserProfile} username={this.state.user.username} userId={this.props.currentUser.userId} revieweeId={this.state.user.userId} popUp={this.props.popUp}/></PopUpWindow> : null}
             <div className="area">
+            {editLink}
                 <div className = "flex2">
                 
                 <h1 className="name">
@@ -412,7 +417,9 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
     return {setCurrentUser: (user, connected) => dispatch({type: SETCURRENTUSER, user: user, connected: connected}),
-        setCurrentConnections: (connections) => dispatch({type: SETCURRENTCONNECTIONS, connections: connections})
+        setCurrentConnections: (connections) => dispatch({type: SETCURRENTCONNECTIONS, connections: connections}),
+        showPopUp: (value) => dispatch({type: POPUP, popUpType: value})
+
     }
   }
 
